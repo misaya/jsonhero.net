@@ -18,9 +18,9 @@ Copyright 2026 jsonhero.net contributors.
 
 归属和修改说明见 [NOTICE](./NOTICE)。
 
-## 商标
+## 项目名称
 
-Apache License, Version 2.0 不授予商标权。见
-[TRADEMARKS.zh-CN.md](./TRADEMARKS.zh-CN.md)。
+关于上游项目名称、域名引用、非官方关系说明和归属背景，见
+[PROJECT-NAME-NOTICE.zh-CN.md](./PROJECT-NAME-NOTICE.zh-CN.md)。
 
 本文件用于归属说明和仓库维护记录，不构成法律意见。

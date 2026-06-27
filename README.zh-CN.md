@@ -122,13 +122,13 @@ npm test
 
 本仓库包含派生自原始 JSON Hero 项目的软件。归属和修改说明见 [NOTICE](./NOTICE)。
 
-## 商标
+## 项目名称与归属
 
-Apache License, Version 2.0 不授予商标权。上游名称、logo、域名和产品标识仅用于
-归属和历史背景说明。
+上游项目名称、logo、域名和产品引用仅用于归属和历史背景说明。
 
-> JSON Hero 是其相应所有者（包括 Trigger.dev 和原项目贡献者）的商标及版权作品。
-> 本站（JsonHero.net）是一个独立的、采用 .NET 技术重构的开源演进版本，与原官方
-> 团队无商业附属或官方授权关系。特此向原项目的开源精神致敬。
+> JSON Hero 是原始开源项目的作品名称。本站（JsonHero.net）是一个独立的、采用
+> .NET 技术重构的开源演进版本，与原官方团队无商业附属或官方授权关系。特此向原
+> 项目的开源精神致敬。
 
-项目商标政策见 [TRADEMARKS.zh-CN.md](./TRADEMARKS.zh-CN.md)。
+项目名称与归属说明见
+[PROJECT-NAME-NOTICE.zh-CN.md](./PROJECT-NAME-NOTICE.zh-CN.md)。

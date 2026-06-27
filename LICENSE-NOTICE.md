@@ -18,9 +18,10 @@ Portions of this repository are derived from the original JSON Hero project:
 
 For attribution and modification notes, see [NOTICE](./NOTICE).
 
-## Trademarks
+## Project Names
 
-The Apache License, Version 2.0 does not grant trademark rights. See
-[TRADEMARKS.md](./TRADEMARKS.md).
+For upstream project names, domain references, non-affiliation wording, and
+attribution context, see
+[PROJECT-NAME-NOTICE.md](./PROJECT-NAME-NOTICE.md).
 
 This file is an attribution and repository-maintenance note, not legal advice.

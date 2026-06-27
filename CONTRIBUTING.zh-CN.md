@@ -63,4 +63,4 @@ npm run build
 本项目包含派生自
 [triggerdotdev/jsonhero-web](https://github.com/triggerdotdev/jsonhero-web)
 的代码。修改继承文件时，请保留归属和许可证声明。见 [NOTICE](./NOTICE) 和
-[TRADEMARKS.zh-CN.md](./TRADEMARKS.zh-CN.md)。
+[PROJECT-NAME-NOTICE.zh-CN.md](./PROJECT-NAME-NOTICE.zh-CN.md)。

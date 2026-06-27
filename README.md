@@ -128,16 +128,15 @@ The source code is distributed under the Apache License, Version 2.0. See
 This repository includes software derived from the original JSON Hero project.
 See [NOTICE](./NOTICE) for attribution and modification notes.
 
-## Trademarks
+## Project Name and Attribution
 
-The Apache License, Version 2.0 does not grant trademark rights. Upstream names,
-logos, domains, and product marks are acknowledged only for attribution and
-historical context.
+Upstream project names, logos, domains, and product references are acknowledged
+only for attribution and historical context.
 
-> JSON Hero is a trademark and copyrighted work of its respective owners,
-> including Trigger.dev and the original project contributors. This website
+> JSON Hero is the name of the original open-source project. This website
 > (JsonHero.net) is an independent open-source evolution re-engineered in .NET.
 > It is not officially affiliated with or endorsed by the original team. We
 > deeply respect and salute their open-source spirit.
 
-See [TRADEMARKS.md](./TRADEMARKS.md) for the project trademark policy.
+See [PROJECT-NAME-NOTICE.md](./PROJECT-NAME-NOTICE.md) for the project name and
+attribution notice.
