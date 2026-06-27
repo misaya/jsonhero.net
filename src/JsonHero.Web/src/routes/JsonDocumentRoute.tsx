@@ -109,7 +109,7 @@ export default function JsonDocumentRoute() {
                   <div className="fixed z-50 block h-screen w-screen bg-black/80 text-white md:hidden">
                     <div className="flex h-full flex-col items-center justify-center text-center">
                       <LargeTitle>
-                        jsonhero.net only works on desktop
+                        JsonHero.NET only works on desktop
                       </LargeTitle>
                       <LargeTitle>👇</LargeTitle>
                       <Body>(For now!)</Body>

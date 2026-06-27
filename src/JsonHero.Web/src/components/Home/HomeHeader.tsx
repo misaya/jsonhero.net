@@ -17,7 +17,7 @@ export function HomeHeader({ fixed }: { fixed?: boolean }) {
     >
       <div className="flex items-center justify-between w-screen px-4">
         <div className="flex gap-1 sm:gap-1.5 h-8 justify-center items-center">
-          <div className="w-24 sm:w-32">
+          <div className="w-36 sm:w-44">
             <Logo />
           </div>
         </div>
