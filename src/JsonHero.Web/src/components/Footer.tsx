@@ -7,7 +7,6 @@ import { Body } from "./Primitives/Body";
 import { ThemeModeToggler } from "./ThemeModeToggle";
 import { GithubStarSmall } from "./UI/GithubStarSmall";
 import { IndentPreference } from "~/components/IndentPreference";
-import { LanguageSelect } from "./LanguageSelect";
 import { useTranslation } from "~/i18n";
 
 export function Footer() {
@@ -54,9 +53,6 @@ export function Footer() {
         )}
         <li>
           <IndentPreference />
-        </li>
-        <li>
-          <LanguageSelect />
         </li>
         <li>
           <ThemeModeToggler />

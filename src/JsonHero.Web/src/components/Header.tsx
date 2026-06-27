@@ -2,6 +2,7 @@ import { ShareIcon, PlusIcon, TrashIcon } from "@heroicons/react/outline";
 import { DocumentTitle } from "./DocumentTitle";
 import { GithubStar } from "./UI/GithubStar";
 import { Logo } from "./Icons/Logo";
+import { LanguageSelect } from "./LanguageSelect";
 import { Share } from "./Share";
 import { NewDocument } from "./NewDocument";
 import {
@@ -21,6 +22,7 @@ export function Header() {
   return (
     <header className="flex items-center justify-between w-screen h-[40px] bg-indigo-700 dark:bg-slate-800 border-b-[1px] border-slate-600">
       <div className="flex pl-2 gap-1 sm:gap-1.5 pt-0.5 h-8 justify-center items-center">
+        <LanguageSelect />
         <div className="w-36 sm:w-40">
           <Logo />
         </div>
