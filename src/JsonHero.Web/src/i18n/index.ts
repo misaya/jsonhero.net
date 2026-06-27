@@ -28,7 +28,7 @@ type LanguageContextValue = {
 };
 
 const languageStorageKey = "jsonhero.language";
-const defaultLanguage: Language = "en";
+const defaultLanguage: Language = "zh-CN";
 const translations: Record<Language, TranslationResource> = {
   en,
   "zh-CN": zhCN,
