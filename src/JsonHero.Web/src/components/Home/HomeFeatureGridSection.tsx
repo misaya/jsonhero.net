@@ -64,8 +64,8 @@ export function HomeFeatureGridSection() {
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Quickly view JSON files or selections in JSON Hero, right from VS
-              Code.{" "}
+              The upstream project provides a VS Code extension for the original
+              JSON Hero service.{" "}
               <a
                 className="whitespace-nowrap text-lime-300 hover:text-lime-500"
                 href="https://marketplace.visualstudio.com/items?itemName=JSONHero.jsonhero-vscode"
@@ -83,7 +83,8 @@ export function HomeFeatureGridSection() {
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Use jsonhero.io or fork it on GitHub and run it yourself.
+              Run jsonhero.net yourself or fork the current repository on
+              GitHub.
             </Body>
           </HomeGridFeatureItem>
         </div>

@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
-import { DiscordIcon } from "../Icons/DiscordIcon";
-import { EmailIcon } from "../Icons/EmailIcon";
 import { GithubIcon } from "../Icons/GithubIcon";
 import { Logo } from "../Icons/Logo";
-import { TwitterIcon } from "../Icons/TwitterIcon";
 
 export type HomeFooterProps = {
   maxWidth?: string;
@@ -25,25 +22,11 @@ export function HomeFooter({ maxWidth = "1150px" }: HomeFooterProps) {
           </li>
           <li className="hover:cursor-pointer">
             <a
-              href="https://github.com/triggerdotdev/jsonhero-web"
+              href="https://github.com/misaya/jsonhero.net"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <GithubIcon />
-            </a>
-          </li>
-          <li className="ml-2 hover:cursor-pointer">
-            <a href="mailto:hello@jsonhero.io">
-              <EmailIcon />
-            </a>
-          </li>
-          <li className="ml-2 hover:cursor-pointer">
-            <a href="https://discord.gg/JtBAxBr2m3" target="_blank">
-              <DiscordIcon />
-            </a>
-          </li>
-          <li className="ml-2 hover:cursor-pointer">
-            <a href="https://twitter.com/triggerdotdev" target="_blank">
-              <TwitterIcon />
             </a>
           </li>
         </ol>

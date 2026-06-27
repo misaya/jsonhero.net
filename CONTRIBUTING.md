@@ -1,17 +1,35 @@
-## ⚡️ JSON Hero Contributing Guide
+# Contributing to jsonhero.net
 
-First of all, thanks for considering contributing to this project! If you have any questions please don't hesitate to reach out to [eric@jsonhero.io](mailto:eric@jsonhero.io) or join us on [Discord](https://discord.gg/JtBAxBr2m3).
+[English](./CONTRIBUTING.md) | [简体中文](./CONTRIBUTING.zh-CN.md)
 
-JSON Hero is an ASP.NET Core 8 API with a Vite React frontend in `src/JsonHero.Web`.
+Thanks for considering a contribution.
 
-To get started with contributing, please read our [Development guide](https://github.com/triggerdotdev/jsonhero-web/blob/main/DEVELOPMENT.md) first to get JSON Hero running locally.
+jsonhero.net is an independently maintained fork of the original JSON Hero
+project. Please send issues and pull requests to the current repository:
+[misaya/jsonhero.net](https://github.com/misaya/jsonhero.net).
 
-### Running tests
+## Development
 
-Although there is less test-coverage for JSON Hero than there should be, tests should still be run to ensure builds have not been broken:
+Read [DEVELOPMENT.md](./DEVELOPMENT.md) to get the project running locally.
+
+The current stack is:
+
+- ASP.NET Core 8 API in `src/JsonHero.Api`.
+- Vite React frontend in `src/JsonHero.Web`.
+- Backend tests in `src/JsonHero.Api.Tests`.
+- Frontend tests powered by Vitest.
+
+## Running Tests
+
+Run backend tests from the repository root:
 
 ```bash
 dotnet test src/JsonHero.Api.Tests/JsonHero.Api.Tests.csproj
+```
+
+Run frontend tests:
+
+```bash
 cd src/JsonHero.Web
 npm test
 ```
@@ -22,22 +40,28 @@ You can also run the frontend build:
 npm run build
 ```
 
-### Making changes
+## Making Changes
 
-Please make any changes to your forked repository in a branch other than `main`. If you are working on a bug fix, please use the `bug/` prefix for your branch name. If you are working on a feature, please use `features/`. If you are working on a specific issue please name the branch `issue-<issue number>`
+Please make changes in a branch other than `main`. Use a short, descriptive
+branch name such as:
 
-Make sure to run the .NET tests and the frontend test/build commands before opening a pull request.
+- `bug/<short-description>` for fixes.
+- `feature/<short-description>` for features.
+- `docs/<short-description>` for documentation-only changes.
 
-### Pull Requests
+Before opening a pull request, run the tests that cover the changed area.
 
-Please open a Pull Request against the `main` branch in the `triggerdotdev/jsonhero-web` repository. We will aim to address all newly opened PRs by the following Friday. If you haven't opened a Pull Request before, please check out GitHub's [Pull Request documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests)
+## Pull Requests
 
-### Other JSON Hero projects
+Open pull requests against the `main` branch in
+[misaya/jsonhero.net](https://github.com/misaya/jsonhero.net).
 
-If you'd like to contribute to the [VSCode extension](https://marketplace.visualstudio.com/items?itemName=JSONHero.jsonhero-vscode), please see the [triggerdotdev/vscode-extension](https://github.com/triggerdotdev/vscode-extension) repo.
+Keep pull requests focused. Include a short description of the problem, the
+solution, and the verification you performed.
 
-For issues related to the JSON Schema inference, please check out [triggerdotdev/schema-infer](https://github.com/triggerdotdev/schema-infer).
+## Upstream Attribution
 
-The "Smart Preview" feature is in-part powered by the [@jsonhero/json-infer-types](https://github.com/triggerdotdev/json-infer-types) project.
-
-If it's related to the Search functionality, please see the [triggerdotdev/fuzzy-json-search](https://github.com/triggerdotdev/fuzzy-json-search) repo.
+This project contains code derived from
+[triggerdotdev/jsonhero-web](https://github.com/triggerdotdev/jsonhero-web).
+Keep attribution and license notices intact when modifying inherited files. See
+[NOTICE](./NOTICE) and [TRADEMARKS.md](./TRADEMARKS.md).

@@ -1,0 +1,27 @@
+jsonhero.net
+Copyright 2026 jsonhero.net contributors
+
+This product includes software derived from JSON Hero:
+
+  JSON Hero
+  https://github.com/triggerdotdev/jsonhero-web
+  Copyright 2022 JSON Hero contributors
+
+The original JSON Hero project was made available under the Apache License,
+Version 2.0. The Apache License, Version 2.0 is included in this repository as
+LICENSE.
+
+This repository has been modified from the upstream JSON Hero project. Notable
+changes include, without limitation:
+
+- Reworked the backend into an ASP.NET Core 8 API.
+- Reworked the frontend into a Vite React single-page application.
+- Removed the original Remix and Cloudflare Workers runtime.
+- Updated Docker, development, and test workflows for the new stack.
+- Updated project documentation, repository metadata, and service ownership
+  references for the independently maintained fork.
+
+JSON Hero, jsonhero.io, Trigger.dev, Stack Hero, and related logos, trade names,
+service marks, or product names belong to their respective owners. This notice
+is for attribution and historical context only and does not imply affiliation,
+sponsorship, endorsement, or any trademark license.

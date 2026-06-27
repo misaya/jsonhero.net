@@ -1,0 +1,26 @@
+# License Notice
+
+[English](./LICENSE-NOTICE.md) | [简体中文](./LICENSE-NOTICE.zh-CN.md)
+
+This repository is distributed under the Apache License, Version 2.0. The full
+license text is available in [LICENSE](./LICENSE).
+
+## Project Copyright
+
+Copyright 2026 jsonhero.net contributors.
+
+Portions of this repository are derived from the original JSON Hero project:
+
+- Upstream repository:
+  [triggerdotdev/jsonhero-web](https://github.com/triggerdotdev/jsonhero-web)
+- Original open source release: 2022
+- Upstream contributors: JSON Hero contributors
+
+For attribution and modification notes, see [NOTICE](./NOTICE).
+
+## Trademarks
+
+The Apache License, Version 2.0 does not grant trademark rights. See
+[TRADEMARKS.md](./TRADEMARKS.md).
+
+This file is an attribution and repository-maintenance note, not legal advice.

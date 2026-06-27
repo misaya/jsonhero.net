@@ -11,7 +11,7 @@ import { HomeSection } from "./HomeSection";
 
 const json = {
   id: "a1c33bd1-0528-4de3-a745-44d95e7ac3d8",
-  title: "JSON Hero is a tool for JSON",
+  title: "jsonhero.net is a tool for JSON",
   // Replaced Giphy CDN URL with local placeholder — media.giphy.com is unreliable in China
   thumbnail: "/home/sample-thumbnail.webp",
   createdAt: "2022-02-01T02:25:41-05:00",

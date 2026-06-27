@@ -7,11 +7,11 @@ export default function Privacy() {
       <HomeHeader />
       <main className="mx-3 my-6 max-w-3xl space-y-6 text-base leading-7">
         <h1 className="text-3xl font-bold">Privacy Notice</h1>
-        <p className="font-bold">Last updated June 01, 2022</p>
+        <p className="font-bold">Last updated June 27, 2026</p>
         <p>
-          This privacy notice for Stack Hero Limited describes how and why we
-          might collect, store, use, and share information when you use JSON
-          Hero or contact us.
+          This privacy notice for jsonhero.net describes how and why information
+          may be collected, stored, used, and shared when you use this service
+          or contact the maintainers.
         </p>
         <h2 className="text-xl font-bold">What Information Do We Collect?</h2>
         <p>
@@ -41,8 +41,9 @@ export default function Privacy() {
         <h2 className="text-xl font-bold">Your Rights</h2>
         <p>
           Depending on your location, you may have rights to access, correct,
-          delete, restrict, or object to processing of personal information. To
-          exercise those rights or ask questions, contact hello@jsonhero.io.
+          delete, restrict, or object to processing of personal information.
+          Open an issue in the jsonhero.net repository for privacy questions or
+          requests.
         </p>
       </main>
       <HomeFooter />
