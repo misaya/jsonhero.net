@@ -64,8 +64,8 @@ export function HomeFeatureGridSection() {
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              The upstream project provides a VS Code extension for the original
-              JSON Hero service.{" "}
+              The inherited VS Code extension belongs to the upstream project.
+              JsonHero.NET is not affiliated with that extension.{" "}
               <a
                 className="whitespace-nowrap text-lime-300 hover:text-lime-500"
                 href="https://marketplace.visualstudio.com/items?itemName=JSONHero.jsonhero-vscode"
@@ -83,7 +83,7 @@ export function HomeFeatureGridSection() {
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Run jsonhero.net yourself or fork the current repository on
+              Run JsonHero.NET yourself or fork the current repository on
               GitHub.
             </Body>
           </HomeGridFeatureItem>

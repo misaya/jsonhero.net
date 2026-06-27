@@ -19,7 +19,7 @@ export function Header() {
   return (
     <header className="flex items-center justify-between w-screen h-[40px] bg-indigo-700 dark:bg-slate-800 border-b-[1px] border-slate-600">
       <div className="flex pl-2 gap-1 sm:gap-1.5 pt-0.5 h-8 justify-center items-center">
-        <div className="w-20 sm:w-24">
+        <div className="w-36 sm:w-40">
           <Logo />
         </div>
       </div>
@@ -30,7 +30,7 @@ export function Header() {
             method="delete"
             onSubmit={(e) =>
               !confirm(
-                "This will permanently delete this document from jsonhero.net, are you sure you want to continue?"
+                "This will permanently delete this document from JsonHero.NET, are you sure you want to continue?"
               ) && e.preventDefault()
             }
           >
