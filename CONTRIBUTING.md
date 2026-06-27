@@ -64,5 +64,4 @@ solution, and the verification you performed.
 This project contains code derived from
 [triggerdotdev/jsonhero-web](https://github.com/triggerdotdev/jsonhero-web).
 Keep attribution and license notices intact when modifying inherited files. See
-[NOTICE](./NOTICE) and
-[PROJECT-NAME-NOTICE.md](./PROJECT-NAME-NOTICE.md).
+[NOTICE](./NOTICE).

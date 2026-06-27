@@ -123,10 +123,11 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) before contributing.
 ## License and Attribution
 
 The source code is distributed under the Apache License, Version 2.0. See
-[LICENSE](./LICENSE) and [LICENSE-NOTICE.md](./LICENSE-NOTICE.md).
+[LICENSE](./LICENSE).
 
 This repository includes software derived from the original JSON Hero project.
-See [NOTICE](./NOTICE) for attribution and modification notes.
+See [NOTICE](./NOTICE) for attribution, modification notes, project-name
+context, and non-affiliation wording.
 
 ## Project Name and Attribution
 
@@ -137,6 +138,3 @@ only for attribution and historical context.
 > (JsonHero.net) is an independent open-source evolution re-engineered in .NET.
 > It is not officially affiliated with or endorsed by the original team. We
 > deeply respect and salute their open-source spirit.
-
-See [PROJECT-NAME-NOTICE.md](./PROJECT-NAME-NOTICE.md) for the project name and
-attribution notice.

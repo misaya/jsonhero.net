@@ -1,7 +1,5 @@
 # jsonhero.net Frontend
 
-[English](./README.md) | [简体中文](./README.zh-CN.md)
-
 This package contains the Vite React frontend for jsonhero.net.
 
 ## Scripts

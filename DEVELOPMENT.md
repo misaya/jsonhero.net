@@ -1,7 +1,5 @@
 ## jsonhero.net Local Development Guide
 
-[English](./DEVELOPMENT.md) | [简体中文](./DEVELOPMENT.zh-CN.md)
-
 jsonhero.net runs as an ASP.NET Core 8 API that serves a Vite React SPA from
 `src/JsonHero.Web`.
 

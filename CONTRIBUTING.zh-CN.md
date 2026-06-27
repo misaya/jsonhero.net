@@ -10,8 +10,7 @@ jsonhero.net 是原始 JSON Hero 项目的独立维护 fork。请把 issue 和 p
 
 ## 开发
 
-请先阅读 [DEVELOPMENT.zh-CN.md](./DEVELOPMENT.zh-CN.md)，了解如何在本地运行
-项目。
+请先阅读 [DEVELOPMENT.md](./DEVELOPMENT.md)，了解如何在本地运行项目。
 
 当前技术栈为：
 
@@ -62,5 +61,4 @@ npm run build
 
 本项目包含派生自
 [triggerdotdev/jsonhero-web](https://github.com/triggerdotdev/jsonhero-web)
-的代码。修改继承文件时，请保留归属和许可证声明。见 [NOTICE](./NOTICE) 和
-[PROJECT-NAME-NOTICE.zh-CN.md](./PROJECT-NAME-NOTICE.zh-CN.md)。
+的代码。修改继承文件时，请保留归属和许可证声明。见 [NOTICE](./NOTICE)。

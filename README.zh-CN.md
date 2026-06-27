@@ -5,13 +5,12 @@
 jsonhero.net 是一个独立维护的 fork，来源于原始 JSON Hero 项目
 [triggerdotdev/jsonhero-web](https://github.com/triggerdotdev/jsonhero-web)。
 
-这个 fork 已经和上游项目明显分叉，目前使用 ASP.NET Core 8 API 和 Vite
-React 前端。项目由
-[misaya/jsonhero.net](https://github.com/misaya/jsonhero.net) 仓库维护，并且不
-隶属于 Trigger.dev、Stack Hero 或原始 JSON Hero 维护者，也不受其赞助或背书。
+这个 fork 已经和上游项目明显分叉，目前使用 ASP.NET Core 8 API 和 Vite React 前端。
+项目由 [misaya/jsonhero.net](https://github.com/misaya/jsonhero.net) 仓库维护，
+并且不隶属于 Trigger.dev、Stack Hero 或原始 JSON Hero 维护者，也不受其赞助或背书。
 
-维护者已经注册并运营 `jsonhero.net` 域名，用于当前独立项目的网站入口和项目身份
-展示；这不表示与原始 JSON Hero 团队存在官方关系。
+维护者已经注册并运营 `jsonhero.net` 域名，用于当前独立项目的网站入口和项目身份展示；
+这不表示与原始 JSON Hero 团队存在官方关系。
 
 ## 功能
 
@@ -24,16 +23,14 @@ React 前端。项目由
 
 ## 项目状态
 
-本项目最初 fork 自 `triggerdotdev/jsonhero-web`，之后已经进行了大量修改。当前最
-明显的变化包括：
+本项目最初 fork 自 `triggerdotdev/jsonhero-web`，之后已经进行了大量修改。当前最明显的变化包括：
 
 - 后端已经改为 ASP.NET Core 8 API。
 - 前端已经改为位于 `src/JsonHero.Web` 的 Vite React SPA。
 - 原始 Remix 和 Cloudflare Workers 运行时已经移除。
 - Docker、开发和测试流程都已经面向新的 .NET + Vite 技术栈调整。
 
-部分内部命名空间、依赖名称和兼容性标识仍然包含 `JsonHero`，这是因为完整的源码
-级重命名属于独立的工程改造。
+部分内部命名空间、依赖名称和兼容性标识仍然包含 `JsonHero`，这是因为完整的源码级重命名属于独立的工程改造。
 
 ## 快速开始
 
@@ -106,7 +103,7 @@ cd src/JsonHero.Web
 npm test
 ```
 
-完整本地开发说明见 [DEVELOPMENT.zh-CN.md](./DEVELOPMENT.zh-CN.md)。
+完整本地开发说明见 [DEVELOPMENT.md](./DEVELOPMENT.md)。
 
 ## Issue 和贡献
 
@@ -117,10 +114,9 @@ npm test
 
 ## 许可证与归属
 
-本项目源代码基于 Apache License, Version 2.0 分发。见 [LICENSE](./LICENSE)
-和 [LICENSE-NOTICE.zh-CN.md](./LICENSE-NOTICE.zh-CN.md)。
+本项目源代码基于 Apache License, Version 2.0 分发。见 [LICENSE](./LICENSE)。
 
-本仓库包含派生自原始 JSON Hero 项目的软件。归属和修改说明见 [NOTICE](./NOTICE)。
+本仓库包含派生自原始 JSON Hero 项目的软件。归属、修改说明、项目名称背景和非官方关系说明见 [NOTICE](./NOTICE)。
 
 ## 项目名称与归属
 
@@ -129,6 +125,3 @@ npm test
 > JSON Hero 是原始开源项目的作品名称。本站（JsonHero.net）是一个独立的、采用
 > .NET 技术重构的开源演进版本，与原官方团队无商业附属或官方授权关系。特此向原
 > 项目的开源精神致敬。
-
-项目名称与归属说明见
-[PROJECT-NAME-NOTICE.zh-CN.md](./PROJECT-NAME-NOTICE.zh-CN.md)。

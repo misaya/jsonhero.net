@@ -21,6 +21,18 @@ changes include, without limitation:
 - Updated project documentation, repository metadata, and service ownership
   references for the independently maintained fork.
 
+Project name and attribution context:
+
+JSON Hero is the name of the original open-source project. This website
+(JsonHero.net) is an independent open-source evolution re-engineered in .NET. It
+is not officially affiliated with or endorsed by the original team. We deeply
+respect and salute their open-source spirit.
+
+The maintainer has registered and operates the jsonhero.net domain for this
+independent project. The domain identifies this project's web presence and
+project identity, and does not imply affiliation with the original JSON Hero
+team.
+
 JSON Hero, jsonhero.io, Trigger.dev, Stack Hero, and related logos, organization
 names, product names, or domain names are referenced only for attribution and
 historical context. This notice does not imply affiliation, sponsorship,
