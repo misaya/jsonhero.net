@@ -14,6 +14,9 @@ import zhTW from "./locales/zh-TW";
 
 export type Language = "en" | "zh-CN" | "zh-TW";
 export type TranslationValues = Record<string, string | number>;
+export type TranslationResource = {
+  [key: string]: string | TranslationResource;
+};
 export type TranslationFunction = (
   key: string,
   values?: TranslationValues
@@ -26,7 +29,7 @@ type LanguageContextValue = {
 
 const languageStorageKey = "jsonhero.language";
 const defaultLanguage: Language = "en";
-const translations: Record<Language, Record<string, string>> = {
+const translations: Record<Language, TranslationResource> = {
   en,
   "zh-CN": zhCN,
   "zh-TW": zhTW,
@@ -98,7 +101,11 @@ export function createTranslator(language: Language): TranslationFunction {
 }
 
 export function translate(language: Language, key: string): string {
-  return translations[language][key] ?? translations.en[key] ?? key;
+  return (
+    findTranslation(translations[language], key) ??
+    findTranslation(translations.en, key) ??
+    key
+  );
 }
 
 export function localeForLanguage(language: Language): string {
@@ -132,4 +139,27 @@ function interpolate(message: string, values?: TranslationValues): string {
   return Object.entries(values).reduce((result, [key, value]) => {
     return result.replaceAll(`{${key}}`, String(value));
   }, message);
+}
+
+function findTranslation(
+  resource: TranslationResource,
+  key: string
+): string | undefined {
+  const directValue = resource[key];
+
+  if (typeof directValue === "string") {
+    return directValue;
+  }
+
+  let current: string | TranslationResource | undefined = resource;
+
+  for (const part of key.split(".")) {
+    if (typeof current !== "object" || current === undefined) {
+      return undefined;
+    }
+
+    current = current[part];
+  }
+
+  return typeof current === "string" ? current : undefined;
 }

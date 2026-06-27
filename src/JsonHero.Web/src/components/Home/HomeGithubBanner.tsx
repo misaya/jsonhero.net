@@ -9,7 +9,7 @@ export function GithubBanner() {
     <div className="flex items-center justify-center w-full h-14 bg-indigo-600">
       <div className="flex items-center">
         <Body className="mr-3 text-xl text-white">
-          {t("Star us on GitHub 👉")}
+          {t("home.githubBanner.cta")}
         </Body>
         <GithubStar />
       </div>

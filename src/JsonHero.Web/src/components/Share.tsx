@@ -45,11 +45,11 @@ export function Share() {
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(link).then(
       function () {
-        setCopyText(<span>{t("Copied!")}</span>);
+        setCopyText(<span>{t("action.copied")}</span>);
         setCopied(true);
       },
       function (err) {
-        setCopyText(<span>{t("Failed to copy")}</span>);
+        setCopyText(<span>{t("action.copyFailed")}</span>);
         setCopied(true);
       }
     );
@@ -82,7 +82,7 @@ export function Share() {
   return (
     <div className="bg-indigo-700 text-white rounded-sm shadow-md w-[340px] p-3 transition">
       <Body className="text-sm mb-2 text-slate-300">
-        {t("Anyone with this link can view this json file.")}
+        {t("share.visibilityNotice")}
       </Body>
       <div className="flex">
         <div className="flex-grow whitespace-nowrap overflow-hidden rounded-l-sm bg-indigo-900 text-sm p-2 select-all">
@@ -104,7 +104,7 @@ export function Share() {
             value="option"
             onChange={(e) => handleIncludesPath(e.target.checked)}
           ></input>
-          {t("Link includes path")}
+          {t("share.includesPath")}
         </label>
       </div>
     </div>

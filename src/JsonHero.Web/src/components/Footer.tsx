@@ -19,19 +19,19 @@ export function Footer() {
         <li className="flex items-center">
           <ArrowKeysIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="pl-2 pr-4 text-slate-800 transition dark:text-white">
-            {t("Navigate")}
+            {t("footer.navigate")}
           </Body>
         </li>
         <li className="flex items-center">
           <SquareBracketsIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="pl-2 pr-4 text-slate-800 transition dark:text-white">
-            {t("History")}
+            {t("footer.history")}
           </Body>
         </li>
         <li className="flex items-center">
           <EscapeKeyIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="pl-2 pr-4 text-slate-800 transition dark:text-white whitespace-nowrap">
-            {t("Reset path")}
+            {t("footer.resetPath")}
           </Body>
         </li>
         <li className="flex items-center">
@@ -39,9 +39,9 @@ export function Footer() {
           <Body className="flex pl-2 pr-4 text-slate-800 transition dark:text-white">
             {t("Copy")}&nbsp;
             <span className="hidden lg:flex whitespace-nowrap">
-              {t("selected")}&nbsp;
+              {t("footer.selected")}&nbsp;
             </span>
-            {t("node")}
+            {t("footer.node")}
           </Body>
         </li>
       </ol>

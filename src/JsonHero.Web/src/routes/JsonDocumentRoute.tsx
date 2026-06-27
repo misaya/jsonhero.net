@@ -68,7 +68,7 @@ export default function JsonDocumentRoute() {
           message:
             reason instanceof Error
               ? reason.message
-              : t("Unknown error occurred."),
+              : t("error.unknown"),
         });
       });
 
@@ -90,7 +90,7 @@ export default function JsonDocumentRoute() {
   if (!loaderData) {
     return (
       <div className="flex h-screen w-screen items-center justify-center bg-[rgb(56,52,139)] text-white">
-        <LargeTitle>{t("Loading JSON document...")}</LargeTitle>
+        <LargeTitle>{t("viewer.loading")}</LargeTitle>
       </div>
     );
   }
@@ -111,15 +111,15 @@ export default function JsonDocumentRoute() {
                   <div className="fixed z-50 block h-screen w-screen bg-black/80 text-white md:hidden">
                     <div className="flex h-full flex-col items-center justify-center text-center">
                       <LargeTitle>
-                        {t("JsonHero.NET only works on desktop")}
+                        {t("viewer.desktopOnly.title")}
                       </LargeTitle>
                       <LargeTitle>👇</LargeTitle>
-                      <Body>{t("(For now!)")}</Body>
+                      <Body>{t("viewer.desktopOnly.subtitle")}</Body>
                       <Link
                         to="/"
                         className="mt-8 rounded-sm bg-lime-500 px-4 py-2 text-white"
                       >
-                        {t("Back to Home")}
+                        {t("viewer.desktopOnly.backToHome")}
                       </Link>
                     </div>
                   </div>
@@ -195,12 +195,12 @@ function DocumentError({
         <div className="text-center leading-snug text-white">
           <ExtraLargeTitle className="mb-8 text-slate-200">
             <b>{t("Sorry")}</b>
-            {t("! Something went wrong...")}
+            {t("error.genericSuffix")}
           </ExtraLargeTitle>
           <SmallSubtitle className="mb-8 text-slate-200">
             {error.status === 404 ? (
               <>
-                {t("We couldn't find the page {path}", {
+                {t("error.notFound", {
                   path: `/j/${id}`,
                 })}
               </>
@@ -212,7 +212,7 @@ function DocumentError({
             to="/"
             className="mx-auto w-24 cursor-pointer whitespace-nowrap rounded-sm bg-lime-500 px-5 py-1 text-lg font-bold uppercase text-slate-900 opacity-90 transition hover:opacity-100"
           >
-            {t("HOME")}
+            {t("action.home")}
           </Link>
         </div>
       </div>
@@ -224,5 +224,14 @@ function translateErrorMessage(
   message: string,
   t: (key: string) => string
 ): string {
-  return t(message);
+  const errorKeyByMessage: Record<string, string> = {
+    "jsonUrl is required.": "error.jsonUrlRequired",
+    "rawJson is required.": "error.rawJsonRequired",
+    "url is required.": "error.urlRequired",
+    "Provide either url or j.": "error.provideUrlOrJ",
+    "Provide either url or json.": "error.provideUrlOrJson",
+    "Theme must be dark or light.": "error.invalidTheme",
+  };
+
+  return t(errorKeyByMessage[message] ?? message);
 }

@@ -57,7 +57,7 @@ export const DataTable: FunctionComponent<DataTableProps> = ({ rows }) => {
   return (
     <div>
       <Title className="text-slate-700 dark:text-slate-400 mb-2">
-        {t("Properties")}
+        {t("properties.title")}
       </Title>
       <table className="w-full table-auto border-y-[0.5px] border-slate-300 transition dark:border-slate-700">
         <tbody className="divide-solid divide-y divide-slate-300 w-full transition dark:divide-slate-700">

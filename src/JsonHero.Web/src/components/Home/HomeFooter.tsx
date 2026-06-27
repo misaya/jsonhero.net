@@ -25,7 +25,7 @@ export function HomeFooter({ maxWidth = "1150px" }: HomeFooterProps) {
             <LanguageSelect variant="dark" />
           </li>
           <li className="mr-2 hover:cursor-pointer text-white/70 hover:text-white transition">
-            <Link to="/privacy">{t("Privacy")}</Link>
+            <Link to="/privacy">{t("home.footer.privacy")}</Link>
           </li>
           <li className="hover:cursor-pointer">
             <a

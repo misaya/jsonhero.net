@@ -11,10 +11,10 @@ export default function TerminalViewPage() {
       <div className="flex flex-col items-center justify-center max-w-[300px] rounded text-center bg-slate-200 shadow border-slate-100 border-[10px] border-solid py-16 px-16 transition dark:bg-slate-700 dark:border-slate-500">
         <TerminalIcon className="text-indigo-500 transition dark:text-white w-8 mb-2" />
         <LargeTitle className="text-gray-700 transition dark:text-white">
-          {t("Terminal View")}
+          {t("terminal.title")}
         </LargeTitle>
         <Body className="text-gray-700 transition dark:text-white">
-          {t("Coming soon")}
+          {t("terminal.comingSoon")}
         </Body>
       </div>
     </div>

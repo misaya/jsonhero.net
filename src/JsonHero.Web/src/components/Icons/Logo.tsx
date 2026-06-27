@@ -13,7 +13,7 @@ export function Logo({
   return (
     <Link
       to="/"
-      aria-label={t("JsonHero.NET homepage")}
+      aria-label={t("header.homepageLabel")}
       className="block w-full"
     >
       <svg

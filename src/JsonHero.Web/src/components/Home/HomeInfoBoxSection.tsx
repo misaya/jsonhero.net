@@ -91,10 +91,10 @@ function HomeInfoBoxSectionContent() {
           <span className=" text-lime-300">
             {t(infoBoxData[index].title)}
           </span>{" "}
-          {t("are more than just strings")}
+          {t("home.infoBox.titleSuffix")}
         </ExtraLargeTitle>
         <SmallSubtitle className="text-slate-400 mb-10">
-          {t("We figure out what your strings are made of, so you don't have to.")}
+          {t("home.infoBox.description")}
         </SmallSubtitle>
         <ul className="flex w-full text-slate-300 mb-3">
           {infoBoxData.map((value, i) => {

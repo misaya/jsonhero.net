@@ -21,7 +21,7 @@ export function CopyTextButton({ value, className }: CopyTextButtonProps) {
   return (
     <CopyText className={`${className}`} value={value} onCopied={onCopied}>
       {copied ? (
-        <Body>{t("Copied!")}</Body>
+        <Body>{t("action.copied")}</Body>
       ) : (
         <div className="flex items-center">
           <ClipboardIcon className="h-4 w-4 mr-[2px]" />

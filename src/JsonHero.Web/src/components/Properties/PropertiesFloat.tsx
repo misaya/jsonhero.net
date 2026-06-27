@@ -16,7 +16,7 @@ export function PropertiesFloat(info: PropertiesFloatProps) {
     <DataTable
       rows={[
         {
-          key: "Formatted value",
+          key: "properties.formattedValue",
           value:
             formatValue(info.type, {
               locale: localeForLanguage(language),

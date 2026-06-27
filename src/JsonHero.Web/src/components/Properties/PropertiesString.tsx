@@ -100,7 +100,7 @@ function PropertiesTimestamp({
       value: (date.getTime() / 1000).toFixed(0),
     },
     {
-      key: "unix ms",
+      key: "properties.unixMs",
       value: date.getTime().toString(),
     },
     {
@@ -155,7 +155,7 @@ function PropertiesDateTime({
     //   value: (date.getTime() / 1000).toFixed(0),
     // },
     // {
-    //   key: "unix ms",
+    //   key: "properties.unixMs",
     //   value: date.getTime().toString(),
     // },
     // {
@@ -177,7 +177,7 @@ function PropertiesDateTime({
 
   if ("epochMilliseconds" in temporal) {
     properties.push({
-      key: "unix ms",
+      key: "properties.unixMs",
       value: temporal.epochMilliseconds.toString(),
     });
   }

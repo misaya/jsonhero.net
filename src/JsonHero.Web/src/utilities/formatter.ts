@@ -46,10 +46,10 @@ export function formatValue(
       if (type.value.length == 0) {
         return formatRawValue(type);
       } else if (type.value.length === 1) {
-        return options?.t?.("1 item") ?? "1 item";
+        return options?.t?.("format.items.one") ?? "1 item";
       } else {
         return (
-          options?.t?.("{count} items", { count: type.value.length }) ??
+          options?.t?.("format.items.many", { count: type.value.length }) ??
           `${type.value.length} items`
         );
       }
@@ -62,10 +62,10 @@ export function formatValue(
       if (Object.keys(type.value).length == 0) {
         return formatRawValue(type);
       } else if (Object.keys(type.value).length === 1) {
-        return options?.t?.("1 field") ?? "1 field";
+        return options?.t?.("format.fields.one") ?? "1 field";
       } else {
         return (
-          options?.t?.("{count} fields", {
+          options?.t?.("format.fields.many", {
             count: Object.keys(type.value).length,
           }) ?? `${Object.keys(type.value).length} fields`
         );

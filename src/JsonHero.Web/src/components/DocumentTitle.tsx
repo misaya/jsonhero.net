@@ -50,7 +50,7 @@ export function DocumentTitle() {
               type="text"
               name="title"
               spellCheck="false"
-              placeholder={t("Name your JSON file")}
+              placeholder={t("documentTitle.placeholder")}
               value={editedTitle}
               onChange={(e) => setEditedTitle(e.target.value)}
             />

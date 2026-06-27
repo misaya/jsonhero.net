@@ -24,7 +24,7 @@ export function IndentPreference() {
         className="pr-2 text-slate-800 transition dark:text-white"
         htmlFor="indent"
       >
-        <Body>{t("Indent")}</Body>
+        <Body>{t("preferences.indent")}</Body>
       </label>
       <input
         type="number"

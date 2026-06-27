@@ -16,12 +16,10 @@ export function HomeEdgeCasesSection() {
     >
       <div className="w-full md:pl-10 md:w-1/2">
         <ExtraLargeTitle className="text-white mb-4">
-          {t("Uncover edge cases")}
+          {t("home.edgeCases.title")}
         </ExtraLargeTitle>
         <SmallSubtitle className="mb-6 md:mb-10">
-          {t(
-            "Sometimes a field can be null, have an unexpected value or be missing entirely. View any field's related values and see what to expect when you least expect it. Or check out the inferred JSON schema to see what your JSON is really made of."
-          )}
+          {t("home.edgeCases.description")}
         </SmallSubtitle>
       </div>
       <div className="w-full md:w-1/2">

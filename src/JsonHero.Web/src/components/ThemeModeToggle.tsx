@@ -23,8 +23,8 @@ export function ThemeModeToggler() {
           : "text-white hover:bg-slate-700"
       }`}
       onClick={toggleTheme}
-      aria-label={t("Toggle theme")}
-      title={t("Toggle theme")}
+      aria-label={t("preferences.toggleTheme")}
+      title={t("preferences.toggleTheme")}
     >
       <SwitchIcon />
     </button>

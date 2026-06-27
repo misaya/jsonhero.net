@@ -120,7 +120,7 @@ export function SearchPalette({
             {...cb.getInputProps({ onKeyDown: handleInputKeyDown })}
             type="text"
             spellCheck="false"
-            placeholder={t("Search the JSON…")}
+            placeholder={t("viewer.search.placeholder")}
             className="w-full pl-12 pr-4 py-4 rounded-sm text-slate-900 bg-slate-100 text-2xl caret-indigo-700 border-indigo-700 transition dark:text-white dark:bg-slate-900 focus:outline-none focus:ring focus:ring-indigo-700"
           />
         </label>
@@ -130,15 +130,17 @@ export function SearchPalette({
               (!searchState.results || searchState.results.length === 0) && (
                 <div className="results-loading flex">
                   <LoadingIcon className="animate-spin h-5 w-5 mr-1"></LoadingIcon>
-                  <Body className="text-slate-400">{t("Loading…")}</Body>
+                  <Body className="text-slate-400">
+                    {t("viewer.search.loading")}
+                  </Body>
                 </div>
               )}
             {searchState.results && searchState.results.length > 0 && (
               <div className="results-returned">
                 <Body className="text-slate-400">
                   {searchState.results.length === 1
-                    ? t("1 result")
-                    : t("{count} results", {
+                    ? t("viewer.search.oneResult")
+                    : t("viewer.search.results", {
                         count: searchState.results.length,
                       })}
                 </Body>
@@ -151,7 +153,7 @@ export function SearchPalette({
                 <div className="results-none flex">
                   <ExclamationIcon className="h-5 w-5 mr-1 text-white"></ExclamationIcon>
                   <Body className="text-slate-400">
-                    {t("No results for \"{query}\"", {
+                    {t("viewer.search.noResults", {
                       query: cb.inputValue,
                     })}
                   </Body>
@@ -199,19 +201,19 @@ export function SearchPalette({
             ⏎
           </ShortcutIcon>
           <Body className="text-slate-700 dakr:text-slate-500">
-            {t("to select")}
+            {t("viewer.search.hintSelect")}
           </Body>
         </div>
         <div className="flex items-center gap-1">
           <ArrowKeysUpDownIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="text-slate-700 dakr:text-slate-500">
-            {t("to navigate")}
+            {t("viewer.search.hintNavigate")}
           </Body>
         </div>
         <div className="flex items-center gap-1">
           <EscapeKeyIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="text-slate-700 dakr:text-slate-500">
-            {t("to close")}
+            {t("viewer.search.hintClose")}
           </Body>
         </div>
       </div>

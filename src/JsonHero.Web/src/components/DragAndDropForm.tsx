@@ -77,8 +77,8 @@ export function DragAndDropForm() {
           />
           <p className={`${isDragActive ? "text-lime-500" : ""}`}>
             {isDragActive
-              ? t("Now drop to open it…")
-              : t("Drop a JSON file here, or click to select")}
+              ? t("upload.dropActive")
+              : t("upload.dropPrompt")}
           </p>
         </div>
 

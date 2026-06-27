@@ -36,7 +36,7 @@ export function PreviewVideoUri({
         <Body>
           <video key={src} controls ref={videoRef}>
             <source src={src} type={contentType} />
-            {t("Sorry, your browser doesn't support embedded videos.")}
+            {t("preview.unsupportedVideo")}
           </video>
         </Body>
       </PreviewBox>

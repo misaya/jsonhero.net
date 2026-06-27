@@ -82,7 +82,7 @@ export function PathBarText({ selectedNodes, onConfirm }: { selectedNodes: Colum
           type="text"
           name="title"
           spellCheck="false"
-          placeholder={t("Enter JSON path")}
+          placeholder={t("viewer.path.placeholder")}
           value={path}
           onChange={(e) => setPath(e.target.value)}
         />

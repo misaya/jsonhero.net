@@ -15,7 +15,7 @@ export function NewDocument() {
 
         <div className="mt-4">
           <Title className="mb-2 text-slate-200">
-            {t("No JSON? Try it out:")}
+            {t("home.samples.prompt")}
           </Title>
           <SampleUrls />
         </div>

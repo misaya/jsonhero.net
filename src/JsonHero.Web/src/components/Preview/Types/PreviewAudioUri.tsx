@@ -35,7 +35,7 @@ export function PreviewAudioUri({
       <PreviewBox>
         <Body>
           <audio controls src={src} ref={mediaRef}>
-            {t("Sorry, your browser doesn't support embedded audio.")}
+            {t("preview.unsupportedAudio")}
           </audio>
         </Body>
       </PreviewBox>

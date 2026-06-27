@@ -38,7 +38,7 @@ function generateChildren(
         name: index.toString(),
         title: index.toString(),
         longTitle:
-          options?.t?.("Index {index}", { index }) ?? `Index ${index}`,
+          options?.t?.("viewer.tree.index", { index }) ?? `Index ${index}`,
         subtitle: formatValue(childInfo, options),
         icon: iconForType(childInfo),
         children,

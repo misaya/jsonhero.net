@@ -33,11 +33,7 @@ export function Header() {
           <form
             method="delete"
             onSubmit={(e) =>
-              !confirm(
-                t(
-                  "This will permanently delete this document from JsonHero.NET, are you sure you want to continue?"
-                )
-              ) && e.preventDefault()
+              !confirm(t("header.deleteConfirm")) && e.preventDefault()
             }
           >
             <button type="submit">

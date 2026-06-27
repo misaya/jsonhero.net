@@ -28,7 +28,7 @@ export function HomeHeader({ fixed }: { fixed?: boolean }) {
           <Popover>
             <PopoverTrigger>
               <button className=" bg-lime-400 text-slate-900 text-lg font-bold px-2 py-0.5 rounded uppercase whitespace-nowrap cursor-pointer opacity-90 hover:opacity-100 transition">
-                {t("Try now")}
+                {t("home.header.tryNow")}
               </button>
             </PopoverTrigger>
             <PopoverContent side="bottom" sideOffset={30}>

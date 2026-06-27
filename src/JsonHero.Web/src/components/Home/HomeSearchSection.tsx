@@ -13,12 +13,10 @@ export function HomeSearchSection() {
     <HomeSection containerClassName="py-10 px-6 bg-black md:py-36 lg:py-20">
       <div className="w-full md:pr-10 md:w-1/2">
         <ExtraLargeTitle className="text-white mb-4">
-          {t("Quickly search your whole JSON file")}
+          {t("home.search.title")}
         </ExtraLargeTitle>
         <SmallSubtitle className="mb-6 md:mb-10">
-          {t(
-            "Search for absolutely anything in your JSON file with blistering speed. Use the fuzzy matching and keyboard shortcuts to make navigating your files even faster."
-          )}
+          {t("home.search.description")}
         </SmallSubtitle>
       </div>
       <div className="w-full md:w-1/2">

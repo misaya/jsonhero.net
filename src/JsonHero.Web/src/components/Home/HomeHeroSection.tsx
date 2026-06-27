@@ -21,15 +21,13 @@ export function HomeHeroSection() {
       <div className="self-center flex align-center md:w-1/2 px-6 pb-8 mt-8 lg:mt-0">
         <div className="max-w-lg">
           <ExtraLargeTitle className="text-lime-300">
-            {t("JSON sucks.")}
+            {t("home.hero.title")}
           </ExtraLargeTitle>
           <ExtraLargeTitle className="text-white mb-4">
-            {t("But we're making it better.")}
+            {t("home.hero.subtitle")}
           </ExtraLargeTitle>
           <SmallSubtitle className="text-slate-200 mb-8">
-            {t(
-              "Stop staring at thousand line JSON files in your editor and start staring at thousand line JSON files in the world's best JSON viewer. With a few nice features to help make it not the worst."
-            )}
+            {t("home.hero.description")}
           </SmallSubtitle>
           <NewFile />
         </div>

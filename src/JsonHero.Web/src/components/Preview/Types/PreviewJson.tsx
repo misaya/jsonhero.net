@@ -40,7 +40,7 @@ export function PreviewJson({ preview }: { preview: PreviewJsonData }) {
             url={jsonHeroUrl.href}
             className="bg-slate-200 hover:bg-slate-300 h-fit px-2 py-0.5 rounded-sm transition dark:text-white dark:bg-slate-700 dark:hover:bg-slate-600"
           >
-            <Body>{t("Open in tab")}</Body>
+            <Body>{t("preview.openInTab")}</Body>
           </OpenInNewWindow>
         </div>
       </div>

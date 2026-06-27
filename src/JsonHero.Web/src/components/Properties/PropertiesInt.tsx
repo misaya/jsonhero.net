@@ -21,7 +21,7 @@ export function PropertiesInt({ type }: { type: JSONIntType }) {
       <DataTable
         rows={[
           {
-            key: "Formatted value",
+            key: "properties.formattedValue",
             value: formatValue(type, { locale, t }) ?? "",
             icon: <ValueIcon type={type} />,
           },
@@ -77,7 +77,7 @@ function PropertiesTimestamp({
       value: (date.getTime() / 1000).toFixed(0),
     },
     {
-      key: "unix ms",
+      key: "properties.unixMs",
       value: date.getTime().toString(),
     },
     {

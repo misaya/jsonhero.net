@@ -59,7 +59,7 @@ export function InfoHeader({ relatedPaths }: InfoHeaderProps) {
     <div className="mb-4 pb-4">
       <div className="flex items-center">
         <Title className="flex-1 mr-2 overflow-hidden overflow-ellipsis break-words text-slate-700 transition dark:text-slate-200">
-          {selectedName ?? t("nothing")}
+          {selectedName ?? t("infoHeader.nothing")}
         </Title>
         <div>
           <ValueIcon
@@ -104,7 +104,7 @@ export function InfoHeader({ relatedPaths }: InfoHeaderProps) {
         <Body className="flex-1">
           {getHierarchicalTypes(selectedInfo).types.map((type) => t(type)).join("/")}
         </Body>
-        {canBeNull && <Body>{t("Can be null")}</Body>}
+        {canBeNull && <Body>{t("infoHeader.canBeNull")}</Body>}
       </div>
     </div>
   );
@@ -123,7 +123,7 @@ function EmptyState() {
     <div className="mb-4 pb-4 border-b border-slate-300">
       <div className="flex items-center">
         <Title className="flex-1 mr-2 text-slate-800 transition dark:text-slate-300">
-          {t("Nothing selected")}
+          {t("infoHeader.nothingSelected")}
         </Title>
       </div>
       <div>
