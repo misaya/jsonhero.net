@@ -1,4 +1,5 @@
 import { Logo } from "../Icons/Logo";
+import { LanguageSelect } from "../LanguageSelect";
 import { NewDocument } from "../NewDocument";
 import { GithubStar } from "../UI/GithubStar";
 import { useTranslation } from "~/i18n";
@@ -20,6 +21,7 @@ export function HomeHeader({ fixed }: { fixed?: boolean }) {
     >
       <div className="flex items-center justify-between w-screen px-4">
         <div className="flex gap-1 sm:gap-1.5 h-8 justify-center items-center">
+          <LanguageSelect />
           <div className="w-36 sm:w-44">
             <Logo />
           </div>
