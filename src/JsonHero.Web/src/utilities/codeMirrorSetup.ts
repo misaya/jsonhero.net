@@ -5,11 +5,10 @@ import {
   dropCursor,
 } from "@codemirror/view";
 import { Extension } from "@codemirror/state";
-import { highlightActiveLineGutter } from "@codemirror/gutter";
-import { bracketMatching } from "@codemirror/matchbrackets";
+import { highlightActiveLineGutter, lineNumbers } from "@codemirror/view";
+import { bracketMatching } from "@codemirror/language";
 import { highlightSelectionMatches } from "@codemirror/search";
 import { json as jsonLang } from "@codemirror/lang-json";
-import { lineNumbers } from "@codemirror/gutter";
 
 export function getPreviewSetup(): Array<Extension> {
   return [
