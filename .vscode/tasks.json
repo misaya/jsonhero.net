@@ -2,12 +2,23 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "typescript",
-      "tsconfig": "tsconfig.json",
-      "option": "watch",
-      "problemMatcher": ["$tsc-watch"],
+      "label": "api: watch",
+      "type": "shell",
+      "command": "dotnet watch --project src/JsonHero.Api",
+      "problemMatcher": "$msCompile",
       "group": "build",
-      "label": "tsc: watch - tsconfig.json"
+      "isBackground": true
+    },
+    {
+      "label": "web: dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/src/JsonHero.Web"
+      },
+      "problemMatcher": [],
+      "group": "build",
+      "isBackground": true
     }
   ]
 }

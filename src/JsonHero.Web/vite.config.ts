@@ -16,6 +16,10 @@ export default defineConfig({
         target: "http://localhost:5299",
         changeOrigin: true,
       },
+      "/actions": {
+        target: "http://localhost:5299",
+        changeOrigin: true,
+      },
       "/j": {
         target: "http://localhost:5299",
         changeOrigin: true,

@@ -1,4 +1,4 @@
-import { getComponentSlices, getStringSlices } from "../app/utilities/search";
+import { getComponentSlices, getStringSlices } from "~/utilities/search";
 
 describe("Timezones", () => {
   it("should always be UTC", () => {

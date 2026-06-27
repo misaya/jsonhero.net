@@ -1,10 +1,10 @@
 import { Body } from "~/components/Primitives/Body";
 import { Title } from "~/components/Primitives/Title";
 import { PreviewBox } from "../PreviewBox";
-import { PreviewHtml } from "./preview.types";
+import type { PreviewHtml as PreviewHtmlData } from "./preview.types";
 
 export type PreviewHtmlProps = {
-  info: PreviewHtml;
+  info: PreviewHtmlData;
 };
 
 export function PreviewHtml({ info }: PreviewHtmlProps) {

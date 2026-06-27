@@ -1,4 +1,4 @@
-import { generateColumnViewNode } from "../app/utilities/jsonColumnView";
+import { generateColumnViewNode } from "~/utilities/jsonColumnView";
 
 describe("generateColumnViewNode", () => {
   test("it creates the correct tree structure for the passed in JSON", () => {
@@ -34,10 +34,7 @@ describe("generateColumnViewNode", () => {
                 "title": "foo",
               },
             ],
-            "icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "render": [Function],
-            },
+            "icon": [Function],
             "id": "$.data",
             "name": "data",
             "subtitle": "1 field",
@@ -56,10 +53,7 @@ describe("generateColumnViewNode", () => {
                     "title": "string",
                   },
                 ],
-                "icon": Object {
-                  "$$typeof": Symbol(react.forward_ref),
-                  "render": [Function],
-                },
+                "icon": [Function],
                 "id": "$.array.0",
                 "longTitle": "Index 0",
                 "name": "0",
@@ -67,20 +61,14 @@ describe("generateColumnViewNode", () => {
                 "title": "0",
               },
             ],
-            "icon": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "render": [Function],
-            },
+            "icon": [Function],
             "id": "$.array",
             "name": "array",
             "subtitle": "1 item",
             "title": "array",
           },
         ],
-        "icon": Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "render": [Function],
-        },
+        "icon": [Function],
         "id": "$",
         "name": "root",
         "title": "root",

@@ -2,7 +2,7 @@
 
 First of all, thanks for considering contributing to this project! If you have any questions please don't hesitate to reach out to [eric@jsonhero.io](mailto:eric@jsonhero.io) or join us on [Discord](https://discord.gg/JtBAxBr2m3).
 
-JSON Hero is a Typescript React application built with [remix.run](https://remix.run), with support for deploying to Cloudflare workers.
+JSON Hero is an ASP.NET Core 8 API with a Vite React frontend in `src/JsonHero.Web`.
 
 To get started with contributing, please read our [Development guide](https://github.com/triggerdotdev/jsonhero-web/blob/main/DEVELOPMENT.md) first to get JSON Hero running locally.
 
@@ -11,20 +11,22 @@ To get started with contributing, please read our [Development guide](https://gi
 Although there is less test-coverage for JSON Hero than there should be, tests should still be run to ensure builds have not been broken:
 
 ```bash
+dotnet test src/JsonHero.Api.Tests/JsonHero.Api.Tests.csproj
+cd src/JsonHero.Web
 npm test
 ```
 
-You can also run tests in "watch" mode:
+You can also run the frontend build:
 
 ```bash
-npm run test:watch
+npm run build
 ```
 
 ### Making changes
 
 Please make any changes to your forked repository in a branch other than `main`. If you are working on a bug fix, please use the `bug/` prefix for your branch name. If you are working on a feature, please use `features/`. If you are working on a specific issue please name the branch `issue-<issue number>`
 
-Make sure to run the `npm lint` command to ensure there are no Typescript compile-time errors.
+Make sure to run the .NET tests and the frontend test/build commands before opening a pull request.
 
 ### Pull Requests
 

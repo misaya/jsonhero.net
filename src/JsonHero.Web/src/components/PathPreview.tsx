@@ -4,8 +4,6 @@ import { useJsonColumnViewAPI } from "~/hooks/useJsonColumnView";
 import { ColumnViewNode, IconComponent } from "~/useColumnView";
 import { Body } from "./Primitives/Body";
 
-import eyeIcon from "~/assets/svgs/EyeIcon.svg";
-
 export type PathPreviewProps = {
   nodes: ColumnViewNode[];
   maxComponents?: number;
@@ -79,7 +77,7 @@ export function PathPreview({
     <div
       className={`flex select-none pl-7 ${
         isEnabled
-          ? `relative transition hover:bg-slate-200 hover:cursor-pointer dark:hover:bg-slate-600 after:transition after:absolute after:h-3 after:w-3 after:opacity-0 hover:after:opacity-100 after:top-1 after:left-1 after:content-[''] after:bg-[url('${eyeIcon}')] after:bg-no-repeat`
+          ? "group relative transition hover:bg-slate-200 hover:cursor-pointer dark:hover:bg-slate-600"
           : "disabled"
       }`}
       onClick={() =>
@@ -87,6 +85,9 @@ export function PathPreview({
         goToNodeId(components[components.length - 1].id, "relatedValues")
       }
     >
+      {isEnabled && (
+        <EyeIcon className="absolute left-1 top-1 h-3 w-3 text-slate-400 opacity-0 transition group-hover:opacity-100" />
+      )}
       <div
         className={`flex rounded-sm px-2 ${
           isEnabled

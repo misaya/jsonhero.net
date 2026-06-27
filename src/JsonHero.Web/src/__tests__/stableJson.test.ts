@@ -1,4 +1,4 @@
-import { stableJson } from "../app/utilities/stableJson";
+import { stableJson } from "~/utilities/stableJson";
 
 test("It should order object keys in a similar order as the first object in an array", () => {
   const json = {

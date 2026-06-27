@@ -1,4 +1,4 @@
-import { PreviewInfo } from "./preview.types";
+import type { PreviewInfo } from "./preview.types";
 import { PreviewHtml } from "./PreviewHtml";
 import { PreviewImage } from "./PreviewImage";
 import { PreviewJson } from "./PreviewJson";

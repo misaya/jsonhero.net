@@ -1,8 +1,6 @@
-## 👩🏽‍💻 JSON Hero Local Development Guide
+## JSON Hero Local Development Guide
 
-Welcome to JSON Hero development and thanks for being here! If you'd like to run JSON Hero locally, please use the following guide to get started. If you have any issues with this guide please feel free to email me at [eric@jsonhero.io](mailto:eric@jsonhero.io) or come leave a message in our open [Discord Channel](https://discord.gg/JtBAxBr2m3).
-
-For more information about contributing to JSON Hero please see the [Contributing doc](https://github.com/triggerdotdev/jsonhero-web/blob/main/CONTRIBUTING.md).
+JSON Hero now runs as an ASP.NET Core 8 API that serves a Vite React SPA from `src/JsonHero.Web`.
 
 ### Install dependencies
 
@@ -12,72 +10,63 @@ Before you can run JSON Hero locally, you will need to install the following dep
 
 You most likely already have git installed on your machine, but if not, you can install it from the [Git website](https://git-scm.com).
 
-#### Node.js 16
+#### .NET SDK 8
 
-Even though JSON Hero runs on [Cloudflare Workers](https://workers.cloudflare.com), which isn't a Node.js environment, you will still need Node.js 16 to run it locally. The recommended way to install Node.js is to download a pre-built package from the [Node.js website](https://nodejs.org/en/)
+Install the [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
+
+#### Node.js 22
+
+The frontend build uses Vite and the Docker image uses Node.js 22.
 
 #### NPM
 
 If you install Node.js through the above link, you should also have NPM automatically installed as well. To make sure, run the following command in your preferred Terminal:
 
 ```bash
-npm ---version
-```
-
-### Fork JSON Hero on GitHub (optional)
-
-To contribute code to JSON Hero, you should first create a fork of the [jsonhero-web](https://github.com/triggerdotdev/jsonhero-web) repository on GitHub. Follow [these instructions](https://docs.github.com/en/get-started/quickstart/fork-a-repo) on repository forking.
-
-### Clone the repo
-
-In your terminal, issue the following command to clone the repository to your local machine:
-
-```bash
-git clone https://github.com/triggerdotdev/jsonhero-web.git
-```
-
-Or if you've forked the repository:
-
-```bash
-git clone https://github.com/<github username>/jsonhero-web.git
-```
-
-Then `cd` into the repository:
-
-```bash
-cd jsonhero-web
+npm --version
 ```
 
 ### Prepare the repo
 
-First, install npm dependencies:
+Install frontend dependencies:
 
 ```bash
+cd src/JsonHero.Web
 npm install
 ```
 
-Run the following command to create the `.env` file with a new `SESSION_SECRET` environment variable:
+Restore .NET packages from the repository root:
 
 ```bash
-echo "SESSION_SECRET=$(openssl rand -hex 32)" > .env
+dotnet restore src/JsonHero.Api.Tests/JsonHero.Api.Tests.csproj
 ```
 
-Then, run `npm run build` or `npm run dev` to build.
+### Start development servers
 
-Start the development server:
+In one terminal, start the API:
 
 ```bash
-npm start
+dotnet run --project src/JsonHero.Api
 ```
 
-You should now be able to access your local JSON Hero server on [localhost:8787](http://localhost:8787)
+In another terminal, start Vite:
 
-> **Note** JSON documents created locally are not persisted across server restarts
+```bash
+cd src/JsonHero.Web
+npm run dev
+```
+
+Open the Vite URL shown in the terminal. Vite proxies `/api`, `/actions`, and `/j/*.json` requests to the ASP.NET Core API on `http://localhost:5299`.
+
+### Build and test
+
+```bash
+dotnet test src/JsonHero.Api.Tests/JsonHero.Api.Tests.csproj
+cd src/JsonHero.Web
+npm test
+npm run build
+```
 
 ### Previewing URLs
 
-We currently use [OpenGraph Ninja](https://opengraph.ninja/) to power some of the Preview URL functionality.
-
-### Deploying to Cloudflare
-
-_Coming Soon_
+OpenGraph previews are handled by the ASP.NET Core `UrlPreviewService`. Set `OPENGRAPH_NINJA_API_KEY` if you need authenticated OpenGraph Ninja requests.

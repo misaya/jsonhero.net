@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 
-// Minimal drop-in replacement for Remix's useFetcher
-// Instead of Remix's form submission pattern, uses plain fetch
+// Minimal fetch helper for components that need imperative loads or submits.
 export function useFetcher() {
   const [state, setState] = useState<"idle" | "submitting" | "loading">("idle");
   const [data, setData] = useState<any>(null);

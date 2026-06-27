@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace JsonHero.Api.Controllers;
 
 /// <summary>
-/// Bridge controller for Remix-style /actions/ routes used by the React SPA frontend.
-/// Maps old Remix action routes to the ASP.NET Core API.
+/// Browser form endpoints used by the React SPA.
 /// </summary>
 [ApiController]
 [Route("actions")]
@@ -27,7 +26,10 @@ public class ActionsController : ControllerBase
         if (string.IsNullOrWhiteSpace(jsonUrl))
             return BadRequest(new { error = "jsonUrl is required." });
 
-        var document = await _documentService.CreateFromUrlAsync(jsonUrl, title, null, false);
+        var document = Uri.TryCreate(jsonUrl, UriKind.Absolute, out var url)
+            ? await _documentService.CreateFromUrlAsync(url.ToString(), title, null, false)
+            : await _documentService.CreateFromRawJsonAsync(jsonUrl, title ?? "Untitled", null, false);
+
         return Redirect($"/j/{document.Id}");
     }
 
@@ -38,7 +40,10 @@ public class ActionsController : ControllerBase
         if (string.IsNullOrWhiteSpace(jsonUrl))
             return BadRequest(new { error = "jsonUrl is required." });
 
-        var document = await _documentService.CreateFromUrlAsync(jsonUrl, title, null, false);
+        var document = Uri.TryCreate(jsonUrl, UriKind.Absolute, out var url)
+            ? await _documentService.CreateFromUrlAsync(url.ToString(), title, null, false)
+            : await _documentService.CreateFromRawJsonAsync(jsonUrl, title ?? "Untitled", null, false);
+
         return Redirect($"/j/{document.Id}");
     }
 
