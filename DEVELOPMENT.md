@@ -1,10 +1,14 @@
-## JSON Hero Local Development Guide
+## jsonhero.net Local Development Guide
 
-JSON Hero now runs as an ASP.NET Core 8 API that serves a Vite React SPA from `src/JsonHero.Web`.
+[English](./DEVELOPMENT.md) | [简体中文](./DEVELOPMENT.zh-CN.md)
+
+jsonhero.net runs as an ASP.NET Core 8 API that serves a Vite React SPA from
+`src/JsonHero.Web`.
 
 ### Install dependencies
 
-Before you can run JSON Hero locally, you will need to install the following dependencies on your machine:
+Before you can run jsonhero.net locally, install the following dependencies on
+your machine:
 
 #### Git
 

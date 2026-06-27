@@ -7,10 +7,6 @@ import { Body } from "./Primitives/Body";
 import { ThemeModeToggler } from "./ThemeModeToggle";
 import { GithubStarSmall } from "./UI/GithubStarSmall";
 import { IndentPreference } from "~/components/IndentPreference";
-import { ArrowRightIcon } from "@heroicons/react/outline";
-import TriggerDevLogoImageDark from "~/assets/images/trigger-dev-logo-dark.png";
-import TriggerDevLogoImage from "~/assets/images/trigger-dev-logo.png";
-import TriggerDevLogoTriangleImage from "~/assets/images/td-triangle.png";
 
 export function Footer() {
   const { minimal } = useJsonDoc();

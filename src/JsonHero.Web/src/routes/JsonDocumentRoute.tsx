@@ -108,7 +108,9 @@ export default function JsonDocumentRoute() {
                 <div>
                   <div className="fixed z-50 block h-screen w-screen bg-black/80 text-white md:hidden">
                     <div className="flex h-full flex-col items-center justify-center text-center">
-                      <LargeTitle>JSON Hero only works on desktop</LargeTitle>
+                      <LargeTitle>
+                        jsonhero.net only works on desktop
+                      </LargeTitle>
                       <LargeTitle>👇</LargeTitle>
                       <Body>(For now!)</Body>
                       <Link
@@ -191,7 +193,7 @@ function DocumentError({
           <SmallSubtitle className="mb-8 text-slate-200">
             {error.status === 404 ? (
               <>
-                We couldn't find the page <b>https://jsonhero.io/j/{id}</b>
+                We couldn't find the page <b>/j/{id}</b>
               </>
             ) : (
               error.message

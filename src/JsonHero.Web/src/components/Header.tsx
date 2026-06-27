@@ -1,7 +1,5 @@
 import { ShareIcon, PlusIcon, TrashIcon } from "@heroicons/react/outline";
 import { DocumentTitle } from "./DocumentTitle";
-import { DiscordIconTransparent } from "./Icons/DiscordIconTransparent";
-import { EmailIconTransparent } from "./Icons/EmailIconTransparent";
 import { GithubStar } from "./UI/GithubStar";
 import { Logo } from "./Icons/Logo";
 import { Share } from "./Share";
@@ -14,7 +12,6 @@ import {
 } from "./UI/Popover";
 
 import { useJsonDoc } from "~/hooks/useJsonDoc";
-import { LogoTriggerdotdev } from "./Icons/LogoTriggerdotdev";
 
 export function Header() {
   const { doc } = useJsonDoc();
@@ -25,8 +22,6 @@ export function Header() {
         <div className="w-20 sm:w-24">
           <Logo />
         </div>
-        <p className="text-slate-300 text-sm font-sans">by</p>
-        <LogoTriggerdotdev className="w-16 sm:w-20 opacity-80 hover:opacity-100  transition duration-300" />
       </div>
       <DocumentTitle />
       <ol className="flex text-sm items-center gap-2 px-4">
@@ -35,7 +30,7 @@ export function Header() {
             method="delete"
             onSubmit={(e) =>
               !confirm(
-                "This will permanantly delete this document from jsonhero.io, are you sure you want to continue?"
+                "This will permanently delete this document from jsonhero.net, are you sure you want to continue?"
               ) && e.preventDefault()
             }
           >
@@ -82,11 +77,6 @@ export function Header() {
 
         <li className="opacity-90 transition hover:cursor-pointer hover:opacity-100">
           <GithubStar />
-        </li>
-        <li className="opacity-90 transition hover:cursor-pointer hover:opacity-100">
-          <a href="https://discord.gg/JtBAxBr2m3" target="_blank">
-            <DiscordIconTransparent />
-          </a>
         </li>
       </ol>
     </header>

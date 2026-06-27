@@ -1,32 +1,21 @@
-# React + TypeScript + Vite
+# jsonhero.net Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+[English](./README.md) | [简体中文](./README.zh-CN.md)
 
-Currently, two official plugins are available:
+This package contains the Vite React frontend for jsonhero.net.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Scripts
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
+npm test
+npm run build
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+During local development, Vite proxies API requests to the ASP.NET Core API on
+`http://localhost:5299`.
+
+See the repository-level [README](../../README.md) and
+[DEVELOPMENT.md](../../DEVELOPMENT.md) for full setup instructions, licensing,
+and attribution notes.

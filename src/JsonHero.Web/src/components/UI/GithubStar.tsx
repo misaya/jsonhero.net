@@ -12,8 +12,9 @@ export function GithubStar({ className }: GithubStarProps) {
 
   return (
     <a
-      href="https://github.com/triggerdotdev/jsonhero-web"
+      href="https://github.com/misaya/jsonhero.net"
       target="_blank"
+      rel="noopener noreferrer"
       className="flex text-slate-700 opacity-90 transition hover:cursor-pointer hover:opacity-100"
     >
       <div className="flex items-center gap-1 pr-2 pl-1 py-1 bg-slate-300 rounded-l">
