@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.*" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.*" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="xunit" Version="2.5.3" />
@@ -22,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JsonHero.Api\JsonHero.Api.csproj" />
+    <ProjectReference Include="..\..\api\JsonHero.Api.csproj" />
   </ItemGroup>
 
 </Project>
