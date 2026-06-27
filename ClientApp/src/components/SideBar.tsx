@@ -1,7 +1,7 @@
 import { TemplateIcon, CodeIcon, DownloadIcon } from "@heroicons/react/outline";
 import { TreeIcon } from "~/components/Icons/TreeIcon";
 import { useHotkeys } from "react-hotkeys-hook";
-import { Link, useLocation, useNavigate } from "remix";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useJsonDoc } from "~/hooks/useJsonDoc";
 import { ToolTip } from "./ToolTip";
 import { Body } from "./Primitives/Body";

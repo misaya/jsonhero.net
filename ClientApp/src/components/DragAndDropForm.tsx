@@ -1,15 +1,13 @@
 import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 import { useCallback, useRef } from "react";
 import { useDropzone } from "react-dropzone";
-import { Form, useSubmit } from "remix";
+
 import invariant from "tiny-invariant";
 
 export function DragAndDropForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const filenameInputRef = useRef<HTMLInputElement>(null);
   const rawJsonInputRef = useRef<HTMLInputElement>(null);
-
-  const submit = useSubmit();
 
   const onDrop = useCallback(
     (acceptedFiles: Array<File>) => {
@@ -46,7 +44,7 @@ export function DragAndDropForm() {
 
         rawJsonInputRef.current.value = jsonValue;
 
-        submit(formRef.current);
+        formRef.current.submit();
       };
       reader.readAsArrayBuffer(firstFile);
       filenameInputRef.current.value = firstFile.name;
@@ -63,7 +61,7 @@ export function DragAndDropForm() {
   });
 
   return (
-    <Form method="post" action="/actions/createFromFile" ref={formRef}>
+    <form method="post" action="/actions/createFromFile" ref={formRef}>
       <div
         {...getRootProps()}
         className="block min-w-[300px] cursor-pointer rounded-md border-2 border-dashed border-slate-600 bg-slate-900/40 p-4 text-base text-slate-300 focus:border-indigo-500 focus:ring-indigo-500"
@@ -85,6 +83,6 @@ export function DragAndDropForm() {
         <input type="hidden" name="filename" ref={filenameInputRef} />
         <input type="hidden" name="rawJson" ref={rawJsonInputRef} />
       </div>
-    </Form>
+    </form>
   );
 }

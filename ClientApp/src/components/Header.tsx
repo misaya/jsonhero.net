@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "./UI/Popover";
-import { Form } from "remix";
+
 import { useJsonDoc } from "~/hooks/useJsonDoc";
 import { LogoTriggerdotdev } from "./Icons/LogoTriggerdotdev";
 
@@ -31,7 +31,7 @@ export function Header() {
       <DocumentTitle />
       <ol className="flex text-sm items-center gap-2 px-4">
         {!doc.readOnly && (
-          <Form
+          <form
             method="delete"
             onSubmit={(e) =>
               !confirm(
@@ -45,7 +45,7 @@ export function Header() {
                 Delete
               </button>
             </button>
-          </Form>
+          </form>
         )}
 
         <Popover>

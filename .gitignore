@@ -1,22 +1,32 @@
 node_modules
+dist
+.cache
 
-/.cache
-/build
+# .NET
+backend/**/bin
+backend/**/obj
+*.db
+*.db-shm
+*.db-wal
+
+# IDE
+.vs
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
 /public/build
-.env
 /app/tailwind.css
 /jsonDocs
-.DS_Store
-/dist
 .mf
 /meta.json
 /stats.html
-public/entry.worker.jsbackend/JsonHero.Api.Tests/bin/
-backend/JsonHero.Api.Tests/obj/
-backend/JsonHero.Api/bin/
-backend/JsonHero.Api/obj/
-ClientApp/node_modules/
-ClientApp/dist/
-=== .gitignore updated ===
-backend/**/bin/
-backend/**/obj/
+public/entry.worker.js
+
+# Env
+.env

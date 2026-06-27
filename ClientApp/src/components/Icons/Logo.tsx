@@ -1,4 +1,4 @@
-import { Link } from "remix";
+import { Link } from "react-router-dom";
 
 export function Logo({
   className,

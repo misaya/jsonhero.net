@@ -5,12 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run"
   },
   "dependencies": {
     "@codemirror/lang-json": "^0.19.1",
+    "@codemirror/gutter": "^0.19.9",
+    "@codemirror/matchbrackets": "^0.19.4",
     "@codemirror/rangeset": "^0.19.6",
     "@heroicons/react": "^1.0.5",
     "@js-temporal/polyfill": "^0.3.0",

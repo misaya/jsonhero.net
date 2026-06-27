@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { Form, useTransition } from "remix";
+import { useNavigation } from "react-router-dom";
 
 export type UrlFormProps = {
   className?: string;
 };
 
 export function UrlForm({ className }: UrlFormProps) {
-  const transition = useTransition();
+  const transition = useNavigation();
   const [inputValue, setInputValue] = useState("");
 
   const isNotIdle = transition.state !== "idle";
   const isButtonDisabled = !inputValue.length || isNotIdle;
 
   return (
-    <Form
+    <form
       method="post"
       action="/actions/createFromUrl"
       className={`${className}`}
@@ -39,6 +39,6 @@ export function UrlForm({ className }: UrlFormProps) {
           {isNotIdle ? "..." : "Go"}
         </button>
       </div>
-    </Form>
+    </form>
   );
 }

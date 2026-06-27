@@ -58,4 +58,9 @@ else
 app.UseCors();
 app.MapControllers();
 
+// Serve Vite-built React SPA from wwwroot, fallback to index.html for client-side routing
+app.UseDefaultFiles();
+app.UseStaticFiles();
+app.MapFallbackToFile("index.html");
+
 app.Run();
