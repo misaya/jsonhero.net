@@ -12,6 +12,7 @@ dist
 # IDE
 .vs
 .idea
+*.slnx.user
 *.swp
 *.swo
 

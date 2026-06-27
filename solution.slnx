@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/JsonHero.Api.Tests/JsonHero.Api.Tests.csproj" />
+    <Project Path="src/JsonHero.Api/JsonHero.Api.csproj" />
+    <Project Path="src/JsonHero.Web/JsonHero.Web.esproj" />
+  </Folder>
+</Solution>

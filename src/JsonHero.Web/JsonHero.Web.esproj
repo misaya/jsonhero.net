@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.5906584">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <StartupCommand>npm run dev</StartupCommand>
+    <JavaScriptTestRoot>src\__tests__\</JavaScriptTestRoot>
+    <JavaScriptTestFramework>Vitest</JavaScriptTestFramework>
+  </PropertyGroup>
+</Project>

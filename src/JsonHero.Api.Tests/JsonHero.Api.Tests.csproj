@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\api\JsonHero.Api.csproj" />
+    <ProjectReference Include="..\JsonHero.Api\JsonHero.Api.csproj" />
   </ItemGroup>
 
 </Project>
