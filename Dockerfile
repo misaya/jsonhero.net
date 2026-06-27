@@ -1,12 +1,25 @@
-# Builder
-FROM node:16.17.0 as builder
+# Stage 1: Build ASP.NET Core backend
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS backend-build
 WORKDIR /src
-COPY . /src
+COPY NuGet.config ./
+COPY src/JsonHero.Api/JsonHero.Api.csproj src/JsonHero.Api/
+RUN dotnet restore src/JsonHero.Api/JsonHero.Api.csproj
+COPY src/JsonHero.Api/ src/JsonHero.Api/
+RUN dotnet publish src/JsonHero.Api/JsonHero.Api.csproj -c Release -o /app/backend --no-restore
 
-# App
-RUN cd /src
-RUN npm install
-RUN echo "SESSION_SECRET=abc123" > .env
+# Stage 2: Build Vite React frontend
+FROM node:22-alpine AS frontend-build
+WORKDIR /src
+COPY src/JsonHero.Web/package.json src/JsonHero.Web/package-lock.json ./
+RUN npm ci
+COPY src/JsonHero.Web/ ./
 RUN npm run build
 
-CMD npm start
+# Stage 3: Runtime
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+WORKDIR /app
+COPY --from=backend-build /app/backend ./
+COPY --from=frontend-build /src/dist ./wwwroot
+ENV ASPNETCORE_URLS=http://+:8080
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "JsonHero.Api.dll"]

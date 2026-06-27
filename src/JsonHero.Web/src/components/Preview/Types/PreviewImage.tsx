@@ -1,10 +1,10 @@
 import { formatBytes } from "~/utilities/formatter";
 import { PreviewBox } from "../PreviewBox";
 import { PreviewProperties, PreviewProperty } from "../PreviewProperties";
-import { PreviewImage } from "./preview.types";
+import type { PreviewImage as PreviewImageData } from "./preview.types";
 
 export type PreviewImageProps = {
-  info: PreviewImage;
+  info: PreviewImageData;
 };
 
 export function PreviewImage({ info }: PreviewImageProps) {

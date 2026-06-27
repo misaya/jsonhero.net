@@ -1,10 +1,9 @@
-import { JSONStringType } from "@jsonhero/json-infer-types/lib/@types";
-import { useEffect } from "react";
+import type { JSONStringType } from "@jsonhero/json-infer-types/lib/@types";
 import { useFetcher } from "~/utilities/useFetcher";
 import { Body } from "~/components/Primitives/Body";
 import { useLoadWhenOnline } from "~/hooks/useLoadWhenOnline";
 import { PreviewBox } from "../PreviewBox";
-import { PreviewResult } from "./preview.types";
+import type { PreviewResult } from "./preview.types";
 import { PreviewUriElement } from "./PreviewUriElement";
 
 export type PreviewUriProps = {

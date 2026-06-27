@@ -46,7 +46,6 @@ export function InfoHeader({ relatedPaths }: InfoHeaderProps) {
   }, [relatedPaths, json]);
 
   const [hovering, setHovering] = useState(false);
-  console.warn(selectedInfo);
 
   const newPath = formattedSelectedInfo.replace(/^#/, "$").replace(/\//g, ".");
 

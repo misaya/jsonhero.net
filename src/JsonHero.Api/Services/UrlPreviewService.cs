@@ -52,13 +52,29 @@ public class UrlPreviewService
 
         using var client = _httpClientFactory.CreateClient();
         using var response = await client.SendAsync(request);
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            return new
+            {
+                error = $"Could not load preview for {rewrittenUrl}."
+            };
+        }
 
         var json = await response.Content.ReadAsStringAsync();
-        using var document = JsonDocument.Parse(json);
+        try
+        {
+            using var document = JsonDocument.Parse(json);
 
-        return JsonSerializer.Deserialize<object>(document.RootElement.GetRawText())
-            ?? new { url = rewrittenUrl };
+            return JsonSerializer.Deserialize<object>(document.RootElement.GetRawText())
+                ?? new { url = rewrittenUrl };
+        }
+        catch (JsonException)
+        {
+            return new
+            {
+                error = $"Could not load preview for {rewrittenUrl}."
+            };
+        }
     }
 
     private static string RewriteIpfsUrl(string url)
