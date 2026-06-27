@@ -1,0 +1,37 @@
+src/JsonHero.Web/src/components/Home/HomeInfoBoxSection.tsx
+  s_ff59dc941ff9d6::t_b93fcd5ced6dc2 14
+src/JsonHero.Web/src/components/Home/HomeFeatureGridSection.tsx
+  s_ff59dc941ff9d6::t_3a5876318bd1ee 86
+  s_ff59dc941ff9d6::t_882ea9268dcdde 67-68
+src/JsonHero.Web/src/routes/JsonDocumentRoute.tsx
+  s_ff59dc941ff9d6::t_0ae43096c4bfa8 112
+src/JsonHero.Web/src/components/Header.tsx
+  s_ff59dc941ff9d6::t_8f9b3beab2106d 22
+  s_ff59dc941ff9d6::t_91c449211e036e 33
+src/JsonHero.Web/src/components/Icons/Logo.tsx
+  s_ff59dc941ff9d6::t_4c584d2c1776fd 23
+  s_ff59dc941ff9d6::t_33724784c6725b 14
+  s_ff59dc941ff9d6::t_0256b85d416db4 11-13,15,19-20,25,27-31,34-38,41-44,46-63,65-71
+src/JsonHero.Web/src/components/Home/HomeHeader.tsx
+  s_ff59dc941ff9d6::t_c4db7974a89b5e 20
+src/JsonHero.Web/public/favicon.svg
+  s_ff59dc941ff9d6::t_08be2190563e7e 1-11
+src/JsonHero.Web/index.html
+  s_ff59dc941ff9d6::t_1e6fd0a049649c 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.10",
+  "base_commit_sha": "d502ef320a80013e6eac519b25517d631cc87bf9",
+  "prompts": {},
+  "sessions": {
+    "s_ff59dc941ff9d6": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f0859-801c-74d1-aa15-1001013f5da7",
+        "model": "gpt-5.5-pro"
+      },
+      "human_author": "fenghui2.xu <fenghui2.xu@ly.com>"
+    }
+  }
+}
