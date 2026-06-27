@@ -2,9 +2,12 @@
 import { JSONHeroSearch } from "@jsonhero/fuzzy-json-search";
 import { inferType } from "@jsonhero/json-infer-types";
 import { formatValue } from "~/utilities/formatter";
+import { createTranslator, isLanguage, Language } from "~/i18n";
 
 type SearchWorker = {
   searcher?: JSONHeroSearch;
+  language?: Language;
+  locale?: string;
 };
 
 export type {};
@@ -12,7 +15,7 @@ declare let self: DedicatedWorkerGlobalScope & SearchWorker;
 
 type InitializeIndexEvent = {
   type: "initialize-index";
-  payload: { json: unknown };
+  payload: { json: unknown; language?: string; locale?: string };
 };
 
 type SearchEvent = {
@@ -30,7 +33,9 @@ self.onmessage = (e: MessageEvent<SearchWorkerEvent>) => {
 
   switch (type) {
     case "initialize-index": {
-      const { json } = payload;
+      const { json, language, locale } = payload;
+      self.language = isLanguage(language) ? language : "en";
+      self.locale = locale;
 
       self.searcher = new JSONHeroSearch(json, {
         cacheSettings: { max: 100, enabled: true },
@@ -72,5 +77,8 @@ self.onmessage = (e: MessageEvent<SearchWorkerEvent>) => {
 function valueFormatter(value: unknown): string | undefined {
   const inferredType = inferType(value);
 
-  return formatValue(inferredType);
+  return formatValue(inferredType, {
+    locale: self.locale,
+    t: createTranslator(self.language ?? "en"),
+  });
 }

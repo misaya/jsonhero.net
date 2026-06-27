@@ -7,16 +7,18 @@ import { ToolTip } from "./ToolTip";
 import { Body } from "./Primitives/Body";
 import { ShortcutIcon } from "./Icons/ShortcutIcon";
 import { useTheme } from "./ThemeProvider";
+import { useTranslation } from "~/i18n";
 
 export function SideBar() {
   const { doc } = useJsonDoc();
+  const { t } = useTranslation();
 
   return (
     <div className="side-bar flex flex-col align-center justify-between h-full p-1 bg-slate-200 transition dark:bg-slate-800">
       <ol className="relative">
         <SidebarLink to={`/j/${doc.id}`} hotKey="option+1,alt+1">
           <ToolTip arrow="left">
-            <Body>Column view</Body>
+            <Body>{t("Column view")}</Body>
             <ShortcutIcon className="w-[26px] h-[26px] ml-1 text-slate-700 bg-slate-200 dark:text-slate-300 dark:bg-slate-800">
               ⌥
             </ShortcutIcon>
@@ -28,7 +30,7 @@ export function SideBar() {
         </SidebarLink>
         <SidebarLink to={`/j/${doc.id}/editor`} hotKey="option+2,alt+2">
           <ToolTip arrow="left">
-            <Body>JSON view</Body>
+            <Body>{t("JSON view")}</Body>
             <ShortcutIcon className="w-[26px] h-[26px] ml-1 text-slate-700 bg-slate-200 dark:text-slate-300 dark:bg-slate-800">
               ⌥
             </ShortcutIcon>
@@ -40,7 +42,7 @@ export function SideBar() {
         </SidebarLink>
         <SidebarLink to={`/j/${doc.id}/tree`} hotKey="option+3,alt+3">
           <ToolTip arrow="left">
-            <Body>Tree view</Body>
+            <Body>{t("Tree view")}</Body>
             <ShortcutIcon className="w-[26px] h-[26px] ml-1 text-slate-700 bg-slate-200 dark:text-slate-300 dark:bg-slate-800">
               ⌥
             </ShortcutIcon>
@@ -55,7 +57,7 @@ export function SideBar() {
         <SidebarLink>
           <a href={`/j/${doc.id}.json`} target="_blank">
             <ToolTip arrow="left">
-              <Body>Download</Body>
+              <Body>{t("Download")}</Body>
             </ToolTip>
             <DownloadIcon className="p-2 w-full h-full" />
           </a>

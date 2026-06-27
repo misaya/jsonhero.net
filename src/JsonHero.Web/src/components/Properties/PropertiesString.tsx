@@ -7,6 +7,7 @@ import {
 } from "@jsonhero/json-infer-types/lib/formats";
 import Color from "color";
 import { DataTableRow, DataTable } from "../DataTable";
+import { localeForLanguage, useLanguage, useTranslation } from "~/i18n";
 
 export type PropertiesStringProps = {
   type: JSONStringType;
@@ -76,6 +77,8 @@ function PropertiesTimestamp({
   value: string;
   format: JSONTimestampFormat;
 }) {
+  const { language } = useLanguage();
+  const locale = localeForLanguage(language);
   const date =
     format.variant === "millisecondsSinceEpoch"
       ? new Date(parseInt(value))
@@ -102,11 +105,20 @@ function PropertiesTimestamp({
     },
     {
       key: "date",
-      value: date.toDateString(),
+      value: date.toLocaleDateString(locale, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
     },
     {
       key: "time",
-      value: date.toTimeString(),
+      value: date.toLocaleTimeString(locale, {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZoneName: "short",
+      }),
     },
   ];
 
@@ -120,6 +132,9 @@ function PropertiesDateTime({
   value: string;
   format: JSONDateTimeFormat;
 }) {
+  const { language } = useLanguage();
+  const locale = localeForLanguage(language);
+
   if (format.parts === "time") {
     return <></>;
   }
@@ -169,7 +184,7 @@ function PropertiesDateTime({
 
   properties.push({
     key: "date",
-    value: temporal.toLocaleString("en-US", {
+    value: temporal.toLocaleString(locale, {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -187,6 +202,7 @@ function PropertiesColor({
   format: JSONColorFormat;
 }) {
   const color = new Color(value);
+  const { t } = useTranslation();
 
   const properties = [
     {
@@ -207,7 +223,7 @@ function PropertiesColor({
     },
     {
       key: "contrastRatio",
-      value: color.isLight() ? "light" : "dark",
+      value: color.isLight() ? t("light") : t("dark"),
     },
   ];
 

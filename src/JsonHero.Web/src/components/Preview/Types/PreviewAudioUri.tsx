@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { Body } from "~/components/Primitives/Body";
 import { PreviewBox } from "../PreviewBox";
+import { useTranslation } from "~/i18n";
 
 export function PreviewAudioUri({
   src,
@@ -11,6 +12,7 @@ export function PreviewAudioUri({
   contentType: string;
 }) {
   const mediaRef = useRef<HTMLMediaElement>(null);
+  const { t } = useTranslation();
 
   useHotkeys(
     "space",
@@ -33,7 +35,7 @@ export function PreviewAudioUri({
       <PreviewBox>
         <Body>
           <audio controls src={src} ref={mediaRef}>
-            Sorry, your browser doesn't support embedded audio.
+            {t("Sorry, your browser doesn't support embedded audio.")}
           </audio>
         </Body>
       </PreviewBox>

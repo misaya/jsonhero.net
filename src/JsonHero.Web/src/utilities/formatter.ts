@@ -6,6 +6,7 @@ import {
   JSONStringFormat,
   JSONValueType,
 } from "@jsonhero/json-infer-types";
+import { TranslationFunction } from "~/i18n";
 
 export function formatRawValue(type: JSONValueType): string {
   switch (type.name) {
@@ -28,6 +29,8 @@ export function formatRawValue(type: JSONValueType): string {
 
 export type FormatValueOptions = {
   leafNodesOnly?: boolean;
+  locale?: string;
+  t?: TranslationFunction;
 };
 
 export function formatValue(
@@ -43,9 +46,12 @@ export function formatValue(
       if (type.value.length == 0) {
         return formatRawValue(type);
       } else if (type.value.length === 1) {
-        return `1 item`;
+        return options?.t?.("1 item") ?? "1 item";
       } else {
-        return `${type.value.length} items`;
+        return (
+          options?.t?.("{count} items", { count: type.value.length }) ??
+          `${type.value.length} items`
+        );
       }
     }
     case "object": {
@@ -56,9 +62,13 @@ export function formatValue(
       if (Object.keys(type.value).length == 0) {
         return formatRawValue(type);
       } else if (Object.keys(type.value).length === 1) {
-        return `1 field`;
+        return options?.t?.("1 field") ?? "1 field";
       } else {
-        return `${Object.keys(type.value).length} fields`;
+        return (
+          options?.t?.("{count} fields", {
+            count: Object.keys(type.value).length,
+          }) ?? `${Object.keys(type.value).length} fields`
+        );
       }
     }
     case "bool": {
@@ -66,27 +76,29 @@ export function formatValue(
     }
     case "float":
     case "int":
-      return formatNumber(type.value);
+      return formatNumber(type.value, options?.locale);
     case "null": {
       return "null";
     }
     case "string":
-      return formatString(type.value, type.format);
+      return formatString(type.value, type.format, options?.locale);
     default:
       const _exhaustiveCheck: never = type;
       return _exhaustiveCheck;
   }
 }
 
-const numberFormatter = new Intl.NumberFormat(undefined, {
-  maximumFractionDigits: 6,
-});
-
-export function formatNumber(value: number): string {
-  return numberFormatter.format(value);
+export function formatNumber(value: number, locale?: string): string {
+  return new Intl.NumberFormat(locale, {
+    maximumFractionDigits: 6,
+  }).format(value);
 }
 
-function formatString(value: string, format?: JSONStringFormat): string {
+function formatString(
+  value: string,
+  format?: JSONStringFormat,
+  locale?: string
+): string {
   if (!format) {
     return value;
   }
@@ -97,7 +109,7 @@ function formatString(value: string, format?: JSONStringFormat): string {
     case "uri":
       return value;
     case "datetime":
-      return formatDateTime(value, format);
+      return formatDateTime(value, format, locale);
     default:
       return value;
   }
@@ -105,7 +117,8 @@ function formatString(value: string, format?: JSONStringFormat): string {
 
 export function formatDateTime(
   value: string,
-  format?: JSONDateTimeFormat
+  format?: JSONDateTimeFormat,
+  locale?: string
 ): string {
   if (!format) {
     return value;
@@ -119,7 +132,7 @@ export function formatDateTime(
 
   switch (format.parts) {
     case "datetime":
-      return temporal.toLocaleString("en-US", {
+      return temporal.toLocaleString(locale, {
         year: "numeric",
         month: "short",
         day: "numeric",
@@ -129,13 +142,13 @@ export function formatDateTime(
         timeZoneName: "short",
       });
     case "date":
-      return temporal.toLocaleString("en-US", {
+      return temporal.toLocaleString(locale, {
         year: "numeric",
         month: "short",
         day: "numeric",
       });
     case "time":
-      return temporal.toLocaleString("en-US", {
+      return temporal.toLocaleString(locale, {
         hour: "numeric",
         minute: "numeric",
         second: "numeric",
@@ -143,14 +156,23 @@ export function formatDateTime(
   }
 }
 
-export function formatBytes(bytes: number, decimals = 2): string {
-  if (bytes === 0) return "0 Bytes";
+export function formatBytes(
+  bytes: number,
+  decimals = 2,
+  options?: { locale?: string; t?: TranslationFunction }
+): string {
+  if (bytes === 0) return `0 ${options?.t?.("Bytes") ?? "Bytes"}`;
 
   const k = 1024;
   const dm = decimals < 0 ? 0 : decimals;
   const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
 
   const i = Math.floor(Math.log(bytes) / Math.log(k));
+  const value = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
+  const formattedValue = new Intl.NumberFormat(options?.locale, {
+    maximumFractionDigits: dm,
+  }).format(value);
+  const unit = sizes[i] === "Bytes" ? options?.t?.("Bytes") ?? "Bytes" : sizes[i];
 
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
+  return `${formattedValue} ${unit}`;
 }

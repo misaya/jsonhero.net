@@ -1,6 +1,7 @@
 import { FunctionComponent, useState } from "react";
 import { CopyTextButton } from "./CopyTextButton";
 import { Title } from "./Primitives/Title";
+import { useTranslation } from "~/i18n";
 
 export type DataTableProps = {
   rows: DataTableRow[];
@@ -20,10 +21,12 @@ type DataRowProps = {
 
 const DataRow: FunctionComponent<DataRowProps> = ({ title, value, icon }) => {
   const [hovering, setHovering] = useState(false);
+  const { t } = useTranslation();
+
   return (
     <tr className="divide-solid divide-x transition dark:divide-slate-700">
       <td className="flex items-baseline py-2 pr-3 text-base dark:text-slate-400">
-        <div className="flex-1 ml-1">{title}</div>
+        <div className="flex-1 ml-1">{t(title)}</div>
       </td>
       <td
         onMouseOver={() => setHovering(true)}
@@ -49,10 +52,12 @@ const DataRow: FunctionComponent<DataRowProps> = ({ title, value, icon }) => {
 };
 
 export const DataTable: FunctionComponent<DataTableProps> = ({ rows }) => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <Title className="text-slate-700 dark:text-slate-400 mb-2">
-        Properties
+        {t("Properties")}
       </Title>
       <table className="w-full table-auto border-y-[0.5px] border-slate-300 transition dark:border-slate-700">
         <tbody className="divide-solid divide-y divide-slate-300 w-full transition dark:divide-slate-700">

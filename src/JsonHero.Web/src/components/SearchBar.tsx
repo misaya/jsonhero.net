@@ -9,11 +9,13 @@ import { useState } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useJsonColumnViewAPI } from "~/hooks/useJsonColumnView";
 import { useJsonSearchApi } from "~/hooks/useJsonSearch";
+import { useTranslation } from "~/i18n";
 
 export function SearchBar() {
   const [isOpen, setIsOpen] = useState(false);
   const { goToNodeId } = useJsonColumnViewAPI();
   const searchApi = useJsonSearchApi();
+  const { t } = useTranslation();
 
   useHotkeys(
     "cmd+k,ctrl+k",
@@ -33,7 +35,7 @@ export function SearchBar() {
         <div className="flex justify-between items-center group w-44 py-[3px] rounded bg-slate-300 transition hover:bg-slate-400 hover:bg-opacity-50 dark:bg-slate-800 dark:text-slate-400 hover:cursor-pointer hover:dark:bg-slate-700 hover:dark:bg-opacity-70">
           <div className="flex items-center pl-1">
             <SearchIcon className="w-4 h-4 mr-1" />
-            <Body>Search…</Body>
+            <Body>{t("Search…")}</Body>
           </div>
           <div className="flex items-center gap-1 pr-1">
             <ShortcutIcon className="w-4 h-4 text-sm bg-slate-200 transition group-hover:bg-slate-100 dark:bg-slate-700 dark:group-hover:bg-slate-600">

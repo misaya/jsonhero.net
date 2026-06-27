@@ -2,28 +2,39 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Body } from "./Primitives/Body";
 import { ClipboardIcon } from "@heroicons/react/outline";
 import { useJsonColumnViewState } from "~/hooks/useJsonColumnView";
+import { useTranslation } from "~/i18n";
 
-const buttonDefault = (
+const buttonDefault = (label: string) => (
   <>
     <ClipboardIcon className="h-4 w-4 mr-[2px]" />
-    <span>Copy</span>
+    <span>{label}</span>
   </>
 );
 
 export function Share() {
+  const { t } = useTranslation();
+
   useEffect(() => {
     setLink(window.location.href);
   }, []);
   const [link, setLink] = useState("");
 
-  const [copyText, setCopyText] = useState<React.ReactNode>(buttonDefault);
+  const [copyText, setCopyText] = useState<React.ReactNode>(() =>
+    buttonDefault(t("Copy"))
+  );
 
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    if (!copied) {
+      setCopyText(buttonDefault(t("Copy")));
+    }
+  }, [copied, t]);
+
+  useEffect(() => {
     if (copied) {
       const timeout = setTimeout(() => {
-        setCopyText(buttonDefault);
+        setCopyText(buttonDefault(t("Copy")));
         setCopied(false);
       }, 1800);
 
@@ -34,15 +45,15 @@ export function Share() {
   const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(link).then(
       function () {
-        setCopyText(<span>Copied!</span>);
+        setCopyText(<span>{t("Copied!")}</span>);
         setCopied(true);
       },
       function (err) {
-        setCopyText(<span>Failed to copy</span>);
+        setCopyText(<span>{t("Failed to copy")}</span>);
         setCopied(true);
       }
     );
-  }, [link, setCopyText]);
+  }, [link, setCopyText, t]);
 
   const { selectedNodeId } = useJsonColumnViewState();
 
@@ -71,7 +82,7 @@ export function Share() {
   return (
     <div className="bg-indigo-700 text-white rounded-sm shadow-md w-[340px] p-3 transition">
       <Body className="text-sm mb-2 text-slate-300">
-        Anyone with this link can view this json file.
+        {t("Anyone with this link can view this json file.")}
       </Body>
       <div className="flex">
         <div className="flex-grow whitespace-nowrap overflow-hidden rounded-l-sm bg-indigo-900 text-sm p-2 select-all">
@@ -93,7 +104,7 @@ export function Share() {
             value="option"
             onChange={(e) => handleIncludesPath(e.target.checked)}
           ></input>
-          Link includes path
+          {t("Link includes path")}
         </label>
       </div>
     </div>

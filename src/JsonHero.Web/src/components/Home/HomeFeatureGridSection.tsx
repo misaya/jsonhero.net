@@ -10,81 +10,87 @@ import { Body } from "../Primitives/Body";
 import { LargeTitle } from "../Primitives/LargeTitle";
 import { HomeGridFeatureItem } from "./HomeGridFeatureItem";
 import { HomeSection } from "./HomeSection";
+import { useTranslation } from "~/i18n";
 
 export function HomeFeatureGridSection() {
+  const { t } = useTranslation();
+
   return (
     <HomeSection containerClassName="bg-black">
       <div className="flex flex-col px-4 pb-2 pt-6 md:py-12">
         <LargeTitle className="mb-4 text-slate-300">
-          And lots more features…
+          {t("And lots more features…")}
         </LargeTitle>
         <div className="flex flex-col gap-4 md:flex-row md:flex-wrap">
           <HomeGridFeatureItem
             icon={FastForwardIcon}
-            title="Keyboard shortcuts"
+            title={t("Keyboard shortcuts")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Move as fast as you can think… after 3 coffees
+              {t("Move as fast as you can think… after 3 coffees")}
             </Body>
           </HomeGridFeatureItem>
 
           <HomeGridFeatureItem
             icon={MoonIcon}
-            title="Dark mode"
+            title={t("Dark mode")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Of course, we’re not animals.
+              {t("Of course, we’re not animals.")}
             </Body>
           </HomeGridFeatureItem>
 
           <HomeGridFeatureItem
             icon={ClockIcon}
-            title="Code view"
+            title={t("Code view")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Easily switch to the code view, so you can appear hardcore.
+              {t("Easily switch to the code view, so you can appear hardcore.")}
             </Body>
           </HomeGridFeatureItem>
           <HomeGridFeatureItem
             icon={CubeTransparentIcon}
-            title="Auto JSON Schema"
+            title={t("Auto JSON Schema")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Automatically generates JSON Schema (draft 2020-12) from your
-              JSON.
+              {t(
+                "Automatically generates JSON Schema (draft 2020-12) from your JSON."
+              )}
             </Body>
           </HomeGridFeatureItem>
           <HomeGridFeatureItem
             icon={CodeIcon}
-            title="VS Code plugin"
+            title={t("VS Code plugin")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              The inherited VS Code extension belongs to the upstream project.
-              JsonHero.NET is not affiliated with that extension.{" "}
+              {t(
+                "The inherited VS Code extension belongs to the upstream project. JsonHero.NET is not affiliated with that extension."
+              )}{" "}
               <a
                 className="whitespace-nowrap text-lime-300 hover:text-lime-500"
                 href="https://marketplace.visualstudio.com/items?itemName=JSONHero.jsonhero-vscode"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Get it here
+                {t("Get it here")}
               </a>
               .
             </Body>
           </HomeGridFeatureItem>
           <HomeGridFeatureItem
             icon={LockOpenIcon}
-            title="100% open source"
+            title={t("100% open source")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Run JsonHero.NET yourself or fork the current repository on
-              GitHub.
+              {t(
+                "Run JsonHero.NET yourself or fork the current repository on GitHub."
+              )}
             </Body>
           </HomeGridFeatureItem>
         </div>

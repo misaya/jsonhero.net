@@ -8,6 +8,7 @@ import { ExtraLargeTitle } from "../Primitives/ExtraLargeTitle";
 import { SmallSubtitle } from "../Primitives/SmallSubtitle";
 import { PropertiesValue } from "../Properties/PropertiesValue";
 import { HomeSection } from "./HomeSection";
+import { useTranslation } from "~/i18n";
 
 const json = {
   id: "a1c33bd1-0528-4de3-a745-44d95e7ac3d8",
@@ -59,6 +60,7 @@ function HomeInfoBoxSectionContent() {
   const [index, setIndex] = useState(0);
   const api = useJsonColumnViewAPI();
   const interval = useRef<NodeJS.Timer | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const selectedPath = infoBoxData[index].highlight;
@@ -86,11 +88,13 @@ function HomeInfoBoxSectionContent() {
     <HomeSection containerClassName="bg-black p-6">
       <div className="md:pr-4 lg:pr-10 flex flex-col w-full md:w-1/2">
         <ExtraLargeTitle className="text-white mb-4">
-          <span className=" text-lime-300">{infoBoxData[index].title}</span> are
-          more than just strings
+          <span className=" text-lime-300">
+            {t(infoBoxData[index].title)}
+          </span>{" "}
+          {t("are more than just strings")}
         </ExtraLargeTitle>
         <SmallSubtitle className="text-slate-400 mb-10">
-          We figure out what your strings are made of, so you don't have to.
+          {t("We figure out what your strings are made of, so you don't have to.")}
         </SmallSubtitle>
         <ul className="flex w-full text-slate-300 mb-3">
           {infoBoxData.map((value, i) => {
@@ -107,7 +111,7 @@ function HomeInfoBoxSectionContent() {
                     : "border-slate-600"
                 }`}
               >
-                {value.title}
+                {t(value.title)}
               </li>
             );
           })}

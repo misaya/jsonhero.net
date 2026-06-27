@@ -15,6 +15,7 @@ import {
 import { useVirtualTree, UseVirtualTreeInstance } from "./useVirtualTree";
 import invariant from "tiny-invariant";
 import { useJsonDoc } from "./useJsonDoc";
+import { localeForLanguage, useLanguage, useTranslation } from "~/i18n";
 
 const initialRect = { width: 800, height: 600 };
 
@@ -51,9 +52,14 @@ export function useJsonTree(options: JsonTreeOptions): UseJsonTreeInstance {
 
   const { doc } = useJsonDoc();
   const [json] = useJson();
+  const { language } = useLanguage();
+  const { t } = useTranslation();
   const jsonNodes = useMemo(() => {
-    return generateTreeViewNodes(json);
-  }, [json]);
+    return generateTreeViewNodes(json, {
+      locale: localeForLanguage(language),
+      t,
+    });
+  }, [json, language, t]);
 
   const tree = useVirtualTree({
     id: doc.id,
@@ -89,16 +95,20 @@ export type JsonTreeViewNode = {
   children?: Array<JsonTreeViewNode>;
 };
 
-export function generateTreeViewNodes(json: unknown): Array<JsonTreeViewNode> {
+export function generateTreeViewNodes(
+  json: unknown,
+  options?: Parameters<typeof formatValue>[1]
+): Array<JsonTreeViewNode> {
   const info = inferType(json);
   const path = new JSONHeroPath("$");
 
-  return generateChildren(info, path) ?? [];
+  return generateChildren(info, path, options) ?? [];
 }
 
 function generateChildren(
   info: JSONValueType,
-  path: JSONHeroPath
+  path: JSONHeroPath,
+  options?: Parameters<typeof formatValue>[1]
 ): Array<JsonTreeViewNode> | undefined {
   if (info.name === "array") {
     return info.value.map((item, index) => {
@@ -109,10 +119,11 @@ function generateChildren(
         id: itemPath.toString(),
         name: index.toString(),
         title: index.toString(),
-        longTitle: `Index ${index.toString()}`,
-        subtitle: formatValue(itemInfo),
+        longTitle:
+          options?.t?.("Index {index}", { index }) ?? `Index ${index}`,
+        subtitle: formatValue(itemInfo, options),
         icon: iconForType(itemInfo),
-        children: generateChildren(itemInfo, itemPath),
+        children: generateChildren(itemInfo, itemPath, options),
       };
     });
   }
@@ -126,9 +137,9 @@ function generateChildren(
         id: itemPath.toString(),
         name: key,
         title: key,
-        subtitle: formatValue(itemInfo),
+        subtitle: formatValue(itemInfo, options),
         icon: iconForType(itemInfo),
-        children: generateChildren(itemInfo, itemPath),
+        children: generateChildren(itemInfo, itemPath, options),
       };
     });
   }

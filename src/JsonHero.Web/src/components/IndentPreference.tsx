@@ -1,12 +1,14 @@
 import React from "react";
 import { Body } from "./Primitives/Body";
 import { usePreferences } from "~/components/PreferencesProvider";
+import { useTranslation } from "~/i18n";
 
 const MIN_INDENT = 1;
 const MAX_INDENT = 8;
 
 export function IndentPreference() {
   const [preferences, setPreferences] = usePreferences();
+  const { t } = useTranslation();
 
   const updatePreferences = (e: React.ChangeEvent<HTMLInputElement>) => {
     let newIdent = Number(e.target.value);
@@ -22,7 +24,7 @@ export function IndentPreference() {
         className="pr-2 text-slate-800 transition dark:text-white"
         htmlFor="indent"
       >
-        <Body>Indent</Body>
+        <Body>{t("Indent")}</Body>
       </label>
       <input
         type="number"

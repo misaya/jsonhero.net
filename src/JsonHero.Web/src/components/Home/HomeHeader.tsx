@@ -1,6 +1,7 @@
 import { Logo } from "../Icons/Logo";
 import { NewDocument } from "../NewDocument";
 import { GithubStar } from "../UI/GithubStar";
+import { useTranslation } from "~/i18n";
 import {
   Popover,
   PopoverArrow,
@@ -9,6 +10,8 @@ import {
 } from "../UI/Popover";
 
 export function HomeHeader({ fixed }: { fixed?: boolean }) {
+  const { t } = useTranslation();
+
   return (
     <header
       className={`${
@@ -25,7 +28,7 @@ export function HomeHeader({ fixed }: { fixed?: boolean }) {
           <Popover>
             <PopoverTrigger>
               <button className=" bg-lime-400 text-slate-900 text-lg font-bold px-2 py-0.5 rounded uppercase whitespace-nowrap cursor-pointer opacity-90 hover:opacity-100 transition">
-                Try now
+                {t("Try now")}
               </button>
             </PopoverTrigger>
             <PopoverContent side="bottom" sideOffset={30}>

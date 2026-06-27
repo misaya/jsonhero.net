@@ -26,6 +26,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useJson } from "~/hooks/useJson";
 import { SearchResult } from "@jsonhero/fuzzy-json-search";
 import { Match } from "@jsonhero/fuzzy-json-search/lib/fuzzyScoring";
+import { useTranslation } from "~/i18n";
 
 export function SearchPalette({
   onSelect,
@@ -36,6 +37,7 @@ export function SearchPalette({
 }) {
   const searchState = useJsonSearchState();
   const searchApi = useJsonSearchApi();
+  const { t } = useTranslation();
 
   useHotkeys(
     "esc",
@@ -118,7 +120,7 @@ export function SearchPalette({
             {...cb.getInputProps({ onKeyDown: handleInputKeyDown })}
             type="text"
             spellCheck="false"
-            placeholder="Search the JSON…"
+            placeholder={t("Search the JSON…")}
             className="w-full pl-12 pr-4 py-4 rounded-sm text-slate-900 bg-slate-100 text-2xl caret-indigo-700 border-indigo-700 transition dark:text-white dark:bg-slate-900 focus:outline-none focus:ring focus:ring-indigo-700"
           />
         </label>
@@ -128,15 +130,17 @@ export function SearchPalette({
               (!searchState.results || searchState.results.length === 0) && (
                 <div className="results-loading flex">
                   <LoadingIcon className="animate-spin h-5 w-5 mr-1"></LoadingIcon>
-                  <Body className="text-slate-400">Loading…</Body>
+                  <Body className="text-slate-400">{t("Loading…")}</Body>
                 </div>
               )}
             {searchState.results && searchState.results.length > 0 && (
               <div className="results-returned">
                 <Body className="text-slate-400">
                   {searchState.results.length === 1
-                    ? "1 result"
-                    : `${searchState.results.length} results`}
+                    ? t("1 result")
+                    : t("{count} results", {
+                        count: searchState.results.length,
+                      })}
                 </Body>
               </div>
             )}
@@ -147,7 +151,9 @@ export function SearchPalette({
                 <div className="results-none flex">
                   <ExclamationIcon className="h-5 w-5 mr-1 text-white"></ExclamationIcon>
                   <Body className="text-slate-400">
-                    No results for "{cb.inputValue}"
+                    {t("No results for \"{query}\"", {
+                      query: cb.inputValue,
+                    })}
                   </Body>
                 </div>
               )}
@@ -192,17 +198,21 @@ export function SearchPalette({
           <ShortcutIcon className="w-4 h-4 text-sm text-slate-900 bg-slate-300 transition duration-75 group-hover:bg-slate-100 dark:bg-slate-500 dark:group-hover:bg-slate-600">
             ⏎
           </ShortcutIcon>
-          <Body className="text-slate-700 dakr:text-slate-500">to select</Body>
+          <Body className="text-slate-700 dakr:text-slate-500">
+            {t("to select")}
+          </Body>
         </div>
         <div className="flex items-center gap-1">
           <ArrowKeysUpDownIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="text-slate-700 dakr:text-slate-500">
-            to navigate
+            {t("to navigate")}
           </Body>
         </div>
         <div className="flex items-center gap-1">
           <EscapeKeyIcon className="transition text-slate-300 dark:text-slate-500" />
-          <Body className="text-slate-700 dakr:text-slate-500">to close</Body>
+          <Body className="text-slate-700 dakr:text-slate-500">
+            {t("to close")}
+          </Body>
         </div>
       </div>
     </>

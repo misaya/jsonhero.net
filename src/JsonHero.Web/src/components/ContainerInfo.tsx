@@ -6,14 +6,11 @@ import { pathToDescendant } from "~/utilities/jsonColumnView";
 import { JsonPreview } from "./JsonPreview";
 import { JsonSchemaViewer } from "./JsonSchemaViewer";
 import { TabContent, Tabs } from "./UI/Tabs";
-
-const tabs = [
-  { value: "json", label: "JSON" },
-  { value: "schema", label: "Schema" },
-];
+import { useTranslation } from "~/i18n";
 
 export function ContainerInfo() {
   const { selectedNodeId, highlightedNodeId } = useJsonColumnViewState();
+  const { t } = useTranslation();
 
   if (!selectedNodeId || !highlightedNodeId) {
     return <></>;
@@ -46,7 +43,12 @@ export function ContainerInfo() {
   }
 
   return (
-    <Tabs tabs={tabs}>
+    <Tabs
+      tabs={[
+        { value: "json", label: t("JSON") },
+        { value: "schema", label: t("Schema") },
+      ]}
+    >
       <>
         <TabContent value="json">
           {shouldHighlightInPreview ? (

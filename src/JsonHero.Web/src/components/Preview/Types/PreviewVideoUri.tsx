@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useHotkeys } from "react-hotkeys-hook";
 import { Body } from "~/components/Primitives/Body";
 import { PreviewBox } from "../PreviewBox";
+import { useTranslation } from "~/i18n";
 
 export function PreviewVideoUri({
   src,
@@ -11,6 +12,7 @@ export function PreviewVideoUri({
   contentType: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { t } = useTranslation();
 
   useHotkeys(
     "space",
@@ -34,7 +36,7 @@ export function PreviewVideoUri({
         <Body>
           <video key={src} controls ref={videoRef}>
             <source src={src} type={contentType} />
-            Sorry, your browser doesn't support embedded videos.
+            {t("Sorry, your browser doesn't support embedded videos.")}
           </video>
         </Body>
       </PreviewBox>

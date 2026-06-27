@@ -1,10 +1,12 @@
 import { ArrowCircleDownIcon } from "@heroicons/react/outline";
 import { useCallback, useRef } from "react";
 import { useDropzone } from "react-dropzone";
+import { useTranslation } from "~/i18n";
 
 import invariant from "tiny-invariant";
 
 export function DragAndDropForm() {
+  const { t } = useTranslation();
   const formRef = useRef<HTMLFormElement>(null);
   const filenameInputRef = useRef<HTMLInputElement>(null);
   const rawJsonInputRef = useRef<HTMLInputElement>(null);
@@ -75,8 +77,8 @@ export function DragAndDropForm() {
           />
           <p className={`${isDragActive ? "text-lime-500" : ""}`}>
             {isDragActive
-              ? "Now drop to open it…"
-              : "Drop a JSON file here, or click to select"}
+              ? t("Now drop to open it…")
+              : t("Drop a JSON file here, or click to select")}
           </p>
         </div>
 

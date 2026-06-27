@@ -2,6 +2,7 @@ import { ClipboardIcon } from "@heroicons/react/outline";
 import { useCallback, useState } from "react";
 import { CopyText } from "./CopyText";
 import { Body } from "./Primitives/Body";
+import { useTranslation } from "~/i18n";
 
 export type CopyTextButtonProps = {
   value: string;
@@ -10,6 +11,7 @@ export type CopyTextButtonProps = {
 
 export function CopyTextButton({ value, className }: CopyTextButtonProps) {
   const [copied, setCopied] = useState(false);
+  const { t } = useTranslation();
   const onCopied = useCallback(() => {
     setCopied(true);
     const timeout = setTimeout(() => {
@@ -19,11 +21,11 @@ export function CopyTextButton({ value, className }: CopyTextButtonProps) {
   return (
     <CopyText className={`${className}`} value={value} onCopied={onCopied}>
       {copied ? (
-        <Body>Copied!</Body>
+        <Body>{t("Copied!")}</Body>
       ) : (
         <div className="flex items-center">
           <ClipboardIcon className="h-4 w-4 mr-[2px]" />
-          <Body>Copy</Body>
+          <Body>{t("Copy")}</Body>
         </div>
       )}
     </CopyText>
