@@ -1,4 +1,4 @@
-import { generateColumnViewNode } from "../app/utilities/jsonColumnView";
+import { generateColumnViewNode } from "~/utilities/jsonColumnView";
 
 describe("generateColumnViewNode", () => {
   test("it creates the correct tree structure for the passed in JSON", () => {

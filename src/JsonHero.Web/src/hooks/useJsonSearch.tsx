@@ -9,6 +9,7 @@ import {
 } from "react";
 
 import { SearchResult } from "@jsonhero/fuzzy-json-search";
+import SearchWorker from "~/worker/search.worker?worker";
 
 export type InitializeIndexEvent = {
   type: "initialize-index";
@@ -208,7 +209,7 @@ export function JsonSearchProvider({
       return;
     }
 
-    const worker = new Worker("/entry.worker.js");
+    const worker = new SearchWorker();
     worker.onmessage = handleWorkerMessage;
 
     workerRef.current = worker;

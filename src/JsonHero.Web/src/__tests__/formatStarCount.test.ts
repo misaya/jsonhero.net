@@ -1,4 +1,4 @@
-import { formatStarCount } from "../app/utilities/formatStarCount";
+import { formatStarCount } from "~/utilities/formatStarCount";
 
 describe("formatStarCount", () => {
   test("formats the star count correctly", () => {

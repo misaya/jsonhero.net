@@ -140,20 +140,32 @@ You can also join our [Discord channel](https://discord.gg/JtBAxBr2m3) to hang o
 
 ## Developing
 
-To run locally, first clone the repo and install the dependencies:
+JSON Hero now runs as an ASP.NET Core 8 API serving a Vite React SPA.
+
+Install frontend dependencies:
 
 ```bash
-git clone https://github.com/triggerdotdev/jsonhero-web.git
-cd jsonhero-web
+cd src/JsonHero.Web
 npm install
 ```
 
-Then, create a file at the root of the repo called `.env` and set the `SESSION_SECRET` value:
+Restore .NET packages from the repository root:
 
+```bash
+dotnet restore src/JsonHero.Api.Tests/JsonHero.Api.Tests.csproj
 ```
-SESSION_SECRET=abc123
+
+Start the API:
+
+```bash
+dotnet run --project src/JsonHero.Api
 ```
 
-Then, run `npm run build` or `npm run dev` to build.
+Start Vite in another terminal:
 
-Now, run `npm start` and open your browser to `http://localhost:8787`
+```bash
+cd src/JsonHero.Web
+npm run dev
+```
+
+Vite proxies `/api`, `/actions`, and `/j/*.json` requests to the ASP.NET Core API on `http://localhost:5299`.

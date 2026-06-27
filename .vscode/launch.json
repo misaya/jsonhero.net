@@ -7,34 +7,15 @@
     {
       "type": "pwa-chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost with document",
-      "url": "http://localhost:8787",
-      "webRoot": "${workspaceFolder}/app"
+      "name": "Launch Vite frontend",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/src/JsonHero.Web/src"
     },
     {
-      "name": "Debug Jest All Tests",
-      "type": "node",
+      "name": "Debug Vitest Test File",
+      "type": "node-terminal",
       "request": "launch",
-      "runtimeArgs": [
-        "--inspect-brk",
-        "${workspaceRoot}/node_modules/.bin/jest",
-        "--runInBand"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
-    {
-      "name": "Debug Jest Test File",
-      "type": "node",
-      "request": "launch",
-      "runtimeArgs": [
-        "--inspect-brk",
-        "${workspaceRoot}/node_modules/.bin/jest",
-        "--runInBand"
-      ],
-      "args": ["${fileBasename}", "--no-cache"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "command": "cd src/JsonHero.Web && npm test -- ${fileBasename}"
     }
   ]
 }

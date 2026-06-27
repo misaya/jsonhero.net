@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace JsonHero.Api.Controllers;
 
 /// <summary>
-/// Bridge controller for Remix-style /actions/ routes used by the React SPA frontend.
-/// Maps old Remix action routes to the ASP.NET Core API.
+/// Browser form endpoints used by the React SPA.
 /// </summary>
 [ApiController]
 [Route("actions")]

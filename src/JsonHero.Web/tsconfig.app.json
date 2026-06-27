@@ -23,6 +23,5 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
-  "exclude": ["src/utilities/xml/__test__"]
+  "include": ["src"]
 }

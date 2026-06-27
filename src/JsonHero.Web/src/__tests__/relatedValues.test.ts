@@ -1,4 +1,4 @@
-import { calculateRelatedValuesGroups } from "../app/utilities/relatedValues";
+import { calculateRelatedValuesGroups } from "~/utilities/relatedValues";
 
 const json = {
   data: [

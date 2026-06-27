@@ -20,14 +20,5 @@ dist
 .DS_Store
 Thumbs.db
 
-# Build
-/public/build
-/app/tailwind.css
-/jsonDocs
-.mf
-/meta.json
-/stats.html
-public/entry.worker.js
-
 # Env
 .env
