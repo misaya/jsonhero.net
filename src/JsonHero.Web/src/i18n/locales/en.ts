@@ -28,16 +28,35 @@ const en = {
   Bytes: "Bytes",
   home: {
     header: {
+      features: "Features",
+      inspect: "Inspect",
+      openJson: "Open JSON",
       tryNow: "Try now",
+      workflow: "Workflow",
     },
     hero: {
-      title: "JSON sucks.",
-      subtitle: "But we're making it better.",
+      eyebrow: "Open source JSON workspace",
+      title: "Make complex JSON feel readable.",
+      subtitle: "Make raw JSON readable.",
       description:
-        "Stop staring at thousand line JSON files in your editor and start staring at thousand line JSON files in the world's best JSON viewer. With a few nice features to help make it not the worst.",
+        "Paste a response, drop a file, or open a shared document. JsonHero.NET turns raw JSON into a searchable, preview-rich workspace for APIs, data payloads, and strange production edge cases.",
+      stats: {
+        fileLimit: {
+          value: "1MB",
+          label: "local file limit",
+        },
+        schema: {
+          value: "2020-12",
+          label: "schema draft",
+        },
+        start: {
+          value: "3 ways",
+          label: "to start",
+        },
+      },
     },
     samples: {
-      prompt: "No JSON? Try it out:",
+      prompt: "No JSON? Try a sample",
       tweetJson: "Tweet JSON",
       githubApi: "Github API",
       airtableApi: "Airtable API",
@@ -59,36 +78,87 @@ const en = {
       description:
         "We figure out what your strings are made of, so you don't have to.",
     },
+    preview: {
+      inferredShape: "Inferred shape",
+      liveDocument: "Live document",
+      pathCopied: "Path copied",
+      relatedValues: "Related values",
+      relatedValuesCount: "27 matches",
+      searchLabel: "Search: customer.email",
+      shareDescription:
+        "Links can open the same document and selected path, so review stays anchored to the exact value.",
+      shareTitle: "Share a precise state",
+      typeValue: "Email string",
+    },
+    workflow: {
+      eyebrow: "From raw response to reviewable data",
+      title: "A cleaner workflow for JSON that keeps getting bigger.",
+      description:
+        "JsonHero.NET brings the inspection tools you normally assemble by hand into one focused workspace.",
+      preview: {
+        eyebrow: "Preview",
+        title: "Recognize useful strings automatically",
+        description:
+          "Dates, colors, URLs, images, and nested JSON get richer previews so a value reads like data, not just text.",
+      },
+      search: {
+        eyebrow: "Search",
+        title: "Jump across a whole response quickly",
+        description:
+          "Fuzzy search and path-aware navigation help you move through large payloads without scrolling through raw code.",
+      },
+      share: {
+        eyebrow: "Share",
+        title: "Keep reviews attached to the exact path",
+        description:
+          "Share a document state with the selected node preserved, then return to that same value later.",
+      },
+    },
     features: {
-      title: "And lots more features…",
+      eyebrow: "Built for inspection",
+      title: "Enough power for messy API data.",
+      description:
+        "The viewer keeps navigation, schema understanding, previews, and sharing close to the document so you can stay with the payload.",
+      fuzzySearch: {
+        title: "Fuzzy search",
+        description:
+          "Find matching keys and values across large payloads, then jump straight to the result.",
+      },
       keyboard: {
         title: "Keyboard shortcuts",
-        description: "Move as fast as you can think… after 3 coffees",
+        description:
+          "Move through columns, copy paths, and keep inspection fast when the file is not.",
       },
       darkMode: {
-        title: "Dark mode",
-        description: "Of course, we’re not animals.",
+        title: "Dark by default",
+        description:
+          "The homepage and viewer are tuned for long inspection sessions without visual noise.",
       },
       codeView: {
         title: "Code view",
         description:
           "Easily switch to the code view, so you can appear hardcore.",
       },
+      deepLinks: {
+        title: "Deep links",
+        description:
+          "Share a document with the active path preserved so collaborators land on the same value.",
+      },
       schema: {
         title: "Auto JSON Schema",
         description:
-          "Automatically generates JSON Schema (draft 2020-12) from your JSON.",
+          "Infer a JSON Schema draft 2020-12 shape from the document you are reviewing.",
       },
       vsCode: {
-        title: "VS Code plugin",
+        title: "Prefer code view or VS Code?",
         description:
-          "The inherited VS Code extension belongs to the upstream project. JsonHero.NET is not affiliated with that extension.",
-        link: "Get it here",
+          "Switch into code when you need the raw document. The inherited VS Code extension belongs to the upstream project and is not affiliated with JsonHero.NET.",
+        link: "VS Code extension",
       },
       openSource: {
-        title: "100% open source",
+        title: "Open source",
         description:
-          "Run JsonHero.NET yourself or fork the current repository on GitHub.",
+          "Run JsonHero.NET yourself, inspect the code, or fork the current repository on GitHub.",
       },
     },
     edgeCases: {

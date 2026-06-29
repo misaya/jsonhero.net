@@ -5,7 +5,7 @@ export function SampleUrls() {
   const { t } = useTranslation();
 
   return (
-    <div className="flex justify-start flex-wrap gap-2">
+    <div className="flex flex-wrap justify-start gap-2">
       <ExampleDoc
         id="d9udW60cLOok"
         title={t("home.samples.tweetJson")}

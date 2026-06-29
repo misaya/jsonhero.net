@@ -8,14 +8,14 @@ export function NewFile() {
   const { t } = useTranslation();
 
   return (
-    <div>
-      <div className="mb-4">
+    <div className="max-w-xl rounded-sm border border-white/10 bg-slate-900/75 p-3 shadow-2xl shadow-slate-950/20 backdrop-blur">
+      <div className="mb-3">
         <UrlForm />
       </div>
       <DragAndDropForm />
 
-      <div className="mt-4 pt-5">
-        <Title className="mb-2 text-slate-200">
+      <div className="mt-3 border-t border-white/10 pt-3">
+        <Title className="mb-2 text-sm uppercase tracking-normal text-slate-400">
           {t("home.samples.prompt")}
         </Title>
         <SampleUrls />

@@ -32,18 +32,37 @@ const zhCN: typeof en = {
     ...en.home,
     header: {
       ...en.home.header,
+      features: "功能",
+      inspect: "查看",
+      openJson: "打开 JSON",
       tryNow: "立即试用",
+      workflow: "流程",
     },
     hero: {
       ...en.home.hero,
-      title: "JSON 很难用。",
-      subtitle: "但我们正在让它变得更好。",
+      eyebrow: "开源 JSON 工作台",
+      title: "让复杂 JSON 变得清晰易读。",
+      subtitle: "让原始 JSON 更易读。",
       description:
-        "别再盯着编辑器里的千行 JSON 了，换到这个好用的 JSON 查看器里继续看。它有一些贴心功能，至少不会那么痛苦。",
+        "粘贴响应、拖入文件，或打开共享文档。JsonHero.NET 会把原始 JSON 变成可搜索、带预览的工作台，适合 API、数据载荷和生产里的奇怪边界情况。",
+      stats: {
+        fileLimit: {
+          value: "1MB",
+          label: "本地文件限制",
+        },
+        schema: {
+          value: "2020-12",
+          label: "Schema 草案",
+        },
+        start: {
+          value: "3 种",
+          label: "开始方式",
+        },
+      },
     },
     samples: {
       ...en.home.samples,
-      prompt: "没有 JSON？试试这些：",
+      prompt: "没有 JSON？试试示例",
     },
     search: {
       ...en.home.search,
@@ -63,18 +82,70 @@ const zhCN: typeof en = {
       titleSuffix: "不只是字符串",
       description: "我们会判断字符串代表什么，你就不用自己猜了。",
     },
+    preview: {
+      ...en.home.preview,
+      inferredShape: "推断结构",
+      liveDocument: "实时文档",
+      pathCopied: "已复制路径",
+      relatedValues: "相关值",
+      relatedValuesCount: "27 个匹配",
+      searchLabel: "搜索：customer.email",
+      shareDescription:
+        "链接可以打开同一个文档和选中的路径，让评审始终停留在精确值上。",
+      shareTitle: "分享精确状态",
+      typeValue: "邮箱字符串",
+    },
+    workflow: {
+      ...en.home.workflow,
+      eyebrow: "从原始响应到可评审数据",
+      title: "为越来越大的 JSON 提供更清爽的工作流。",
+      description:
+        "JsonHero.NET 把你通常手动拼起来的检查工具放进一个专注的工作台。",
+      preview: {
+        ...en.home.workflow.preview,
+        eyebrow: "预览",
+        title: "自动识别有意义的字符串",
+        description:
+          "日期、颜色、URL、图片和嵌套 JSON 会获得更丰富的预览，让值看起来像数据，而不只是文本。",
+      },
+      search: {
+        ...en.home.workflow.search,
+        eyebrow: "搜索",
+        title: "快速跳转整个响应",
+        description:
+          "模糊搜索和路径感知导航能帮你穿过大型载荷，不必在原始代码里来回滚动。",
+      },
+      share: {
+        ...en.home.workflow.share,
+        eyebrow: "分享",
+        title: "让评审固定在精确路径上",
+        description:
+          "分享文档状态时会保留选中的节点，稍后也能回到同一个值。",
+      },
+    },
     features: {
       ...en.home.features,
-      title: "还有更多功能…",
+      eyebrow: "为检查而构建",
+      title: "足够处理凌乱 API 数据。",
+      description:
+        "查看器把导航、Schema 理解、预览和分享都放在文档旁边，让你专注于载荷本身。",
+      fuzzySearch: {
+        ...en.home.features.fuzzySearch,
+        title: "模糊搜索",
+        description:
+          "在大型载荷中查找匹配的 key 和 value，然后直接跳到结果。",
+      },
       keyboard: {
         ...en.home.features.keyboard,
         title: "键盘快捷键",
-        description: "像思考一样快速移动…尤其是喝完三杯咖啡后",
+        description:
+          "穿梭列视图、复制路径，在文件变慢时仍然保持检查速度。",
       },
       darkMode: {
         ...en.home.features.darkMode,
-        title: "深色模式",
-        description: "当然要有。",
+        title: "默认深色",
+        description:
+          "首页和查看器都为长时间检查做了调校，减少视觉噪音。",
       },
       codeView: {
         ...en.home.features.codeView,
@@ -84,19 +155,26 @@ const zhCN: typeof en = {
       schema: {
         ...en.home.features.schema,
         description:
-          "根据你的 JSON 自动生成 JSON Schema（draft 2020-12）。",
+          "从正在评审的文档中推断 JSON Schema draft 2020-12 结构。",
+      },
+      deepLinks: {
+        ...en.home.features.deepLinks,
+        title: "深度链接",
+        description:
+          "分享文档时保留当前路径，协作者打开后会落在同一个值上。",
       },
       vsCode: {
         ...en.home.features.vsCode,
+        title: "更喜欢代码视图或 VS Code？",
         description:
-          "继承的 VS Code 扩展属于上游项目。JsonHero.NET 与该扩展没有关联。",
-        link: "在这里获取",
+          "需要原始文档时可以切换到代码视图。继承的 VS Code 扩展属于上游项目，且与 JsonHero.NET 没有关联。",
+        link: "VS Code 扩展",
       },
       openSource: {
         ...en.home.features.openSource,
-        title: "100% 开源",
+        title: "开源",
         description:
-          "你可以自行运行 JsonHero.NET，或在 GitHub 上 fork 当前仓库。",
+          "你可以自行运行 JsonHero.NET、检查代码，或在 GitHub 上 fork 当前仓库。",
       },
     },
     edgeCases: {

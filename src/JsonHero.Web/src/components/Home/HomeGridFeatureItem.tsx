@@ -12,8 +12,10 @@ export type HomeGridFeatureItemProps = {
 
 export function HomeGridFeatureItem(props: HomeGridFeatureItemProps) {
   return (
-    <div className="flex lg:basis-1/4 basis-1 md:basis-1/4 flex-grow flex-col p-6 rounded-sm bg-white bg-opacity-[7%]">
-      <props.icon className="w-10 h-10 min-h-[44px] text-indigo-700 mb-3" />
+    <div
+      className={`flex min-h-[210px] flex-col rounded-sm border border-white/10 bg-white/[0.045] p-6 transition hover:border-lime-300/30 hover:bg-white/[0.065] ${props.className ?? ""}`}
+    >
+      <props.icon className="mb-4 h-10 min-h-[40px] w-10 text-lime-200" />
       <Title className={props.titleClassName}>{props.title}</Title>
       {props.children}
     </div>

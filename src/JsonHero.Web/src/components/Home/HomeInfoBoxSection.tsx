@@ -1,164 +1,85 @@
-import React, { useEffect, useRef, useState } from "react";
-import { JsonProvider } from "~/hooks/useJson";
-import { JsonColumnViewProvider, useJsonColumnViewAPI, } from "~/hooks/useJsonColumnView";
-import { JsonDocProvider } from "~/hooks/useJsonDoc";
-import { JsonPreview } from "../JsonPreview";
-import { PreviewValue } from "../Preview/PreviewValue";
-import { ExtraLargeTitle } from "../Primitives/ExtraLargeTitle";
-import { SmallSubtitle } from "../Primitives/SmallSubtitle";
-import { PropertiesValue } from "../Properties/PropertiesValue";
-import { HomeSection } from "./HomeSection";
 import { useTranslation } from "~/i18n";
+import { AutoplayVideo } from "../AutoplayVideo";
 
-const json = {
-  id: "a1c33bd1-0528-4de3-a745-44d95e7ac3d8",
-  title: "JsonHero.NET is a tool for JSON",
-  // Replaced Giphy CDN URL with local placeholder — media.giphy.com is unreliable in China
-  thumbnail: "/home/sample-thumbnail.webp",
-  createdAt: "2022-02-01T02:25:41-05:00",
-  tint: "#EAB308",
-  // Replaced with China-safe example URL — theonion.com and youtube.com are blocked in China
-  webpages: "https://example.com/",
-  youtube: "https://example.com/video",
-  json: "bourne",
-};
+import edgeCasesVideo from "~/assets/home/UncoverEdgeCases.mp4";
+import searchVideo from "~/assets/home/JsonHeroSearch.mp4";
+import shareVideo from "~/assets/home/JsonHeroShare.mp4";
 
-const infoBoxData = [
+const workflowItems = [
   {
-    title: "Images",
-    highlight: "$.thumbnail",
+    eyebrow: "home.workflow.preview.eyebrow",
+    title: "home.workflow.preview.title",
+    description: "home.workflow.preview.description",
+    video: edgeCasesVideo,
   },
   {
-    title: "Dates",
-    highlight: "$.createdAt",
+    eyebrow: "home.workflow.search.eyebrow",
+    title: "home.workflow.search.title",
+    description: "home.workflow.search.description",
+    video: searchVideo,
   },
   {
-    title: "Colors",
-    highlight: "$.tint",
-  },
-  {
-    title: "URLs",
-    highlight: "$.webpages",
-  },
-  {
-    title: "Videos",
-    highlight: "$.youtube",
+    eyebrow: "home.workflow.share.eyebrow",
+    title: "home.workflow.share.title",
+    description: "home.workflow.share.description",
+    video: shareVideo,
   },
 ];
 
-const autoplayDuration = 3000;
-
 export function HomeInfoBoxSection() {
-  return (
-    <SampleJSONPreview initialSelection={infoBoxData[0].highlight}>
-      <HomeInfoBoxSectionContent/>
-    </SampleJSONPreview>
-  );
-}
-
-function HomeInfoBoxSectionContent() {
-  const [index, setIndex] = useState(0);
-  const api = useJsonColumnViewAPI();
-  const interval = useRef<NodeJS.Timer | null>(null);
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const selectedPath = infoBoxData[index].highlight;
-    api.goToNodeId(selectedPath, "home");
-  }, [index]);
-
-  const resetInterval = () => {
-    if (interval.current != null) {
-      clearInterval(interval.current);
-    }
-    interval.current = setInterval(() => {
-      setIndex((i) => (i = (i + 1) % infoBoxData.length));
-    }, autoplayDuration);
-  };
-
-  useEffect(() => {
-    resetInterval();
-    return () => {
-      if (interval.current == null) return;
-      clearInterval(interval.current);
-    };
-  }, []);
-
   return (
-    <HomeSection containerClassName="bg-black p-6">
-      <div className="md:pr-4 lg:pr-10 flex flex-col w-full md:w-1/2">
-        <ExtraLargeTitle className="text-white mb-4">
-          <span className=" text-lime-300">
-            {t(infoBoxData[index].title)}
-          </span>{" "}
-          {t("home.infoBox.titleSuffix")}
-        </ExtraLargeTitle>
-        <SmallSubtitle className="text-slate-400 mb-10">
-          {t("home.infoBox.description")}
-        </SmallSubtitle>
-        <ul className="flex w-full text-slate-300 mb-3">
-          {infoBoxData.map((value, i) => {
-            return (
-              <li
-                key={value.highlight}
-                onClick={() => {
-                  resetInterval();
-                  setIndex(i);
-                }}
-                className={`flex flex-grow justify-center px-4 py-2 cursor-pointer border-b-2 ${
-                  index === i
-                    ? "text-white border-lime-500"
-                    : "border-slate-600"
-                }`}
-              >
-                {t(value.title)}
-              </li>
-            );
-          })}
-        </ul>
-        <div className="w-full">
-          <JsonPreview
-            json={json}
-            highlightPath={infoBoxData[index].highlight}
-          />
-        </div>
-      </div>
-      <div className="relative w-full md:w-1/2 flex flex-col justify-center items-center py-5">
-        <div className="pointer-events-none absolute z-10 bottom-0 w-full h-[200px] bg-gradient-to-t from-slate-900 to-transparent mb-5"></div>
-        <div className="pointer-events-auto min-w-full max-w-full p-4 rounded-sm bg-slate-900 h-[65vh] overflow-y-auto custom-scrollbar">
-          <div className="pointer-events-none">
-            <div className="mb-4">
-              <PreviewValue/>
-            </div>
-            <PropertiesValue/>
-          </div>
-        </div>
-      </div>
-    </HomeSection>
-  );
-}
-
-function SampleJSONPreview({
-  children,
-  initialSelection,
-}: {
-  children: React.ReactNode;
-  initialSelection: string;
-}) {
-  return (
-    <JsonDocProvider
-      doc={{
-        id: "sample",
-        title: "Sample",
-        type: "raw",
-        readOnly: false,
-        contents: "",
-      }}
-      path={initialSelection}
+    <section
+      className="border-b border-white/10 bg-slate-950 px-4 py-6 md:py-24"
+      id="workflow"
     >
-      <JsonProvider initialJson={json}>
-        <JsonColumnViewProvider>{children}</JsonColumnViewProvider>
-      </JsonProvider>
-    </JsonDocProvider>
+      <div className="mx-auto w-full max-w-[1180px]">
+        <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <p className="mb-3 text-sm font-black uppercase tracking-normal text-lime-200">
+              {t("home.workflow.eyebrow")}
+            </p>
+            <h2 className="max-w-2xl font-sans text-5xl font-black leading-tight text-white">
+              {t("home.workflow.title")}
+            </h2>
+          </div>
+          <p className="max-w-md text-lg leading-7 text-slate-400">
+            {t("home.workflow.description")}
+          </p>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-3">
+          {workflowItems.map((item, index) => (
+            <article
+              className="overflow-hidden rounded-sm border border-white/10 bg-slate-900/70"
+              key={item.title}
+            >
+              <div className="aspect-[16/10] bg-slate-950">
+                <AutoplayVideo
+                  className="h-full w-full object-cover"
+                  src={item.video}
+                />
+              </div>
+              <div className="p-5">
+                <div className="mb-3 flex items-center justify-between">
+                  <span className="text-xs font-black uppercase tracking-normal text-lime-200">
+                    {t(item.eyebrow)}
+                  </span>
+                  <span className="font-mono text-xs text-slate-500">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h3 className="mb-3 text-2xl font-black leading-7 text-white">
+                  {t(item.title)}
+                </h3>
+                <p className="text-base leading-7 text-slate-400">
+                  {t(item.description)}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

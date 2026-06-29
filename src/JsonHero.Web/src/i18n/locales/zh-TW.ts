@@ -32,18 +32,37 @@ const zhTW: typeof en = {
     ...en.home,
     header: {
       ...en.home.header,
+      features: "功能",
+      inspect: "檢視",
+      openJson: "開啟 JSON",
       tryNow: "立即試用",
+      workflow: "流程",
     },
     hero: {
       ...en.home.hero,
-      title: "JSON 很難用。",
-      subtitle: "但我們正在讓它變得更好。",
+      eyebrow: "開源 JSON 工作台",
+      title: "讓複雜 JSON 變得清晰易讀。",
+      subtitle: "讓原始 JSON 更易讀。",
       description:
-        "別再盯著編輯器裡的千行 JSON 了，換到這個好用的 JSON 檢視器裡繼續看。它有一些貼心功能，至少不會那麼痛苦。",
+        "貼上回應、拖入檔案，或開啟共享文件。JsonHero.NET 會把原始 JSON 變成可搜尋、帶預覽的工作台，適合 API、資料載荷和正式環境裡的奇怪邊界情況。",
+      stats: {
+        fileLimit: {
+          value: "1MB",
+          label: "本機檔案限制",
+        },
+        schema: {
+          value: "2020-12",
+          label: "Schema 草案",
+        },
+        start: {
+          value: "3 種",
+          label: "開始方式",
+        },
+      },
     },
     samples: {
       ...en.home.samples,
-      prompt: "沒有 JSON？試試這些：",
+      prompt: "沒有 JSON？試試範例",
     },
     search: {
       ...en.home.search,
@@ -63,18 +82,70 @@ const zhTW: typeof en = {
       titleSuffix: "不只是字串",
       description: "我們會判斷字串代表什麼，你就不用自己猜了。",
     },
+    preview: {
+      ...en.home.preview,
+      inferredShape: "推斷結構",
+      liveDocument: "即時文件",
+      pathCopied: "已複製路徑",
+      relatedValues: "相關值",
+      relatedValuesCount: "27 個相符",
+      searchLabel: "搜尋：customer.email",
+      shareDescription:
+        "連結可以開啟同一份文件和選取的路徑，讓評審始終停留在精確值上。",
+      shareTitle: "分享精確狀態",
+      typeValue: "電子郵件字串",
+    },
+    workflow: {
+      ...en.home.workflow,
+      eyebrow: "從原始回應到可評審資料",
+      title: "為越來越大的 JSON 提供更清爽的工作流程。",
+      description:
+        "JsonHero.NET 把你通常手動組起來的檢查工具放進一個專注的工作台。",
+      preview: {
+        ...en.home.workflow.preview,
+        eyebrow: "預覽",
+        title: "自動識別有意義的字串",
+        description:
+          "日期、顏色、URL、圖片和巢狀 JSON 會獲得更豐富的預覽，讓值看起來像資料，而不只是文字。",
+      },
+      search: {
+        ...en.home.workflow.search,
+        eyebrow: "搜尋",
+        title: "快速跳轉整個回應",
+        description:
+          "模糊搜尋和路徑感知導覽能幫你穿過大型載荷，不必在原始程式碼裡來回捲動。",
+      },
+      share: {
+        ...en.home.workflow.share,
+        eyebrow: "分享",
+        title: "讓評審固定在精確路徑上",
+        description:
+          "分享文件狀態時會保留選取的節點，之後也能回到同一個值。",
+      },
+    },
     features: {
       ...en.home.features,
-      title: "還有更多功能…",
+      eyebrow: "為檢查而建構",
+      title: "足夠處理凌亂 API 資料。",
+      description:
+        "檢視器把導覽、Schema 理解、預覽和分享都放在文件旁邊，讓你專注於載荷本身。",
+      fuzzySearch: {
+        ...en.home.features.fuzzySearch,
+        title: "模糊搜尋",
+        description:
+          "在大型載荷中尋找相符的 key 和 value，然後直接跳到結果。",
+      },
       keyboard: {
         ...en.home.features.keyboard,
         title: "鍵盤快速鍵",
-        description: "像思考一樣快速移動…尤其是喝完三杯咖啡後",
+        description:
+          "穿梭欄檢視、複製路徑，在檔案變慢時仍然保持檢查速度。",
       },
       darkMode: {
         ...en.home.features.darkMode,
-        title: "深色模式",
-        description: "當然要有。",
+        title: "預設深色",
+        description:
+          "首頁和檢視器都為長時間檢查做了調校，減少視覺噪音。",
       },
       codeView: {
         ...en.home.features.codeView,
@@ -84,19 +155,26 @@ const zhTW: typeof en = {
       schema: {
         ...en.home.features.schema,
         description:
-          "根據你的 JSON 自動產生 JSON Schema（draft 2020-12）。",
+          "從正在評審的文件中推斷 JSON Schema draft 2020-12 結構。",
+      },
+      deepLinks: {
+        ...en.home.features.deepLinks,
+        title: "深度連結",
+        description:
+          "分享文件時保留目前路徑，協作者開啟後會落在同一個值上。",
       },
       vsCode: {
         ...en.home.features.vsCode,
+        title: "更喜歡程式碼檢視或 VS Code？",
         description:
-          "繼承的 VS Code 擴充功能屬於上游專案。JsonHero.NET 與該擴充功能沒有關聯。",
-        link: "在這裡取得",
+          "需要原始文件時可以切換到程式碼檢視。繼承的 VS Code 擴充功能屬於上游專案，且與 JsonHero.NET 沒有關聯。",
+        link: "VS Code 擴充功能",
       },
       openSource: {
         ...en.home.features.openSource,
-        title: "100% 開源",
+        title: "開源",
         description:
-          "你可以自行執行 JsonHero.NET，或在 GitHub 上 fork 目前的儲存庫。",
+          "你可以自行執行 JsonHero.NET、檢查程式碼，或在 GitHub 上 fork 目前的儲存庫。",
       },
     },
     edgeCases: {

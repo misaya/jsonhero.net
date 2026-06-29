@@ -25,7 +25,7 @@ export function UrlForm({ className }: UrlFormProps) {
           type="text"
           name="jsonUrl"
           id="jsonUrl"
-          className="block flex-grow text-base text-slate-200 placeholder:text-slate-300 bg-slate-900/40 border border-slate-600 rounded-l-sm py-2 px-3 transition duration-300 focus:ring-indigo-500 focus:border-indigo-500"
+          className="block min-w-0 flex-grow rounded-l-sm border border-white/10 bg-slate-950/70 px-3 py-2.5 text-base text-slate-100 transition duration-300 placeholder:text-slate-500 focus:border-lime-300 focus:ring-lime-300"
           placeholder={t("home.search.placeholder")}
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
@@ -33,8 +33,8 @@ export function UrlForm({ className }: UrlFormProps) {
         <button
           type="submit"
           value="Go"
-          className={`inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-r-sm text-white bg-lime-500 transition hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500 ${
-            isButtonDisabled && "disabled:opacity-50 disabled:hover:bg-lime-500"
+          className={`inline-flex items-center justify-center rounded-r-sm border border-transparent bg-lime-300 px-4 py-2.5 font-black uppercase text-slate-950 transition hover:bg-lime-200 focus:outline-none focus:ring-2 focus:ring-lime-300 focus:ring-offset-2 focus:ring-offset-slate-950 ${
+            isButtonDisabled && "disabled:opacity-50 disabled:hover:bg-lime-300"
           }`}
           disabled={isButtonDisabled}
         >
