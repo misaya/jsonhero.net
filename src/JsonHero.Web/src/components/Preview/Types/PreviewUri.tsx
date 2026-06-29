@@ -5,6 +5,7 @@ import { useLoadWhenOnline } from "~/hooks/useLoadWhenOnline";
 import { PreviewBox } from "../PreviewBox";
 import type { PreviewResult } from "./preview.types";
 import { PreviewUriElement } from "./PreviewUriElement";
+import { useTranslation } from "~/i18n";
 
 export type PreviewUriProps = {
   value: string;
@@ -13,6 +14,7 @@ export type PreviewUriProps = {
 
 export function PreviewUri(props: PreviewUriProps) {
   const previewFetcher = useFetcher<PreviewResult>();
+  const { t } = useTranslation();
   const encodedUri = encodeURIComponent(props.value);
   const load = () => previewFetcher.load(`/actions/getPreview/${encodedUri}`);
 
@@ -41,7 +43,7 @@ export function PreviewUri(props: PreviewUriProps) {
       ) : (
         <PreviewBox>
           <Body className="h-96 animate-pulse bg-slate-300 dark:text-slate-300 dark:bg-slate-500 flex justify-center items-center">
-            Loading…
+            {t("preview.loading")}
           </Body>
         </PreviewBox>
       )}

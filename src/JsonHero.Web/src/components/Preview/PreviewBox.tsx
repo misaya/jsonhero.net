@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { Title } from "../Primitives/Title";
+import { useTranslation } from "~/i18n";
 
 export type PreviewBoxProps = {
   link?: string;
@@ -8,6 +9,7 @@ export type PreviewBoxProps = {
 };
 
 export function PreviewBox({ link, className, children }: PreviewBoxProps) {
+  const { t } = useTranslation();
   const onClick = useCallback(() => {
     if (!link) return;
     window.open(link, "_blank");
@@ -16,7 +18,7 @@ export function PreviewBox({ link, className, children }: PreviewBoxProps) {
   return (
     <div className={className}>
       <Title className="text-slate-700 transition dark:text-slate-400 mb-2">
-        Preview
+        {t("Preview")}
       </Title>
       <div
         onClick={onClick}

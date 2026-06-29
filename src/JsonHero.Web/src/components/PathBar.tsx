@@ -15,6 +15,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { memo, useEffect, useRef, useState } from "react";
 import { useJson } from '~/hooks/useJson';
 import { JSONHeroPath } from '@jsonhero/path';
+import { useTranslation } from "~/i18n";
 
 export function PathBar() {
   const [isEditable, setIsEditable] = useState(false);
@@ -50,6 +51,7 @@ export function PathBar() {
 export function PathBarText({ selectedNodes, onConfirm }: { selectedNodes: ColumnViewNode[], onConfirm: (newPath: string) => void; }) {
   const [path, setPath] = useState('');
   const ref = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setPath(selectedNodes.at(-1)?.id || '');
@@ -80,7 +82,7 @@ export function PathBarText({ selectedNodes, onConfirm }: { selectedNodes: Colum
           type="text"
           name="title"
           spellCheck="false"
-          placeholder="Name your JSON file"
+          placeholder={t("viewer.path.placeholder")}
           value={path}
           onChange={(e) => setPath(e.target.value)}
         />

@@ -10,81 +10,81 @@ import { Body } from "../Primitives/Body";
 import { LargeTitle } from "../Primitives/LargeTitle";
 import { HomeGridFeatureItem } from "./HomeGridFeatureItem";
 import { HomeSection } from "./HomeSection";
+import { useTranslation } from "~/i18n";
 
 export function HomeFeatureGridSection() {
+  const { t } = useTranslation();
+
   return (
     <HomeSection containerClassName="bg-black">
       <div className="flex flex-col px-4 pb-2 pt-6 md:py-12">
         <LargeTitle className="mb-4 text-slate-300">
-          And lots more features…
+          {t("home.features.title")}
         </LargeTitle>
         <div className="flex flex-col gap-4 md:flex-row md:flex-wrap">
           <HomeGridFeatureItem
             icon={FastForwardIcon}
-            title="Keyboard shortcuts"
+            title={t("home.features.keyboard.title")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Move as fast as you can think… after 3 coffees
+              {t("home.features.keyboard.description")}
             </Body>
           </HomeGridFeatureItem>
 
           <HomeGridFeatureItem
             icon={MoonIcon}
-            title="Dark mode"
+            title={t("home.features.darkMode.title")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Of course, we’re not animals.
+              {t("home.features.darkMode.description")}
             </Body>
           </HomeGridFeatureItem>
 
           <HomeGridFeatureItem
             icon={ClockIcon}
-            title="Code view"
+            title={t("home.features.codeView.title")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Easily switch to the code view, so you can appear hardcore.
+              {t("home.features.codeView.description")}
             </Body>
           </HomeGridFeatureItem>
           <HomeGridFeatureItem
             icon={CubeTransparentIcon}
-            title="Auto JSON Schema"
+            title={t("home.features.schema.title")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Automatically generates JSON Schema (draft 2020-12) from your
-              JSON.
+              {t("home.features.schema.description")}
             </Body>
           </HomeGridFeatureItem>
           <HomeGridFeatureItem
             icon={CodeIcon}
-            title="VS Code plugin"
+            title={t("home.features.vsCode.title")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              The inherited VS Code extension belongs to the upstream project.
-              JsonHero.NET is not affiliated with that extension.{" "}
+              {t("home.features.vsCode.description")}{" "}
               <a
                 className="whitespace-nowrap text-lime-300 hover:text-lime-500"
                 href="https://marketplace.visualstudio.com/items?itemName=JSONHero.jsonhero-vscode"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Get it here
+                {t("home.features.vsCode.link")}
               </a>
               .
             </Body>
           </HomeGridFeatureItem>
           <HomeGridFeatureItem
             icon={LockOpenIcon}
-            title="100% open source"
+            title={t("home.features.openSource.title")}
             titleClassName="text-white"
           >
             <Body className="text-slate-400">
-              Run JsonHero.NET yourself or fork the current repository on
-              GitHub.
+              {t("home.features.openSource.description")}
             </Body>
           </HomeGridFeatureItem>
         </div>

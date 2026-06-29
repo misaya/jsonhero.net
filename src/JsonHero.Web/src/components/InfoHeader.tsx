@@ -6,7 +6,7 @@ import {
   useJsonColumnViewAPI,
   useJsonColumnViewState,
 } from "~/hooks/useJsonColumnView";
-import { concatenated, getHierarchicalTypes } from "~/utilities/dataType";
+import { getHierarchicalTypes } from "~/utilities/dataType";
 import { formatRawValue } from "~/utilities/formatter";
 import { isNullable } from "~/utilities/nullable";
 import { CopyTextButton } from "./CopyTextButton";
@@ -14,12 +14,14 @@ import { Body } from "./Primitives/Body";
 import { LargeMono } from "./Primitives/LargeMono";
 import { Title } from "./Primitives/Title";
 import { ValueIcon, ValueIconSize } from "./ValueIcon";
+import { useTranslation } from "~/i18n";
 
 export type InfoHeaderProps = {
   relatedPaths: string[];
 };
 
 export function InfoHeader({ relatedPaths }: InfoHeaderProps) {
+  const { t } = useTranslation();
   const { selectedNodeId, highlightedNodeId, selectedNodes } =
     useJsonColumnViewState();
   const { goToNodeId } = useJsonColumnViewAPI();
@@ -57,7 +59,7 @@ export function InfoHeader({ relatedPaths }: InfoHeaderProps) {
     <div className="mb-4 pb-4">
       <div className="flex items-center">
         <Title className="flex-1 mr-2 overflow-hidden overflow-ellipsis break-words text-slate-700 transition dark:text-slate-200">
-          { selectedName ?? "nothing" }
+          {selectedName ?? t("infoHeader.nothing")}
         </Title>
         <div>
           <ValueIcon
@@ -100,9 +102,9 @@ export function InfoHeader({ relatedPaths }: InfoHeaderProps) {
       </div>
       <div className="flex text-gray-400">
         <Body className="flex-1">
-          {concatenated(getHierarchicalTypes(selectedInfo))}
+          {getHierarchicalTypes(selectedInfo).types.map((type) => t(type)).join("/")}
         </Body>
-        {canBeNull && <Body>Can be null</Body>}
+        {canBeNull && <Body>{t("infoHeader.canBeNull")}</Body>}
       </div>
     </div>
   );
@@ -115,11 +117,13 @@ function checkPathExists(json: unknown, newPath: string) {
 }
 
 function EmptyState() {
+  const { t } = useTranslation();
+
   return (
     <div className="mb-4 pb-4 border-b border-slate-300">
       <div className="flex items-center">
         <Title className="flex-1 mr-2 text-slate-800 transition dark:text-slate-300">
-          Nothing selected
+          {t("infoHeader.nothingSelected")}
         </Title>
       </div>
       <div>

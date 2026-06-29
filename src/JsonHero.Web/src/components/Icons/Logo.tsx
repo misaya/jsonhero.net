@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "~/i18n";
 
 export function Logo({
   className,
@@ -7,10 +8,12 @@ export function Logo({
   className?: string;
   width?: string;
 }) {
+  const { t } = useTranslation();
+
   return (
     <Link
       to="/"
-      aria-label="JsonHero.NET homepage"
+      aria-label={t("header.homepageLabel")}
       className="block w-full"
     >
       <svg

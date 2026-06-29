@@ -1,17 +1,21 @@
 import { inferType, JSONValueType } from "@jsonhero/json-infer-types";
 import { JSONHeroPath, PathComponent } from "@jsonhero/path";
 import { ColumnViewNode } from "~/useColumnView";
-import { formatValue } from "./formatter";
+import { formatValue, FormatValueOptions } from "./formatter";
 import { iconForType } from "./icons";
 
-export function generateColumnViewNode(json: unknown): ColumnViewNode {
+export function generateColumnViewNode(
+  json: unknown,
+  options?: FormatValueOptions
+): ColumnViewNode {
   const info = inferType(json);
   const path = new JSONHeroPath("$");
-  const children = generateChildren(info, path);
+  const children = generateChildren(info, path, options);
+  const rootTitle = options?.t?.("root") ?? "root";
 
   return {
     name: "root",
-    title: "root",
+    title: rootTitle,
     id: "$",
     icon: iconForType(info),
     children,
@@ -20,20 +24,22 @@ export function generateColumnViewNode(json: unknown): ColumnViewNode {
 
 function generateChildren(
   info: JSONValueType,
-  path: JSONHeroPath
+  path: JSONHeroPath,
+  options?: FormatValueOptions
 ): Array<ColumnViewNode> {
   if (info.name === "array" && info.value) {
     return info.value.map((value, index) => {
       const childPath = path.child(index.toString());
       const childInfo = inferType(value);
-      const children = generateChildren(childInfo, childPath);
+      const children = generateChildren(childInfo, childPath, options);
 
       return {
         id: childPath.toString(),
         name: index.toString(),
         title: index.toString(),
-        longTitle: `Index ${index.toString()}`,
-        subtitle: formatValue(childInfo),
+        longTitle:
+          options?.t?.("viewer.tree.index", { index }) ?? `Index ${index}`,
+        subtitle: formatValue(childInfo, options),
         icon: iconForType(childInfo),
         children,
       };
@@ -45,13 +51,13 @@ function generateChildren(
       const cleanKey = key.replace(/\./g, "\\.");
       const childPath = path.child(cleanKey);
       const childInfo = inferType(value);
-      const children = generateChildren(childInfo, childPath);
+      const children = generateChildren(childInfo, childPath, options);
 
       return {
         id: childPath.toString(),
         name: key,
         title: key,
-        subtitle: formatValue(childInfo),
+        subtitle: formatValue(childInfo, options),
         icon: iconForType(childInfo),
         children,
       };
@@ -63,7 +69,8 @@ function generateChildren(
 
 export function generateNodesToPath(
   json: unknown,
-  path: string
+  path: string,
+  options?: FormatValueOptions
 ): Array<ColumnViewNode> {
   const heroPath = new JSONHeroPath(path);
 
@@ -79,10 +86,11 @@ export function generateNodesToPath(
     const info = inferType(currentPath.first(json));
 
     const componentName = component.toString();
+    const rootTitle = options?.t?.("root") ?? "root";
 
     nodes.push({
       name: componentName,
-      title: componentName === "$" ? "root" : componentName,
+      title: componentName === "$" ? rootTitle : componentName,
       id: currentPath.toString(),
       icon: iconForType(info),
       children: [],

@@ -5,24 +5,29 @@ import {
 import { formatValue } from "~/utilities/formatter";
 import { DataTable } from "../DataTable";
 import { ValueIcon } from "../ValueIcon";
+import { localeForLanguage, useLanguage, useTranslation } from "~/i18n";
 
 export type PropertiesNumberProps = {
   type: JSONIntType;
 };
 
 export function PropertiesInt({ type }: { type: JSONIntType }) {
+  const { language } = useLanguage();
+  const { t } = useTranslation();
+  const locale = localeForLanguage(language);
+
   if (type.format == null) {
     return (
       <DataTable
         rows={[
           {
-            key: "Formatted value",
-            value: formatValue(type) ?? "",
+            key: "properties.formattedValue",
+            value: formatValue(type, { locale, t }) ?? "",
             icon: <ValueIcon type={type} />,
           },
           {
             key: "Type",
-            value: type.name,
+            value: t(type.name),
           },
         ]}
       />
@@ -30,7 +35,13 @@ export function PropertiesInt({ type }: { type: JSONIntType }) {
   }
   switch (type.format.name) {
     case "timestamp":
-      return <PropertiesTimestamp value={type.value} format={type.format} />;
+      return (
+        <PropertiesTimestamp
+          value={type.value}
+          format={type.format}
+          locale={locale}
+        />
+      );
     default:
       return <></>;
   }
@@ -39,9 +50,11 @@ export function PropertiesInt({ type }: { type: JSONIntType }) {
 function PropertiesTimestamp({
   value,
   format,
+  locale,
 }: {
   value: number;
   format: JSONTimestampFormat;
+  locale: string;
 }) {
   const date =
     format.variant === "millisecondsSinceEpoch"
@@ -64,16 +77,25 @@ function PropertiesTimestamp({
       value: (date.getTime() / 1000).toFixed(0),
     },
     {
-      key: "unix ms",
+      key: "properties.unixMs",
       value: date.getTime().toString(),
     },
     {
       key: "date",
-      value: date.toDateString(),
+      value: date.toLocaleDateString(locale, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
     },
     {
       key: "time",
-      value: date.toTimeString(),
+      value: date.toLocaleTimeString(locale, {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        timeZoneName: "short",
+      }),
     },
   ];
 

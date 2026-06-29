@@ -2,6 +2,7 @@ import { ShareIcon, PlusIcon, TrashIcon } from "@heroicons/react/outline";
 import { DocumentTitle } from "./DocumentTitle";
 import { GithubStar } from "./UI/GithubStar";
 import { Logo } from "./Icons/Logo";
+import { LanguageSelect } from "./LanguageSelect";
 import { Share } from "./Share";
 import { NewDocument } from "./NewDocument";
 import {
@@ -12,9 +13,11 @@ import {
 } from "./UI/Popover";
 
 import { useJsonDoc } from "~/hooks/useJsonDoc";
+import { useTranslation } from "~/i18n";
 
 export function Header() {
   const { doc } = useJsonDoc();
+  const { t } = useTranslation();
 
   return (
     <header className="flex items-center justify-between w-screen h-[40px] bg-indigo-700 dark:bg-slate-800 border-b-[1px] border-slate-600">
@@ -25,19 +28,19 @@ export function Header() {
       </div>
       <DocumentTitle />
       <ol className="flex text-sm items-center gap-2 px-4">
+        <LanguageSelect />
+
         {!doc.readOnly && (
           <form
             method="delete"
             onSubmit={(e) =>
-              !confirm(
-                "This will permanently delete this document from JsonHero.NET, are you sure you want to continue?"
-              ) && e.preventDefault()
+              !confirm(t("header.deleteConfirm")) && e.preventDefault()
             }
           >
             <button type="submit">
               <button className="flex items-center justify-center py-1 bg-slate-200 text-slate-800 bg-opacity-80 text-base font-bold px-2 rounded uppercase hover:cursor-pointer hover:bg-opacity-100 transition">
                 <TrashIcon className="w-4 h-4 mr-0.5"></TrashIcon>
-                Delete
+                {t("Delete")}
               </button>
             </button>
           </form>
@@ -47,7 +50,7 @@ export function Header() {
           <PopoverTrigger>
             <button className="flex items-center justify-center bg-lime-500 text-slate-800 bg-opacity-90 text-base font-bold px-2 py-1 rounded uppercase hover:cursor-pointer hover:bg-opacity-100 transition">
               <PlusIcon className="w-4 h-4 mr-0.5"></PlusIcon>
-              New
+              {t("New")}
             </button>
           </PopoverTrigger>
           <PopoverContent side="bottom" sideOffset={8}>
@@ -63,7 +66,7 @@ export function Header() {
           <PopoverTrigger>
             <button className="flex items-center justify-center py-1 bg-slate-200 text-slate-800 bg-opacity-90 text-base font-bold px-2 rounded uppercase hover:cursor-pointer hover:bg-opacity-100 transition">
               <ShareIcon className="w-4 h-4 mr-1"></ShareIcon>
-              Share
+              {t("Share")}
             </button>
           </PopoverTrigger>
           <PopoverContent side="bottom" sideOffset={8}>

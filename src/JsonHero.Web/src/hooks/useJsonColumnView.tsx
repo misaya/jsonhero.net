@@ -15,6 +15,7 @@ import {
   calculateStablePath,
   firstChildToDescendant,
 } from "~/utilities/jsonColumnView";
+import { localeForLanguage, useLanguage, useTranslation } from "~/i18n";
 import { useJson } from "./useJson";
 import { useJsonDoc } from "./useJsonDoc";
 
@@ -32,10 +33,15 @@ const JsonColumnViewAPIContext = createContext<JsonColumnViewAPI>(
 export function JsonColumnViewProvider({ children }: { children: ReactNode }) {
   const [json] = useJson();
   const { doc, path: initialNodeId } = useJsonDoc();
+  const { language } = useLanguage();
+  const { t } = useTranslation();
 
   const rootNode = React.useMemo(() => {
-    return generateColumnViewNode(json);
-  }, [json]);
+    return generateColumnViewNode(json, {
+      locale: localeForLanguage(language),
+      t,
+    });
+  }, [json, language, t]);
 
   const jsonReducer = React.useCallback(
     (

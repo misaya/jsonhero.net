@@ -3,12 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import { useFetcher } from "~/utilities/useFetcher";
 import { match } from "ts-pattern";
 import { useJsonDoc } from "~/hooks/useJsonDoc";
+import { useTranslation } from "~/i18n";
 
 export function DocumentTitle() {
   const { doc } = useJsonDoc();
   const [editedTitle, setEditedTitle] = useState(doc.title);
   const updateDoc = useFetcher();
   const ref = useRef<HTMLInputElement | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (updateDoc.type === "done" && updateDoc.data.title) {
@@ -48,7 +50,7 @@ export function DocumentTitle() {
               type="text"
               name="title"
               spellCheck="false"
-              placeholder="Name your JSON file"
+              placeholder={t("documentTitle.placeholder")}
               value={editedTitle}
               onChange={(e) => setEditedTitle(e.target.value)}
             />
@@ -56,14 +58,14 @@ export function DocumentTitle() {
 
           {match(editedTitle)
             .with(doc.title, () => (
-              <p className="ml-2 text-transparent">Save</p>
+              <p className="ml-2 text-transparent">{t("Save")}</p>
             ))
             .with("", () => (
               <button
                 className="ml-2 text-lime-500 hover:text-lime-600 transition"
                 onClick={() => setEditedTitle(doc.title)}
               >
-                Reset
+                {t("Reset")}
               </button>
             ))
             .otherwise(() => (
@@ -71,7 +73,7 @@ export function DocumentTitle() {
                 type="submit"
                 className="ml-2 text-lime-500 hover:text-lime-600 transition"
               >
-                Save
+                {t("Save")}
               </button>
             ))}
         </div>
