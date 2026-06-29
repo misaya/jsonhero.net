@@ -1,7 +1,13 @@
 import { useEffect, useRef } from "react";
 import { useOnScreen } from "~/hooks/useOnScreen";
 
-export function AutoplayVideo({ src }: { src: string }) {
+export function AutoplayVideo({
+  className,
+  src,
+}: {
+  className?: string;
+  src: string;
+}) {
   const elementRef = useRef<HTMLVideoElement>(null);
   const isOnScreen = useOnScreen(elementRef);
 
@@ -20,6 +26,7 @@ export function AutoplayVideo({ src }: { src: string }) {
 
   return (
     <video
+      className={className}
       src={src}
       ref={elementRef}
       loop={true}

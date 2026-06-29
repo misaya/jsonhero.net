@@ -5,13 +5,15 @@ import { UrlForm } from "./UrlForm";
 
 export function NewDocument() {
   return (
-    <div className="bg-indigo-700 text-white rounded-sm shadow-md w-96 max-w-max p-3 transition">
+    <div className="w-96 max-w-[calc(100vw-2rem)] rounded-sm border border-white/10 bg-slate-900 p-4 text-white shadow-2xl shadow-slate-950/50 transition">
       <div className="flex flex-col">
         <UrlForm className="mb-2" />
         <DragAndDropForm />
 
-        <div className="mt-4">
-          <Title className="mb-2 text-slate-200">No JSON? Try it out:</Title>
+        <div className="mt-4 border-t border-white/10 pt-4">
+          <Title className="mb-3 text-sm uppercase tracking-normal text-slate-400">
+            No JSON? Try a sample
+          </Title>
           <SampleUrls />
         </div>
       </div>

@@ -64,18 +64,18 @@ export function DragAndDropForm() {
     <form method="post" action="/actions/createFromFile" ref={formRef}>
       <div
         {...getRootProps()}
-        className="block min-w-[300px] cursor-pointer rounded-md border-2 border-dashed border-slate-600 bg-slate-900/40 p-4 text-base text-slate-300 focus:border-indigo-500 focus:ring-indigo-500"
+        className="block min-w-[260px] cursor-pointer rounded-sm border border-dashed border-white/20 bg-slate-950/70 p-3 text-base text-slate-300 transition hover:border-lime-300/70 hover:bg-slate-950 focus:border-lime-300 focus:ring-lime-300"
       >
         <input {...getInputProps()} />
         <div className="flex items-center">
           <ArrowCircleDownIcon
             className={`mr-3 inline h-6 w-6 ${
-              isDragActive ? "text-lime-500" : ""
+              isDragActive ? "text-lime-300" : "text-slate-500"
             }`}
           />
-          <p className={`${isDragActive ? "text-lime-500" : ""}`}>
+          <p className={`${isDragActive ? "text-lime-300" : ""}`}>
             {isDragActive
-              ? "Now drop to open it…"
+              ? "Now drop to open it..."
               : "Drop a JSON file here, or click to select"}
           </p>
         </div>

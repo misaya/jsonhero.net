@@ -2,7 +2,7 @@ import { ExampleDoc } from "./ExampleDoc";
 
 export function SampleUrls() {
   return (
-    <div className="flex justify-start flex-wrap gap-2">
+    <div className="flex flex-wrap justify-start gap-2">
       <ExampleDoc
         id="d9udW60cLOok"
         title="Tweet JSON"
