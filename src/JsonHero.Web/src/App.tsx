@@ -16,6 +16,7 @@ import JsonIndexRoute from "~/routes/j/id/Index";
 import JsonTerminalRoute from "~/routes/j/id/Terminal";
 import JsonTreeRoute from "~/routes/j/id/Tree";
 import Privacy from "~/routes/Privacy";
+import { LanguageProvider } from "~/i18n";
 import { getStarCount } from "~/services/api";
 
 function AppChrome() {
@@ -65,16 +66,18 @@ function RootProviders() {
   const forceDarkMode = location.pathname === "/";
 
   return (
-    <ThemeProvider
-      specifiedTheme={initialTheme}
-      themeOverride={forceDarkMode ? "dark" : queryTheme}
-    >
-      <PreferencesProvider>
-        <StarCountProvider starCount={starCount}>
-          <AppChrome />
-        </StarCountProvider>
-      </PreferencesProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider
+        specifiedTheme={initialTheme}
+        themeOverride={forceDarkMode ? "dark" : queryTheme}
+      >
+        <PreferencesProvider>
+          <StarCountProvider starCount={starCount}>
+            <AppChrome />
+          </StarCountProvider>
+        </PreferencesProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }
 

@@ -1,0 +1,387 @@
+import en from "./en";
+
+const zhTW: typeof en = {
+  ...en,
+  action: {
+    ...en.action,
+    copied: "已複製！",
+    copyFailed: "複製失敗",
+    download: "下載",
+    go: "開始",
+    home: "首頁",
+    reset: "重設",
+    save: "儲存",
+    star: "加星",
+  },
+  Copy: "複製",
+  Delete: "刪除",
+  Download: "下載",
+  Export: "匯出",
+  Go: "開始",
+  New: "新增",
+  Reset: "重設",
+  Save: "儲存",
+  Share: "分享",
+  Sorry: "抱歉",
+  Star: "加星",
+  Language: "語言",
+  Type: "類型",
+  Preview: "預覽",
+  Bytes: "位元組",
+  home: {
+    ...en.home,
+    header: {
+      ...en.home.header,
+      features: "功能",
+      inspect: "檢視",
+      openJson: "開啟 JSON",
+      tryNow: "立即試用",
+      workflow: "流程",
+    },
+    hero: {
+      ...en.home.hero,
+      eyebrow: "開源 JSON 工作台",
+      title: "讓複雜 JSON 變得清晰易讀。",
+      subtitle: "讓原始 JSON 更易讀。",
+      description:
+        "貼上回應、拖入檔案，或開啟共享文件。JsonHero.NET 會把原始 JSON 變成可搜尋、帶預覽的工作台，適合 API、資料載荷和正式環境裡的奇怪邊界情況。",
+      stats: {
+        fileLimit: {
+          value: "1MB",
+          label: "本機檔案限制",
+        },
+        schema: {
+          value: "2020-12",
+          label: "Schema 草案",
+        },
+        start: {
+          value: "3 種",
+          label: "開始方式",
+        },
+      },
+    },
+    samples: {
+      ...en.home.samples,
+      prompt: "沒有 JSON？試試範例",
+    },
+    search: {
+      ...en.home.search,
+      title: "快速搜尋整個 JSON 檔案",
+      description:
+        "以極快速度搜尋 JSON 檔案中的任何內容。結合模糊比對和鍵盤快速鍵，讓檔案導覽更快。",
+      placeholder: "輸入 JSON URL 或在這裡貼上 JSON...",
+    },
+    collaborate: {
+      ...en.home.collaborate,
+      title: "和全世界協作，也包括你自己",
+      description:
+        "輕鬆分享你的 JSON 文件。連結可以直接指向你正在檢視的位置，也可以留到晚上慢慢瀏覽。",
+    },
+    infoBox: {
+      ...en.home.infoBox,
+      titleSuffix: "不只是字串",
+      description: "我們會判斷字串代表什麼，你就不用自己猜了。",
+    },
+    preview: {
+      ...en.home.preview,
+      inferredShape: "推斷結構",
+      liveDocument: "即時文件",
+      pathCopied: "已複製路徑",
+      relatedValues: "相關值",
+      relatedValuesCount: "27 個相符",
+      searchLabel: "搜尋：customer.email",
+      shareDescription:
+        "連結可以開啟同一份文件和選取的路徑，讓評審始終停留在精確值上。",
+      shareTitle: "分享精確狀態",
+      typeValue: "電子郵件字串",
+    },
+    workflow: {
+      ...en.home.workflow,
+      eyebrow: "從原始回應到可評審資料",
+      title: "為越來越大的 JSON 提供更清爽的工作流程。",
+      description:
+        "JsonHero.NET 把你通常手動組起來的檢查工具放進一個專注的工作台。",
+      preview: {
+        ...en.home.workflow.preview,
+        eyebrow: "預覽",
+        title: "自動識別有意義的字串",
+        description:
+          "日期、顏色、URL、圖片和巢狀 JSON 會獲得更豐富的預覽，讓值看起來像資料，而不只是文字。",
+      },
+      search: {
+        ...en.home.workflow.search,
+        eyebrow: "搜尋",
+        title: "快速跳轉整個回應",
+        description:
+          "模糊搜尋和路徑感知導覽能幫你穿過大型載荷，不必在原始程式碼裡來回捲動。",
+      },
+      share: {
+        ...en.home.workflow.share,
+        eyebrow: "分享",
+        title: "讓評審固定在精確路徑上",
+        description:
+          "分享文件狀態時會保留選取的節點，之後也能回到同一個值。",
+      },
+    },
+    features: {
+      ...en.home.features,
+      eyebrow: "為檢查而建構",
+      title: "足夠處理凌亂 API 資料。",
+      description:
+        "檢視器把導覽、Schema 理解、預覽和分享都放在文件旁邊，讓你專注於載荷本身。",
+      fuzzySearch: {
+        ...en.home.features.fuzzySearch,
+        title: "模糊搜尋",
+        description:
+          "在大型載荷中尋找相符的 key 和 value，然後直接跳到結果。",
+      },
+      keyboard: {
+        ...en.home.features.keyboard,
+        title: "鍵盤快速鍵",
+        description:
+          "穿梭欄檢視、複製路徑，在檔案變慢時仍然保持檢查速度。",
+      },
+      darkMode: {
+        ...en.home.features.darkMode,
+        title: "預設深色",
+        description:
+          "首頁和檢視器都為長時間檢查做了調校，減少視覺噪音。",
+      },
+      codeView: {
+        ...en.home.features.codeView,
+        title: "程式碼檢視",
+        description: "輕鬆切換到程式碼檢視，看起來更像專業玩家。",
+      },
+      schema: {
+        ...en.home.features.schema,
+        description:
+          "從正在評審的文件中推斷 JSON Schema draft 2020-12 結構。",
+      },
+      deepLinks: {
+        ...en.home.features.deepLinks,
+        title: "深度連結",
+        description:
+          "分享文件時保留目前路徑，協作者開啟後會落在同一個值上。",
+      },
+      vsCode: {
+        ...en.home.features.vsCode,
+        title: "更喜歡程式碼檢視或 VS Code？",
+        description:
+          "需要原始文件時可以切換到程式碼檢視。繼承的 VS Code 擴充功能屬於上游專案，且與 JsonHero.NET 沒有關聯。",
+        link: "VS Code 擴充功能",
+      },
+      openSource: {
+        ...en.home.features.openSource,
+        title: "開源",
+        description:
+          "你可以自行執行 JsonHero.NET、檢查程式碼，或在 GitHub 上 fork 目前的儲存庫。",
+      },
+    },
+    edgeCases: {
+      ...en.home.edgeCases,
+      title: "發現邊界情況",
+      description:
+        "欄位有時可能是 null、出現意外值，甚至完全缺失。檢視任意欄位的相關值，提前了解可能出現的狀況；也可以查看推斷出的 JSON Schema，了解你的 JSON 實際結構。",
+    },
+    githubBanner: {
+      ...en.home.githubBanner,
+      cta: "在 GitHub 上給我們加星 👉",
+    },
+    footer: {
+      ...en.home.footer,
+      privacy: "隱私",
+    },
+  },
+  privacy: {
+    ...en.privacy,
+    title: "隱私聲明",
+    lastUpdated: "最後更新於 2026 年 6 月 27 日",
+    intro:
+      "本 jsonhero.net 隱私聲明說明你使用本服務或聯絡維護者時，資訊可能如何以及為何被收集、儲存、使用和共享。",
+    collection: {
+      ...en.privacy.collection,
+      title: "我們收集哪些資訊？",
+      body: "當你聯絡我們或使用服務時，我們會收集你自願提供的個人資訊。我們也可能收集裝置和使用資訊，例如瀏覽器類型、來源 URL 以及服務內活動，用於安全、營運、分析和報告。",
+    },
+    processing: {
+      ...en.privacy.processing,
+      title: "我們如何處理資訊？",
+      body: "我們處理資訊是為了提供、改善和管理服務、與你溝通、防止詐欺並遵守法律。我們會在具備有效法律依據時處理資訊。",
+    },
+    sharing: {
+      ...en.privacy.sharing,
+      title: "我們何時共享資訊？",
+      body: "在特定業務情境中，例如合併、融資或收購，或為履行法律義務，我們可能會共享資訊。",
+    },
+    cookies: {
+      ...en.privacy.cookies,
+      title: "Cookie",
+      body: "我們可能使用 Cookie 和類似追蹤技術來存取或儲存資訊。多數瀏覽器允許你刪除或拒絕 Cookie，但這麼做可能會影響服務行為。",
+    },
+    rights: {
+      ...en.privacy.rights,
+      title: "你的權利",
+      body: "依你所在的位置，你可能有權存取、更正、刪除、限制或反對處理個人資訊。如有隱私問題或請求，請在 jsonhero.net 儲存庫中提交 issue。",
+    },
+  },
+  viewer: {
+    ...en.viewer,
+    loading: "正在載入 JSON 文件...",
+    desktopOnly: {
+      ...en.viewer.desktopOnly,
+      title: "JsonHero.NET 目前僅支援桌面端",
+      subtitle: "（目前如此！）",
+      backToHome: "返回首頁",
+    },
+    search: {
+      ...en.viewer.search,
+      trigger: "搜尋…",
+      placeholder: "搜尋 JSON…",
+      loading: "載入中…",
+      oneResult: "1 筆結果",
+      results: "{count} 筆結果",
+      noResults: "沒有找到「{query}」的結果",
+      hintSelect: "選取",
+      hintNavigate: "導覽",
+      hintClose: "關閉",
+    },
+    sidebar: {
+      ...en.viewer.sidebar,
+      columnView: "欄檢視",
+      jsonView: "JSON 檢視",
+      treeView: "樹狀檢視",
+    },
+    path: {
+      ...en.viewer.path,
+      placeholder: "輸入 JSON 路徑",
+    },
+    tree: {
+      ...en.viewer.tree,
+      index: "索引 {index}",
+    },
+  },
+  terminal: {
+    ...en.terminal,
+    title: "終端機檢視",
+    comingSoon: "即將推出",
+  },
+  footer: {
+    ...en.footer,
+    navigate: "導覽",
+    history: "歷史",
+    resetPath: "重設路徑",
+    selected: "選取",
+    node: "節點",
+  },
+  preferences: {
+    ...en.preferences,
+    title: "偏好設定",
+    indent: "縮排",
+    theme: "主題",
+    darkMode: "深色模式",
+    lightMode: "淺色模式",
+    toggleTheme: "切換主題",
+  },
+  header: {
+    ...en.header,
+    homepageLabel: "JsonHero.NET 首頁",
+    deleteConfirm:
+      "這將從 JsonHero.NET 永久刪除此文件，確定要繼續嗎？",
+  },
+  documentTitle: {
+    ...en.documentTitle,
+    placeholder: "命名你的 JSON 檔案",
+  },
+  share: {
+    ...en.share,
+    visibilityNotice: "任何擁有此連結的人都可以檢視這個 JSON 檔案。",
+    includesPath: "連結包含路徑",
+  },
+  upload: {
+    ...en.upload,
+    dropActive: "放開即可開啟…",
+    dropPrompt: "將 JSON 檔案拖到這裡，或點選選取",
+  },
+  infoHeader: {
+    ...en.infoHeader,
+    canBeNull: "可以是 null",
+    nothing: "無內容",
+    nothingSelected: "未選取任何內容",
+  },
+  relatedValues: {
+    ...en.relatedValues,
+    title: "相關值",
+  },
+  properties: {
+    ...en.properties,
+    title: "屬性",
+    formattedValue: "格式化值",
+  },
+  preview: {
+    ...en.preview,
+    loading: "載入中…",
+    openInTab: "在分頁中開啟",
+    unsupportedAudio: "抱歉，你的瀏覽器不支援嵌入式音訊。",
+    unsupportedVideo: "抱歉，你的瀏覽器不支援嵌入式影片。",
+  },
+  format: {
+    ...en.format,
+    items: {
+      ...en.format.items,
+      one: "1 項",
+      many: "{count} 項",
+    },
+    fields: {
+      ...en.format.fields,
+      one: "1 個欄位",
+      many: "{count} 個欄位",
+    },
+  },
+  error: {
+    ...en.error,
+    unknown: "發生未知錯誤。",
+    genericSuffix: "！發生錯誤...",
+    notFound: "找不到頁面 {path}",
+    jsonUrlRequired: "jsonUrl 為必填項。",
+    rawJsonRequired: "rawJson 為必填項。",
+    urlRequired: "url 為必填項。",
+    provideUrlOrJ: "請提供 url 或 j。",
+    provideUrlOrJson: "請提供 url 或 json。",
+    invalidTheme: "主題必須為 dark 或 light。",
+  },
+  Images: "圖片",
+  Dates: "日期",
+  Colors: "顏色",
+  URLs: "URL",
+  Videos: "影片",
+  array: "陣列",
+  bool: "布林值",
+  color: "顏色",
+  contrastRatio: "對比度",
+  date: "日期",
+  datetime: "日期時間",
+  dark: "深色",
+  email: "電子郵件",
+  fileSize: "檔案大小",
+  float: "浮點數",
+  hash: "雜湊",
+  hex: "十六進位",
+  hostname: "主機名稱",
+  href: "連結",
+  hsl: "HSL",
+  int: "整數",
+  luminosity: "亮度",
+  mimeType: "MIME 類型",
+  object: "物件",
+  origin: "來源",
+  pathname: "路徑",
+  protocol: "協定",
+  rgb: "RGB",
+  root: "根",
+  search: "查詢",
+  string: "字串",
+  timestamp: "時間戳",
+  time: "時間",
+};
+
+export default zhTW;

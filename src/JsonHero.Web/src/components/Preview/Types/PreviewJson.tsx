@@ -5,9 +5,11 @@ import { OpenInNewWindow } from "~/components/OpenInWindow";
 import { Body } from "~/components/Primitives/Body";
 import { PreviewBox } from "../PreviewBox";
 import type { PreviewJson as PreviewJsonData } from "./preview.types";
+import { useTranslation } from "~/i18n";
 
 export function PreviewJson({ preview }: { preview: PreviewJsonData }) {
   const [hovering, setHovering] = useState(false);
+  const { t } = useTranslation();
   const jsonHeroUrl = new URL(
     `/actions/createFromUrl?jsonUrl=${encodeURIComponent(preview.url)}`,
     window.location.origin
@@ -38,7 +40,7 @@ export function PreviewJson({ preview }: { preview: PreviewJsonData }) {
             url={jsonHeroUrl.href}
             className="bg-slate-200 hover:bg-slate-300 h-fit px-2 py-0.5 rounded-sm transition dark:text-white dark:bg-slate-700 dark:hover:bg-slate-600"
           >
-            <Body>Open in tab</Body>
+            <Body>{t("preview.openInTab")}</Body>
           </OpenInNewWindow>
         </div>
       </div>

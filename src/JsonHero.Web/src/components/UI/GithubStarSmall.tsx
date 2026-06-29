@@ -3,6 +3,7 @@ import { GithubIconSimple } from "../Icons/GithubIconSimple";
 import { Body } from "../Primitives/Body";
 import { useStarCount } from "../StarCountProvider";
 import clsx from "clsx";
+import { useTranslation } from "~/i18n";
 
 export type GithubStarSmallProps = {
   className?: string;
@@ -10,6 +11,7 @@ export type GithubStarSmallProps = {
 
 export function GithubStarSmall({ className }: GithubStarSmallProps) {
   const starCount = useStarCount();
+  const { t } = useTranslation();
 
   return (
     <a
@@ -24,7 +26,7 @@ export function GithubStarSmall({ className }: GithubStarSmallProps) {
       <div className="flex items-center gap-1.5 pl-1 rounded-l-sm">
         <GithubIconSimple className="w-4 h-4 ml-1 text-slate-700 dark:text-white transition"></GithubIconSimple>
         <Body className="font-semibold text-slate-800 dark:text-slate-100">
-          Star
+          {t("Star")}
         </Body>
       </div>
       {starCount && (

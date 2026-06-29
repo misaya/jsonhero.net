@@ -7,9 +7,11 @@ import { Body } from "./Primitives/Body";
 import { ThemeModeToggler } from "./ThemeModeToggle";
 import { GithubStarSmall } from "./UI/GithubStarSmall";
 import { IndentPreference } from "~/components/IndentPreference";
+import { useTranslation } from "~/i18n";
 
 export function Footer() {
   const { minimal } = useJsonDoc();
+  const { t } = useTranslation();
 
   return (
     <footer className="flex items-center justify-between w-screen h-[32px] flex-shrink-0 bg-slate-200 dark:bg-slate-800 border-t-[1px] border-slate-400 transition dark:border-slate-600">
@@ -17,29 +19,29 @@ export function Footer() {
         <li className="flex items-center">
           <ArrowKeysIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="pl-2 pr-4 text-slate-800 transition dark:text-white">
-            Navigate
+            {t("footer.navigate")}
           </Body>
         </li>
         <li className="flex items-center">
           <SquareBracketsIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="pl-2 pr-4 text-slate-800 transition dark:text-white">
-            History
+            {t("footer.history")}
           </Body>
         </li>
         <li className="flex items-center">
           <EscapeKeyIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="pl-2 pr-4 text-slate-800 transition dark:text-white whitespace-nowrap">
-            Reset path
+            {t("footer.resetPath")}
           </Body>
         </li>
         <li className="flex items-center">
           <CopyShortcutIcon className="transition text-slate-300 dark:text-slate-500" />
           <Body className="flex pl-2 pr-4 text-slate-800 transition dark:text-white">
-            Copy&nbsp;
+            {t("Copy")}&nbsp;
             <span className="hidden lg:flex whitespace-nowrap">
-              selected&nbsp;
+              {t("footer.selected")}&nbsp;
             </span>
-            node
+            {t("footer.node")}
           </Body>
         </li>
       </ol>

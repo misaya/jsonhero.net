@@ -18,6 +18,7 @@ import { JsonDocProvider } from "~/hooks/useJsonDoc";
 import { JsonSchemaProvider } from "~/hooks/useJsonSchema";
 import { JsonSearchProvider } from "~/hooks/useJsonSearch";
 import { JsonTreeViewProvider } from "~/hooks/useJsonTree";
+import { useTranslation } from "~/i18n";
 import { ApiError, getDocument } from "~/services/api";
 import { JSONDocument } from "~/types/jsonDoc";
 
@@ -33,6 +34,7 @@ export default function JsonDocumentRoute() {
   const location = useLocation();
   const [loaderData, setLoaderData] = useState<LoaderData>();
   const [error, setError] = useState<{ status: number; message: string }>();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!id) {
@@ -66,7 +68,7 @@ export default function JsonDocumentRoute() {
           message:
             reason instanceof Error
               ? reason.message
-              : "Unknown error occurred.",
+              : t("error.unknown"),
         });
       });
 
@@ -88,7 +90,7 @@ export default function JsonDocumentRoute() {
   if (!loaderData) {
     return (
       <div className="flex h-screen w-screen items-center justify-center bg-[rgb(56,52,139)] text-white">
-        <LargeTitle>Loading JSON document...</LargeTitle>
+        <LargeTitle>{t("viewer.loading")}</LargeTitle>
       </div>
     );
   }
@@ -109,15 +111,15 @@ export default function JsonDocumentRoute() {
                   <div className="fixed z-50 block h-screen w-screen bg-black/80 text-white md:hidden">
                     <div className="flex h-full flex-col items-center justify-center text-center">
                       <LargeTitle>
-                        JsonHero.NET only works on desktop
+                        {t("viewer.desktopOnly.title")}
                       </LargeTitle>
                       <LargeTitle>👇</LargeTitle>
-                      <Body>(For now!)</Body>
+                      <Body>{t("viewer.desktopOnly.subtitle")}</Body>
                       <Link
                         to="/"
                         className="mt-8 rounded-sm bg-lime-500 px-4 py-2 text-white"
                       >
-                        Back to Home
+                        {t("viewer.desktopOnly.backToHome")}
                       </Link>
                     </div>
                   </div>
@@ -177,6 +179,10 @@ function DocumentError({
   error: { status: number; message: string };
   id?: string;
 }) {
+  const { t } = useTranslation();
+
+  const translatedMessage = translateErrorMessage(error.message, t);
+
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-[rgb(56,52,139)]">
       <div className="w-2/3">
@@ -188,25 +194,44 @@ function DocumentError({
         </div>
         <div className="text-center leading-snug text-white">
           <ExtraLargeTitle className="mb-8 text-slate-200">
-            <b>Sorry</b>! Something went wrong...
+            <b>{t("Sorry")}</b>
+            {t("error.genericSuffix")}
           </ExtraLargeTitle>
           <SmallSubtitle className="mb-8 text-slate-200">
             {error.status === 404 ? (
               <>
-                We couldn't find the page <b>/j/{id}</b>
+                {t("error.notFound", {
+                  path: `/j/${id}`,
+                })}
               </>
             ) : (
-              error.message
+              translatedMessage
             )}
           </SmallSubtitle>
           <Link
             to="/"
             className="mx-auto w-24 cursor-pointer whitespace-nowrap rounded-sm bg-lime-500 px-5 py-1 text-lg font-bold uppercase text-slate-900 opacity-90 transition hover:opacity-100"
           >
-            HOME
+            {t("action.home")}
           </Link>
         </div>
       </div>
     </div>
   );
+}
+
+function translateErrorMessage(
+  message: string,
+  t: (key: string) => string
+): string {
+  const errorKeyByMessage: Record<string, string> = {
+    "jsonUrl is required.": "error.jsonUrlRequired",
+    "rawJson is required.": "error.rawJsonRequired",
+    "url is required.": "error.urlRequired",
+    "Provide either url or j.": "error.provideUrlOrJ",
+    "Provide either url or json.": "error.provideUrlOrJson",
+    "Theme must be dark or light.": "error.invalidTheme",
+  };
+
+  return t(errorKeyByMessage[message] ?? message);
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigation } from "react-router-dom";
+import { useTranslation } from "~/i18n";
 
 export type UrlFormProps = {
   className?: string;
@@ -8,6 +9,7 @@ export type UrlFormProps = {
 export function UrlForm({ className }: UrlFormProps) {
   const transition = useNavigation();
   const [inputValue, setInputValue] = useState("");
+  const { t } = useTranslation();
 
   const isNotIdle = transition.state !== "idle";
   const isButtonDisabled = !inputValue.length || isNotIdle;
@@ -24,7 +26,7 @@ export function UrlForm({ className }: UrlFormProps) {
           name="jsonUrl"
           id="jsonUrl"
           className="block min-w-0 flex-grow rounded-l-sm border border-white/10 bg-slate-950/70 px-3 py-2.5 text-base text-slate-100 transition duration-300 placeholder:text-slate-500 focus:border-lime-300 focus:ring-lime-300"
-          placeholder="Enter a JSON URL or paste in JSON here..."
+          placeholder={t("home.search.placeholder")}
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
         />
@@ -36,7 +38,7 @@ export function UrlForm({ className }: UrlFormProps) {
           }`}
           disabled={isButtonDisabled}
         >
-          {isNotIdle ? "..." : "Go"}
+          {isNotIdle ? "..." : t("Go")}
         </button>
       </div>
     </form>

@@ -11,6 +11,7 @@ import {
 } from "~/utilities/relatedValues";
 import { PathPreview } from "./PathPreview";
 import { ChevronDownIcon, ChevronRightIcon } from "@heroicons/react/outline";
+import { localeForLanguage, useLanguage, useTranslation } from "~/i18n";
 
 export type RelatedValuesProps = {
   relatedPaths: string[];
@@ -20,6 +21,7 @@ export function RelatedValues({ relatedPaths }: RelatedValuesProps) {
   const [json] = useJson();
   const { selectedNodeId } = useJsonColumnViewState();
   const [openId, setOpenId] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const relatedValuesGroups = useMemo<Array<RelatedValuesGroup>>(() => {
     if (!selectedNodeId) {
@@ -41,7 +43,7 @@ export function RelatedValues({ relatedPaths }: RelatedValuesProps) {
       {relatedValuesGroups.length > 0 && (
         <div className="my-4">
           <Title className="mb-2 text-slate-700 transition dark:text-slate-400">
-            Related values
+            {t("relatedValues.title")}
           </Title>
           {relatedValuesGroups.map((relatedValuesGroup, i) => {
             return (
@@ -114,10 +116,15 @@ function RelatedValuesGroupItem({
 
 function PathLink({ path, enabled }: { path: string; enabled: boolean }) {
   const [json] = useJson();
+  const { language } = useLanguage();
+  const { t } = useTranslation();
 
   const selectedNodes = useMemo(() => {
-    return generateNodesToPath(json, path);
-  }, [json, path]);
+    return generateNodesToPath(json, path, {
+      locale: localeForLanguage(language),
+      t,
+    });
+  }, [json, path, language, t]);
 
   return (
     <PathPreview nodes={selectedNodes} maxComponents={4} enabled={enabled} />

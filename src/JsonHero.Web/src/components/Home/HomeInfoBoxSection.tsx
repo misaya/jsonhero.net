@@ -1,3 +1,4 @@
+import { useTranslation } from "~/i18n";
 import { AutoplayVideo } from "../AutoplayVideo";
 
 import edgeCasesVideo from "~/assets/home/UncoverEdgeCases.mp4";
@@ -6,29 +7,28 @@ import shareVideo from "~/assets/home/JsonHeroShare.mp4";
 
 const workflowItems = [
   {
-    eyebrow: "Preview",
-    title: "Recognize useful strings automatically",
-    description:
-      "Dates, colors, URLs, images, and nested JSON get richer previews so a value reads like data, not just text.",
+    eyebrow: "home.workflow.preview.eyebrow",
+    title: "home.workflow.preview.title",
+    description: "home.workflow.preview.description",
     video: edgeCasesVideo,
   },
   {
-    eyebrow: "Search",
-    title: "Jump across a whole response quickly",
-    description:
-      "Fuzzy search and path-aware navigation help you move through large payloads without scrolling through raw code.",
+    eyebrow: "home.workflow.search.eyebrow",
+    title: "home.workflow.search.title",
+    description: "home.workflow.search.description",
     video: searchVideo,
   },
   {
-    eyebrow: "Share",
-    title: "Keep reviews attached to the exact path",
-    description:
-      "Share a document state with the selected node preserved, then return to that same value later.",
+    eyebrow: "home.workflow.share.eyebrow",
+    title: "home.workflow.share.title",
+    description: "home.workflow.share.description",
     video: shareVideo,
   },
 ];
 
 export function HomeInfoBoxSection() {
+  const { t } = useTranslation();
+
   return (
     <section
       className="border-b border-white/10 bg-slate-950 px-4 py-6 md:py-24"
@@ -38,15 +38,14 @@ export function HomeInfoBoxSection() {
         <div className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
           <div>
             <p className="mb-3 text-sm font-black uppercase tracking-normal text-lime-200">
-              From raw response to reviewable data
+              {t("home.workflow.eyebrow")}
             </p>
             <h2 className="max-w-2xl font-sans text-5xl font-black leading-tight text-white">
-              A cleaner workflow for JSON that keeps getting bigger.
+              {t("home.workflow.title")}
             </h2>
           </div>
           <p className="max-w-md text-lg leading-7 text-slate-400">
-            JsonHero.NET brings the inspection tools you normally assemble by
-            hand into one focused workspace.
+            {t("home.workflow.description")}
           </p>
         </div>
         <div className="grid gap-5 lg:grid-cols-3">
@@ -64,17 +63,17 @@ export function HomeInfoBoxSection() {
               <div className="p-5">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="text-xs font-black uppercase tracking-normal text-lime-200">
-                    {item.eyebrow}
+                    {t(item.eyebrow)}
                   </span>
                   <span className="font-mono text-xs text-slate-500">
                     0{index + 1}
                   </span>
                 </div>
                 <h3 className="mb-3 text-2xl font-black leading-7 text-white">
-                  {item.title}
+                  {t(item.title)}
                 </h3>
                 <p className="text-base leading-7 text-slate-400">
-                  {item.description}
+                  {t(item.description)}
                 </p>
               </div>
             </article>

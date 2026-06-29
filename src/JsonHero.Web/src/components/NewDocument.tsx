@@ -2,8 +2,11 @@ import { DragAndDropForm } from "./DragAndDropForm";
 import { Title } from "./Primitives/Title";
 import { SampleUrls } from "./SampleUrls";
 import { UrlForm } from "./UrlForm";
+import { useTranslation } from "~/i18n";
 
 export function NewDocument() {
+  const { t } = useTranslation();
+
   return (
     <div className="w-96 max-w-[calc(100vw-2rem)] rounded-sm border border-white/10 bg-slate-900 p-4 text-white shadow-2xl shadow-slate-950/50 transition">
       <div className="flex flex-col">
@@ -12,7 +15,7 @@ export function NewDocument() {
 
         <div className="mt-4 border-t border-white/10 pt-4">
           <Title className="mb-3 text-sm uppercase tracking-normal text-slate-400">
-            No JSON? Try a sample
+            {t("home.samples.prompt")}
           </Title>
           <SampleUrls />
         </div>

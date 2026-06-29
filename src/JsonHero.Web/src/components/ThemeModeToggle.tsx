@@ -2,9 +2,11 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { MoonIcon } from "./Icons/MoonIcon";
 import { SunIcon } from "./Icons/SunIcon";
 import { useTheme } from "./ThemeProvider";
+import { useTranslation } from "~/i18n";
 
 export function ThemeModeToggler() {
   const [theme, setTheme] = useTheme();
+  const { t } = useTranslation();
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -21,6 +23,8 @@ export function ThemeModeToggler() {
           : "text-white hover:bg-slate-700"
       }`}
       onClick={toggleTheme}
+      aria-label={t("preferences.toggleTheme")}
+      title={t("preferences.toggleTheme")}
     >
       <SwitchIcon />
     </button>

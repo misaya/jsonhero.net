@@ -1,4 +1,6 @@
+import { useTranslation } from "~/i18n";
 import { Logo } from "../Icons/Logo";
+import { LanguageSelect } from "../LanguageSelect";
 import { NewDocument } from "../NewDocument";
 import { GithubStarSmall } from "../UI/GithubStarSmall";
 import {
@@ -9,6 +11,8 @@ import {
 } from "../UI/Popover";
 
 export function HomeHeader({ fixed }: { fixed?: boolean }) {
+  const { t } = useTranslation();
+
   return (
     <header
       className={`${
@@ -23,23 +27,26 @@ export function HomeHeader({ fixed }: { fixed?: boolean }) {
         </div>
         <nav className="hidden items-center gap-7 text-sm font-bold text-slate-300 md:flex">
           <a className="transition hover:text-white" href="#inspector">
-            Inspect
+            {t("home.header.inspect")}
           </a>
           <a className="transition hover:text-white" href="#workflow">
-            Workflow
+            {t("home.header.workflow")}
           </a>
           <a className="transition hover:text-white" href="#features">
-            Features
+            {t("home.header.features")}
           </a>
         </nav>
         <ol className="flex items-center gap-2">
+          <li className="hidden lg:block">
+            <LanguageSelect variant="dark" />
+          </li>
           <li className="hidden sm:block">
             <GithubStarSmall className="rounded-sm border border-white/10 bg-white/[0.04] hover:bg-white/[0.08] dark:hover:bg-white/[0.08]" />
           </li>
           <Popover>
             <PopoverTrigger>
               <button className="inline-flex h-9 items-center justify-center rounded-sm bg-lime-300 px-4 text-sm font-black uppercase tracking-normal text-slate-950 shadow-[0_0_24px_rgba(190,242,100,0.18)] transition hover:bg-lime-200 focus:outline-none focus:ring-2 focus:ring-lime-300 focus:ring-offset-2 focus:ring-offset-slate-950">
-                Open JSON
+                {t("home.header.openJson")}
               </button>
             </PopoverTrigger>
             <PopoverContent side="bottom" sideOffset={20}>

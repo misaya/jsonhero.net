@@ -10,10 +10,11 @@ import {
 
 import { SearchResult } from "@jsonhero/fuzzy-json-search";
 import SearchWorker from "~/worker/search.worker?worker";
+import { localeForLanguage, useLanguage } from "~/i18n";
 
 export type InitializeIndexEvent = {
   type: "initialize-index";
-  payload: { json: unknown };
+  payload: { json: unknown; locale?: string; language?: string };
 };
 
 export type SearchEvent = {
@@ -177,6 +178,7 @@ export function JsonSearchProvider({
   children: React.ReactNode;
 }) {
   const [json] = useJson();
+  const { language } = useLanguage();
 
   const [state, dispatch] = useReducer<
     React.Reducer<JsonSearchState, JsonSearchAction>
@@ -205,9 +207,7 @@ export function JsonSearchProvider({
       return;
     }
 
-    if (workerRef.current) {
-      return;
-    }
+    workerRef.current?.terminate();
 
     const worker = new SearchWorker();
     worker.onmessage = handleWorkerMessage;
@@ -218,9 +218,11 @@ export function JsonSearchProvider({
       type: "initialize-index",
       payload: {
         json,
+        language,
+        locale: localeForLanguage(language),
       },
     });
-  }, [json, workerRef.current]);
+  }, [json, language, handleWorkerMessage]);
 
   useEffect(() => {
     if (state.status !== "searching") {

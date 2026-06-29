@@ -1,6 +1,9 @@
+import { useTranslation } from "~/i18n";
 import { NewFile } from "../NewFile";
 
 export function HomeHeroSection() {
+  const { t } = useTranslation();
+
   return (
     <section
       className="relative flex items-center overflow-hidden border-b border-white/10 bg-slate-950 px-4 pb-6 pt-[72px] sm:pt-20 lg:min-h-[82vh]"
@@ -12,33 +15,33 @@ export function HomeHeroSection() {
         <div className="max-w-2xl">
           <div className="mb-4 inline-flex items-center gap-2 rounded-sm border border-lime-300/30 bg-lime-300/10 px-3 py-1 text-xs font-black uppercase tracking-normal text-lime-200">
             <span className="h-2 w-2 rounded-full bg-lime-300" />
-            Open source JSON workspace
+            {t("home.hero.eyebrow")}
           </div>
           <h1
             className="mb-4 max-w-[660px] font-sans text-5xl font-black leading-[0.95] text-white sm:text-6xl"
-            style={{
-              lineHeight: 0.95,
-            }}
+            style={{ lineHeight: 0.95 }}
           >
-            Make complex JSON feel readable.
+            {t("home.hero.title")}
           </h1>
           <p className="mb-5 max-w-xl font-sans text-lg leading-7 text-slate-300">
-            Paste a response, drop a file, or open a shared document. JsonHero.NET
-            turns raw JSON into a searchable, preview-rich workspace for APIs,
-            data payloads, and strange production edge cases.
+            {t("home.hero.description")}
           </p>
           <div className="mb-5 grid grid-cols-3 gap-3 text-sm text-slate-300 sm:max-w-xl">
             {[
-              ["1MB", "local file limit"],
-              ["2020-12", "schema draft"],
-              ["3 ways", "to start"],
-            ].map(([value, label]) => (
+              ["home.hero.stats.fileLimit.value", "home.hero.stats.fileLimit.label"],
+              ["home.hero.stats.schema.value", "home.hero.stats.schema.label"],
+              ["home.hero.stats.start.value", "home.hero.stats.start.label"],
+            ].map(([valueKey, labelKey]) => (
               <div
                 className="rounded-sm border border-white/10 bg-white/[0.04] p-3"
-                key={label}
+                key={labelKey}
               >
-                <div className="font-mono text-lg text-lime-200">{value}</div>
-                <div className="mt-1 leading-4 text-slate-400">{label}</div>
+                <div className="font-mono text-lg text-lime-200">
+                  {t(valueKey)}
+                </div>
+                <div className="mt-1 leading-4 text-slate-400">
+                  {t(labelKey)}
+                </div>
               </div>
             ))}
           </div>
@@ -64,12 +67,14 @@ const treeRows = [
 ];
 
 function ProductPreview() {
+  const { t } = useTranslation();
+
   return (
     <div className="rounded-sm border border-white/10 bg-slate-900/90 shadow-2xl shadow-slate-950/40 backdrop-blur">
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
         <div>
           <div className="text-xs font-bold uppercase text-slate-400">
-            Live document
+            {t("home.preview.liveDocument")}
           </div>
           <div className="text-lg font-black text-white">checkout-session.json</div>
         </div>
@@ -80,7 +85,7 @@ function ProductPreview() {
       <div className="grid min-h-[430px] lg:grid-cols-[210px_minmax(0,1fr)]">
         <aside className="border-b border-white/10 bg-slate-950/70 p-3 lg:border-b-0 lg:border-r lg:border-white/10">
           <div className="mb-3 rounded-sm border border-white/10 bg-white/[0.04] px-3 py-2 font-mono text-xs text-slate-300">
-            Search: customer.email
+            {t("home.preview.searchLabel")}
           </div>
           <ol className="space-y-1">
             {treeRows.map((row) => (
@@ -103,10 +108,12 @@ function ProductPreview() {
         <div className="flex flex-col">
           <div className="grid grid-cols-3 border-b border-white/10 text-center text-xs font-bold uppercase text-slate-400">
             <div className="border-r border-white/10 px-3 py-3 text-lime-200">
-              Preview
+              {t("Preview")}
             </div>
-            <div className="border-r border-white/10 px-3 py-3">Schema</div>
-            <div className="px-3 py-3">Share</div>
+            <div className="border-r border-white/10 px-3 py-3">
+              {t("Schema")}
+            </div>
+            <div className="px-3 py-3">{t("Share")}</div>
           </div>
           <div className="grid flex-1 gap-4 p-3 md:grid-cols-[1fr_0.88fr]">
             <div className="rounded-sm border border-white/10 bg-slate-950/80 p-3">
@@ -117,15 +124,21 @@ function ProductPreview() {
                 "ava@example.com"
               </div>
               <dl className="grid gap-3 text-sm">
-                <PreviewStat label="Type" value="Email string" />
-                <PreviewStat label="Related values" value="27 matches" />
-                <PreviewStat label="Path copied" value="$.customer.email" />
+                <PreviewStat label={t("Type")} value={t("home.preview.typeValue")} />
+                <PreviewStat
+                  label={t("home.preview.relatedValues")}
+                  value={t("home.preview.relatedValuesCount")}
+                />
+                <PreviewStat
+                  label={t("home.preview.pathCopied")}
+                  value="$.customer.email"
+                />
               </dl>
             </div>
             <div className="space-y-3">
               <div className="rounded-sm border border-white/10 bg-white/[0.04] p-3">
                 <div className="mb-3 text-xs font-bold uppercase text-slate-500">
-                  Inferred shape
+                  {t("home.preview.inferredShape")}
                 </div>
                 <div className="space-y-1.5 font-mono text-xs text-slate-300">
                   <CodeLine color="text-sky-200" text='"customer": {' />
@@ -136,11 +149,10 @@ function ProductPreview() {
               </div>
               <div className="rounded-sm border border-sky-300/20 bg-sky-300/10 p-3">
                 <div className="mb-1 text-sm font-black text-sky-100">
-                  Share a precise state
+                  {t("home.preview.shareTitle")}
                 </div>
                 <div className="text-sm leading-6 text-slate-300">
-                  Links can open the same document and selected path, so review
-                  stays anchored to the exact value.
+                  {t("home.preview.shareDescription")}
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { Title } from "../Primitives/Title";
+import { localeForLanguage, useLanguage } from "~/i18n";
 
 export type CalendarMonthProps = {
   date: Date;
@@ -24,6 +25,17 @@ function isSameDay(date: Date, otherDate: Date): boolean {
 }
 
 export function CalendarMonth({ date }: CalendarMonthProps) {
+  const { language } = useLanguage();
+  const locale = localeForLanguage(language);
+  const weekdayLabels = useMemo(
+    () =>
+      [2, 3, 4, 5, 6, 7, 8].map((day) =>
+        new Intl.DateTimeFormat(locale, { weekday: "short" }).format(
+          new Date(2023, 0, day)
+        )
+      ),
+    [locale]
+  );
   const days = useMemo<Array<Day>>(() => {
     let days: Array<Day> = [];
 
@@ -80,7 +92,7 @@ export function CalendarMonth({ date }: CalendarMonthProps) {
   return (
     <section className="">
       <Title className="text-left text-slate-800 dark:text-slate-400">
-        {new Intl.DateTimeFormat("en-US", {
+        {new Intl.DateTimeFormat(locale, {
           weekday: "short",
           year: "numeric",
           month: "short",
@@ -93,13 +105,9 @@ export function CalendarMonth({ date }: CalendarMonthProps) {
         }).format(date)}
       </Title>
       <div className="uppercase mt-2 grid text-center tracking-wider grid-cols-7 text-sm leading-6 text-gray-500 dark:text-slate-500">
-        <div>Mon</div>
-        <div>Tue</div>
-        <div>Wed</div>
-        <div>Thu</div>
-        <div>Fri</div>
-        <div>Sat</div>
-        <div>Sun</div>
+        {weekdayLabels.map((label) => (
+          <div key={label}>{label}</div>
+        ))}
       </div>
       <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm ring-1 cursor-default ring-slate-200 dark:ring-slate-600 dark:bg-slate-600">
         {days.map((day, dayIdx) => (
