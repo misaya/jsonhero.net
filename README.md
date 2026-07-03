@@ -80,9 +80,9 @@ curl -X POST http://localhost:5299/api/create.json \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Example",
-    "content": { "foo": "bar" },
+    "json": "{ \"foo\": \"bar\" }",
     "readOnly": false,
-    "ttl": 3600
+    "ttl": "2026-07-10T00:00:00Z"
   }'
 ```
 
@@ -92,8 +92,29 @@ The response includes the document id and local document path:
 {
   "id": "YKKduNySH7Ub",
   "title": "Example",
-  "location": "/j/YKKduNySH7Ub"
+  "jsonUrl": "/j/YKKduNySH7Ub.json"
 }
+```
+
+Create a document from an external URL:
+
+```bash
+curl -X POST http://localhost:5299/api/create.json \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "From URL",
+    "url": "https://jsonplaceholder.typicode.com/todos/1"
+  }'
+```
+
+You can also use GET with query parameters:
+
+```bash
+# Create from a URL
+curl "http://localhost:5299/api/create.json?url=https://jsonplaceholder.typicode.com/todos/1&title=From%20GET"
+
+# Create from JSON (j parameter)
+curl "http://localhost:5299/api/create.json?j=%7B%22hello%22%3A%22world%22%7D&title=Hello"
 ```
 
 ## Development
