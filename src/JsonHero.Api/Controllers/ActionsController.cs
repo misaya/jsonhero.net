@@ -19,6 +19,9 @@ public class ActionsController : ControllerBase
         _urlPreviewService = urlPreviewService;
     }
 
+    private string DocPath(string id) =>
+        $"{HttpContext.Request.PathBase.Value ?? ""}/j/{id}";
+
     /// <summary>POST /actions/createFromUrl</summary>
     [HttpPost("createFromUrl")]
     public async Task<IActionResult> CreateFromUrl([FromForm] string jsonUrl, [FromForm] string? title)
@@ -30,7 +33,7 @@ public class ActionsController : ControllerBase
             ? await _documentService.CreateFromUrlAsync(url.ToString(), title, null, false)
             : await _documentService.CreateFromRawJsonAsync(jsonUrl, title ?? "Untitled", null, false);
 
-        return Redirect($"/j/{document.Id}");
+        return Redirect(DocPath(document.Id));
     }
 
     /// <summary>GET /actions/createFromUrl?utm_source=...</summary>
@@ -44,7 +47,7 @@ public class ActionsController : ControllerBase
             ? await _documentService.CreateFromUrlAsync(url.ToString(), title, null, false)
             : await _documentService.CreateFromRawJsonAsync(jsonUrl, title ?? "Untitled", null, false);
 
-        return Redirect($"/j/{document.Id}");
+        return Redirect(DocPath(document.Id));
     }
 
     /// <summary>POST /actions/createFromFile</summary>
@@ -55,7 +58,7 @@ public class ActionsController : ControllerBase
             return BadRequest(new { error = "rawJson is required." });
 
         var document = await _documentService.CreateFromRawJsonAsync(rawJson, title, null, false);
-        return Redirect($"/j/{document.Id}");
+        return Redirect(DocPath(document.Id));
     }
 
     /// <summary>POST /actions/setTheme</summary>
@@ -92,6 +95,6 @@ public class ActionsController : ControllerBase
         if (document == null)
             return NotFound();
 
-        return Redirect($"/j/{id}");
+        return Redirect(DocPath(id));
     }
 }

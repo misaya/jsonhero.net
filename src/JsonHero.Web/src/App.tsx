@@ -81,6 +81,9 @@ function RootProviders() {
   );
 }
 
+const baseUrl = import.meta.env.BASE_URL;
+const basename = baseUrl !== "/" ? baseUrl.replace(/\/$/, "") : undefined;
+
 const router = createBrowserRouter([
   {
     element: <RootProviders />,
@@ -99,7 +102,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-]);
+], { basename });
 
 export default function App() {
   return <RouterProvider router={router} />;

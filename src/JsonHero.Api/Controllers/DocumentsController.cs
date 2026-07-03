@@ -112,8 +112,9 @@ public class DocumentsController : ControllerBase
         return Content(document.Contents, "application/json");
     }
 
-    private static object ToResponse(Data.JsonDocument document)
+    private object ToResponse(Data.JsonDocument document)
     {
+        var pathBase = HttpContext.Request.PathBase.Value ?? "";
         return new
         {
             document.Id,
@@ -125,7 +126,7 @@ public class DocumentsController : ControllerBase
             document.Ttl,
             document.CreatedAt,
             document.UpdatedAt,
-            JsonUrl = $"/j/{document.Id}.json"
+            JsonUrl = $"{pathBase}/j/{document.Id}.json"
         };
     }
 }

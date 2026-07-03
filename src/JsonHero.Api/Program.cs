@@ -31,6 +31,30 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Support deploying under a subdirectory (e.g., /version_01)
+// Rewrite request path by stripping the prefix BEFORE routing.
+// Must call UseRouting() explicitly AFTER the rewrite, because WebApplication
+// auto-adds UseRouting as the first middleware otherwise.
+var pathBase = Environment.GetEnvironmentVariable("PATH_BASE");
+if (!string.IsNullOrEmpty(pathBase) && pathBase != "/")
+{
+    var prefix = new PathString(pathBase);
+    app.Use((context, next) =>
+    {
+        if (context.Request.Path.StartsWithSegments(prefix, out var remaining))
+        {
+            var newPath = remaining.Value;
+            if (string.IsNullOrEmpty(newPath)) newPath = "/";
+            context.Request.Path = new PathString(newPath);
+            context.Request.PathBase = prefix;
+        }
+        return next();
+    });
+}
+
+// Explicit UseRouting AFTER path rewrite (suppresses auto-UseRouting)
+app.UseRouting();
+
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();

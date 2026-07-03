@@ -9,6 +9,8 @@ RUN dotnet publish src/JsonHero.Api/JsonHero.Api.csproj -c Release -o /app/backe
 
 # Stage 2: Build Vite React frontend
 FROM node:22-alpine AS frontend-build
+ARG VITE_BASE_PATH=/
+ENV VITE_BASE_PATH=${VITE_BASE_PATH}
 WORKDIR /src
 COPY src/JsonHero.Web/package.json src/JsonHero.Web/package-lock.json ./
 RUN npm ci
@@ -21,5 +23,6 @@ WORKDIR /app
 COPY --from=backend-build /app/backend ./
 COPY --from=frontend-build /src/dist ./wwwroot
 ENV ASPNETCORE_URLS=http://+:8080
+ENV PATH_BASE=/
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "JsonHero.Api.dll"]
