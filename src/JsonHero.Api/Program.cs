@@ -31,6 +31,13 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+// Support deploying under a subdirectory (e.g., /version1.0)
+var pathBase = Environment.GetEnvironmentVariable("PATH_BASE");
+if (!string.IsNullOrEmpty(pathBase) && pathBase != "/")
+{
+    app.UsePathBase(pathBase);
+}
+
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
