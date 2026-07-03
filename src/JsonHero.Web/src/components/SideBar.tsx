@@ -55,7 +55,7 @@ export function SideBar() {
       </ol>
       <ol>
         <SidebarLink>
-          <a href={`/j/${doc.id}.json`} target="_blank">
+          <a href={`${import.meta.env.BASE_URL}j/${doc.id}.json`} target="_blank">
             <ToolTip arrow="left">
               <Body>{t("Download")}</Body>
             </ToolTip>
