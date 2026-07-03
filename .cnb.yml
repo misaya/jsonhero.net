@@ -1,0 +1,69 @@
+# ─── 公共 YAML 锚点 ─────────────────────────────
+.dotnet-env: &dotnet-env
+  docker:
+    image: mcr.microsoft.com/dotnet/sdk:8.0
+
+.node-env: &node-env
+  docker:
+    image: node:22-alpine
+
+.docker-build: &docker-build
+  services:
+    - docker
+  runner:
+    cpus: 16
+
+# ─── PR 检查 ───────────────────────────────────
+"**":
+  pull_request:
+    - name: backend-test
+      <<: *dotnet-env
+      ifModify:
+        - "src/JsonHero.Api/**"
+        - "src/JsonHero.Api.Tests/**"
+        - "solution.slnx"
+        - "NuGet.config"
+      stages:
+        - name: restore
+          script: dotnet restore
+        - name: build
+          script: dotnet build --no-restore -c Release
+        - name: test
+          script: dotnet test --no-build -c Release
+
+    - name: frontend-check
+      <<: *node-env
+      ifModify:
+        - "src/JsonHero.Web/**"
+      stages:
+        - name: install
+          script: cd src/JsonHero.Web && npm ci
+        - name: typecheck
+          script: cd src/JsonHero.Web && npx tsc --noEmit
+        - name: test
+          script: cd src/JsonHero.Web && npm test
+
+    - name: docker-build-test
+      <<: *docker-build
+      ifModify:
+        - "Dockerfile"
+        - "Dockerfile.staging"
+        - "src/**"
+      stages:
+        - name: build
+          script: docker build -t jsonhero-test .
+
+# ─── Push to main: 构建并推送镜像到 CNB 制品库 ──
+main:
+  push:
+    - name: docker-build-push
+      <<: *docker-build
+      stages:
+        - name: docker login
+          script: docker login -u "$CNB_TOKEN_USER_NAME" -p "$CNB_TOKEN" "$CNB_DOCKER_REGISTRY"
+        - name: docker build
+          script: docker build -t $CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG_LOWERCASE:$CNB_COMMIT_SHORT -t $CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG_LOWERCASE:latest .
+        - name: docker push
+          script: |
+            docker push $CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG_LOWERCASE:$CNB_COMMIT_SHORT
+            docker push $CNB_DOCKER_REGISTRY/$CNB_REPO_SLUG_LOWERCASE:latest
